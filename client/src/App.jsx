@@ -17,3 +17,6 @@ function App() {
 }
 
 export default App;
+
+
+// npm i @chakra-ui/icons
