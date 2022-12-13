@@ -5,7 +5,7 @@ import {
   IconButton,
   Button,
   Stack,
-  Collapse, Icon, Link,
+  Collapse, Icon, 
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -21,6 +21,8 @@ import {
 } from '@chakra-ui/icons';
 
 import logo from "../assets/logo.png"
+import { Link } from 'react-router-dom';
+
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -29,7 +31,9 @@ export default function Navbar() {
     <Box>
       <Flex
         bg={"#EF233C"}
-      
+        color='white'
+    
+     
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -98,9 +102,9 @@ export default function Navbar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('white', 'gray.200');
+  const linkColor = useColorModeValue('white', 'white');
   const linkHoverColor = useColorModeValue('#EDF2F4', 'white');
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800');
+  const popoverContentBgColor = useColorModeValue('white', 'white');
 
   return (
     <Stack direction={'row'} spacing={4}>
@@ -110,10 +114,10 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Link
                 p={2}
-                href={navItem.href ?? '#'}
+                to={navItem.href ?? '#'}
                 fontSize={'sm'}
                 fontWeight={500}
-                color={linkColor}
+                color={"white"}
                 _hover={{
                   textDecoration: 'none',
                   color: linkHoverColor,
@@ -147,7 +151,8 @@ const DesktopNav = () => {
 const DesktopSubNav = ({ label, href, subLabel }) => {
   return (
     <Link
-      href={href}
+    color='white'
+    to={href}
       role={'group'}
       display={'block'}
       p={2}
@@ -199,7 +204,7 @@ const MobileNavItem = ({ label, children, href }) => {
       <Flex
         py={2}
         as={Link}
-        href={href ?? '#'}
+        to={href ?? '#'}
         justify={'space-between'}
         align={'center'}
         _hover={{
@@ -227,11 +232,11 @@ const MobileNavItem = ({ label, children, href }) => {
           pl={4}
           borderLeft={1}
           borderStyle={'solid'}
-          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          borderColor={useColorModeValue('white', 'gray.700')}
           align={'start'}>
           {children &&
             children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
+              <Link key={child.label} py={2} to={child.href}>
                 {child.label}
               </Link>
             ))}
@@ -244,6 +249,18 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: 'Exercises',
+    href: '/exercises',
+  },
+  {
+    label: 'Coach',
+    href: '/coach',
+  },
+  {
+    label: 'Elite',
+    href: '/elite-page',
+  },
+  {
+    label: 'Hire Designers',
     children: [
       {
         label: 'Explore Design Work',
@@ -256,28 +273,5 @@ const NAV_ITEMS = [
         href: '#',
       },
     ],
-  },
-  {
-    label: 'Coach',
-    children: [
-      {
-        label: 'Job Board',
-        subLabel: 'Find your dream design job',
-        href: '#',
-      },
-      {
-        label: 'Freelance Projects',
-        subLabel: 'An exclusive list for contract work',
-        href: '#',
-      },
-    ],
-  },
-  {
-    label: 'Elite',
-    href: '#',
-  },
-  {
-    label: 'Hire Designers',
-    href: '#',
   },
 ];
