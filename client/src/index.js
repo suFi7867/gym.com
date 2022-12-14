@@ -31,11 +31,6 @@ reportWebVitals();
 
 // npm i @chakra-ui/icons
 
-// npm i react-hover-image
-// import HoverImage from "react-hover-image";
-
-//  <HoverImage src={yourFile} hoverSrc={yourFileHover} />
-
 // npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 
 // npm i react-icons
@@ -58,23 +53,6 @@ reportWebVitals();
 // npm install --save-dev sass-loader sass webpack
 
 
-  // const NAV_ITEMS = [
-  // 
-  //   {
-  //     label: 'Plans',
-  //     href: '/plans',
-  //   },
-  //   {
-  //     label: 'Products',
-  //     href: '/products',
-  //   },
-  //   {
-  //     label: 'Coach',
-  //     href: '/coach',
-  //   },
-  //   {
-  //     name: "About Us",
-  //     path: "/about",
-  //   },
-  //  
-  // ];
+//react-search-autocomplete
+
+// npm i framer-motion
