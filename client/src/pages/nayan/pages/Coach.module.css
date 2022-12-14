@@ -1,0 +1,106 @@
+.buttonA {
+  /* background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%); */
+  border-style: none;
+  background-color: #f36100;
+  background-color: "black";
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 3rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all 0.5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top: 50px;
+  border-radius: 7px;
+}
+
+.buttonA:hover {
+  /* box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px; */
+  transition-duration: 0.1s;
+  background-color: white;
+  color: #f36100;
+  border: 1px solid #f36100;
+}
+
+@media (min-width: 768px) {
+  .buttonA {
+    padding: 0 2.6rem;
+  }
+}
+.buttonB {
+  /* background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%); */
+  border-style: none;
+  /* background-color: #39B7FF; */
+  border: 2px solid #f36100;
+  background-color: white;
+  color: #f36100;
+  box-sizing: border-box;
+  /* color: #ffffff; */
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: "Inter UI", "SF Pro Display", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 3rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all 0.5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top: 50px;
+  border-radius: 7px;
+  padding: 10px 40px;
+}
+
+.buttonB:hover {
+  /* box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px; */
+  transition-duration: 0.1s;
+  background-color: #f36100;
+  color: white;
+  font-weight: 600;
+
+  border: 1px solid #f36100;
+}
+
+@media (min-width: 768px) {
+  .buttonB {
+    padding: 0 2.6rem;
+  }
+}
+
+.parentSlider {
+  overflow: hidden;
+  padding: 20px;
+}
+.slider {
+  display: flex;
+  gap: 20px;
+  width: calc(200px * 8);
+
+  animation: scroll 20s linear infinite;
+}
+.slider > img:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* z-index: 9;
+  width: 500px; */
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-200px * 4));
+  }
+}
