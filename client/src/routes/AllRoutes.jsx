@@ -28,7 +28,7 @@ const AllRoutes = () => {
           <Route path="/" element={<LandingPage />} />
 
           <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<SignUp />} />
+          <Route path="/register" element={<SignUp />} />
 
           <Route path="/coach" element={<Coach />} />
 
@@ -117,7 +117,6 @@ const AllRoutes = () => {
 
           </Route>
        
-        
         </Routes>
       </div>
     );

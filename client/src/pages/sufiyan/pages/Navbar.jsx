@@ -78,14 +78,14 @@ const Navbar = () => {
  // const { token, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
   const { data: cartData } = useSelector((store) => store.cart);
 
-  const isAuth = false
-  const AdminIsAuth = false
-  const token= "token"
+  const isAuth = true
+  const AdminIsAuth = true
+  const token= "admin@gmail.com#admin"
 
   let userName;
   
   if (isAuth) {
-    userName = token.token.split("#");
+    userName = token.split("#");
     userName = userName[0];
   }
   useEffect(() => {

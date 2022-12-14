@@ -31,11 +31,6 @@ reportWebVitals();
 
 // npm i @chakra-ui/icons
 
-// npm i react-hover-image
-// import HoverImage from "react-hover-image";
-
-//  <HoverImage src={yourFile} hoverSrc={yourFileHover} />
-
 // npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 
 // npm i react-icons
@@ -56,6 +51,9 @@ reportWebVitals();
 // npm i node-sass
 // npm i react-transition-group
 // npm install --save-dev sass-loader sass webpack
+
+
+//react-search-autocomplete
 
 
   // const NAV_ITEMS = [
