@@ -56,3 +56,6 @@ reportWebVitals();
 //react-search-autocomplete
 
 // npm i framer-motion
+
+// npm i react-slick
+//  npm install slick-carousel --save
