@@ -1,277 +1,468 @@
 import {
   Box,
-  Flex,
-  Text,
-  IconButton,
   Button,
-  Stack,
-  Collapse, Icon, 
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  useColorModeValue,
-  useDisclosure,
+  Circle,
+  Divider,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
+  Flex,
+  HStack,
+  IconButton,
   Image,
-} from '@chakra-ui/react';
+  Spacer,
+  Stack,
+  Text,
+  useColorMode,
+  useDisclosure,
+  VStack,
+} from "@chakra-ui/react";
+import React, { useContext, useEffect, useState } from "react";
 import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from '@chakra-ui/icons';
+  MdDynamicFeed,
+  MdEco,
+  MdEditNotifications,
+  MdFeed,
+  MdOutlineDarkMode,
+} from "react-icons/md";
+import { BsLightbulb } from "react-icons/bs";
+import { AiOutlineMenu } from "react-icons/ai";
+//AiOutlineMenu
+import { BiSearch } from "react-icons/bi";
+import { Link, NavLink } from "react-router-dom";
+
+
+import { ImAndroid } from "react-icons/im";
+import SearchBar from "../components/SearchBar";
+import SearchBar2 from "../components/SearchBar2";
+import { VscHeart } from "react-icons/vsc";
+import { IoBagOutline } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
+// import { ACTION_GET_PRODUCTS } from "../../redux/products/product.actions";
+// import { ACTION_GET_CART } from "../../redux/cart/cart.actions";
+// import { ACTION_GET_ADMIN } from "../../redux/admin/admin.actions";
+// import { ActionLogout } from "../../redux/auth/auth.actions";
 
 import logo from "../assets/logo.png"
-import { Link } from 'react-router-dom';
 
+ const Links = [
+ 
+   {
+     name: 'Plans',
+     path: '/plans',
+   },
+   {
+     name: 'Products',
+     path: '/products',
+   },
+   {
+     name: 'Coach',
+     path: '/coach',
+   },
+   {
+     name: "About Us",
+     path: "/about",
+   },
+  
+ ];
 
-export default function Navbar() {
-  const { isOpen, onToggle } = useDisclosure();
+const Navbar = () => {
+  // const AdminIsAuth = true
 
+  const dispatch = useDispatch();
+
+  const { data, loading, error } = useSelector((store) => store.product);
+ // const { token, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
+  const { data: cartData } = useSelector((store) => store.cart);
+
+  const isAuth = false
+  const AdminIsAuth = false
+  const token= "token"
+
+  let userName;
+  
+  if (isAuth) {
+    userName = token.token.split("#");
+    userName = userName[0];
+  }
+  useEffect(() => {
+   // dispatch(ACTION_GET_PRODUCTS());
+   // dispatch(ACTION_GET_ADMIN());
+
+    if (isAuth) {
+   //   dispatch(ACTION_GET_CART(token.token));
+    }
+  }, [isAuth]);
+
+  //console.log(cartData.length);
+
+  const { colorMode, toggleColorMode } = useColorMode();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [OpenSearch, SetOpenSearch] = useState("none");
+
+  const LogOutUser = () => {
+    //dispatch(ActionLogout());
+  };
+
+  // borderBottom="1px solid #eeee"
+
+  
   return (
-    <Box>
-      <Flex
-        bg={"#EF233C"}
-        color='white'
+    <Box borderBottom={"4px solid #f45f02"}
+    bgGradient={"linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"}
+    style={{ position: "sticky", top: 0, zIndex: "999" }}>
+      <HStack
+      
+        style={{ position: "sticky", top: 0 }}
+        p="0px 8%"
+        justify="center"
+        w="100%"
+        h="64px"
+      >
+        <HStack
+          w="full"
+          maxW="1400px"
+          p={{ base: "none", md: "0.6rem" }}
+          spacing={8}
+        >
+          <HStack>
+            <Link to="/">
+              <Image
+                w={{ base: "150px", md: "200px" }}
+                minW="150px"
+                dropShadow="2xl"
+              
+                style={{ position: "relative", left: "0px", zIndex: "1" }}
+                top={{ base: "10px", md: "28px" }}
+                src={logo}
+              />
+            </Link>
+          </HStack>
+
+          <HStack
+            w={{ base: "full", md: "fit-content" }}
+            justifyContent="space-around"
+          >
+            <Box visibility={{ base: "hidden", md: "visible" }}>
+              <SearchBar />
+            </Box>
+          </HStack>
+          <Spacer display={{ base: "none", md: "block" }} />
+
+          {!isAuth ? (
+            <Box display={{ base: "none", md: "none", lg: "block" }}>
+              <HStack>
+                <NavLink to="/login">
+                  <Button
+                   
+                    color="white"
+                    variant="outline"
+                    fontWeight="semibold"
+                  >
+                    Sign in
+                  </Button>
+                </NavLink>
+
+                <NavLink to="/register">
+                  <Button
+                     bg="#f45f02"
+                     color="white"
+                     variant="solid"
+                     fontWeight="semibold"
+                  >
+                    Register
+                  </Button>
+                </NavLink>
+
+                <IconButton
+                  fontSize="25px"
+                  borderRadius={50}
+                  variant="link"
+                  //onClick={toggleColorMode}
+                  icon={<VscHeart />}
+                />
+
+                <NavLink to="/cart">
+                  <IconButton
+                    fontSize="25px"
+                    borderRadius={50}
+                    variant="link"
+                    //onClick={toggleColorMode}
+                    icon={<IoBagOutline />}
+                  />
+                </NavLink>
+
+                
+              </HStack>
+            </Box>
+          ) : (
+            <Box display={{ base: "none", md: "none", lg: "block" }}>
+              <HStack spacing={25}>
+                <HStack>
+                  <Text color="whiteAlpha.900" fontSize="xl">
+                    <ImAndroid />
+                  </Text>
+                  <Text fontWeight="semibold" color="whiteAlpha.900">
+                    {userName}
+                  </Text>
+                </HStack>
+
+                <Button
+                  onClick={LogOutUser}
+              
+                  bg="#f45f02"
+                  color="white"
+                  variant="solid"
+                  fontWeight="semibold"
+                >
+                  LogOut
+                </Button>
+
+                <IconButton
+                  fontSize="25px"
+                  borderRadius={50}
+                  variant="link"
+                  //onClick={toggleColorMode}
+                  icon={<VscHeart />}
+                />
+
+                <NavLink to="/cart">
+                  <HStack>
+                    <IconButton
+                      fontSize="25px"
+                      borderRadius={50}
+                      variant="link"
+                      //onClick={toggleColorMode}
+                      icon={<IoBagOutline />}
+                    />
+                    <Text marginLeft={"-50px"}>
+                      {cartData.length !== 0 ? (
+                        <Circle minWidth={30} bg="white">
+                          {cartData.length}
+                        </Circle>
+                      ) : (
+                        ""
+                      )}
+                    </Text>
+                  </HStack>
+                </NavLink>
+
+               
+              </HStack>
+            </Box>
+          )}
+
+          <HStack
+            display={{ base: "-webkit-inline-flex", md: "none", lg: "none" }}
+          >
+            <NavLink to="/cart">
+              <IconButton
+                fontSize="25px"
+                borderRadius={50}
+                variant="link"
+                //onClick={toggleColorMode}
+                icon={<IoBagOutline />}
+              />
+            </NavLink>
+
+            <IconButton
+              variant="link"
+              fontSize="x-large"
+              onClick={() =>
+                SetOpenSearch(OpenSearch == "none" ? "block" : "none")
+              }
+              icon={<BiSearch />}
+            ></IconButton>
+
+            <IconButton
+              onClick={() => onOpen()}
+              icon={<AiOutlineMenu />}
+            ></IconButton>
+          </HStack>
+        </HStack>
+
+        <Drawer
+         onClose={onClose} isOpen={isOpen} size="full">
+          <DrawerOverlay />
+
+          <DrawerContent
+          color="white"
+          bgGradient={"linear-gradient(0deg, rgba(0,0,0,1) 14%, rgba(64,64,64,1) 100%)"}
+        placement="right" >
+            <DrawerCloseButton />
+            <DrawerHeader>
+              <HStack alignItems="center" h="20px">
+                <Image
+                 
+                  w="150px"
+                  position="absolute"
+                  bottom="20px"
+                  src={logo}
+                />
+
+              
+              </HStack>
+            </DrawerHeader>
+            <DrawerBody>
+              {isAuth && (
+                <VStack>
+                  <HStack>
+                    <Text fontSize="xl">
+                      <ImAndroid />
+                    </Text>
+                    <Text fontWeight="semibold">{userName}</Text>
+                  </HStack>
+                </VStack>
+              )}
+              <br />
+              <Divider />
+              <br />
+
+              <VStack>
+                {Links.map((el) => (
+                  <VStack w={"80%"}>
+                    <NavLink
+                      key={el.path}
+                      to={el.path}
+                      w={"100%"}
+                      onClick={() => onClose()}
+                     
+                      end
+                    >
+                      <Text
+                        w={"100%"}
+                        fontSize="20px"
+                        className={({ isActive }) =>
+                        isActive ? "SmallactiveS" : "SmalldefaultS"
+                      }
+                        fontWeight={"semibold"}
+                        p="10px 5px"
+                      >
+                        {el.name}
+                      </Text>
+                    </NavLink>
+                    <Divider />
+                  </VStack>
+                ))}
+                <VStack w={"80%"}>
+                  <NavLink
+                    key={"el.padsdth"}
+                    to={"/cart"}
+                    w={"100%"}
+                    onClick={() => onClose()}
+                    className={({ isActive }) =>
+                      isActive ? "SmallactiveS" : "SmalldefaultS"
+                    }
+                    end
+                  >
+                    <Text
+                      w={"100%"}
+                      fontSize="20px"
+                      fontWeight={"semibold"}
+                      p="10px 5px"
+                    >
+                      Cart
+                    </Text>
+                  </NavLink>
+                  <Divider />
+                </VStack>
+              </VStack>
+
+              {!isAuth ? (
+                <HStack marginTop="20px" justifyContent="space-around">
+                  <NavLink to="/login">
+                    <Button
+                      onClick={() => onClose()}
+                      colorScheme="messenger"
+                      variant="outline"
+                    >
+                      Log In
+                    </Button>
+                  </NavLink>
+                  <NavLink onClick={() => onClose()} to="/register">
+                    <Button colorScheme="messenger" variant="solid">
+                      Register
+                    </Button>
+                  </NavLink>
+                </HStack>
+              ) : (
+                <HStack marginTop="20px" justifyContent="space-around">
+                  <NavLink to="/login">
+                    <Button
+                      onClick={() => {
+                        onClose();
+                        LogOutUser();
+                      }}
+                      position={"absolute"}
+                      bottom="35px"
+                      right="25px"
+                      bg="#f45f02"
+                      variant="solid"
+                    >
+                      LOG OUT
+                    </Button>
+                  </NavLink>
+                </HStack>
+              )}
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </HStack>
+
+      <HStack
+        justifyContent={{ sm: "flex-end", xl: "center" }}
     
-     
-        minH={'60px'}
-        py={{ base: 2 }}
-        px={{ base: 4 }}
-        borderBottom={1}
-        borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
-        align={'center'}>
-        <Flex
-          flex={{ base: 1, md: 'auto' }}
-          ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}>
-          <IconButton
-            onClick={onToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={'ghost'}
-            aria-label={'Toggle Navigation'}
-          />
-        </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Image src={logo} />
-       
-       
+        // style={{position:"sticky", top:0 }}
+        p="0px 8%"
+        justify="center"
+        w="100%"
+        h={{ base: "20px", md: "54px" }}
+      >
+        <Box display={{ base: "none", md: "block", lg: "block" }}>
+          <HStack w={"fit-content"} gap={{ base: 10, md: "5px", lg: 50 }}>
+            {Links.map((el) => (
+              <NavLink
+                key={el.path}
+                to={el.path}
+                className={({ isActive }) =>
+                  isActive ? "activeS" : "defaultS"
+                }
+                end
+              >
+                <Text fontSize="20px" fontFamily={"exo"}  p="10px 10px">
+                  {el.name}
+                </Text>
+              </NavLink>
+            ))}
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            <DesktopNav />
-          </Flex>
-        </Flex>
+            {AdminIsAuth && (
+              <NavLink
+                key={"el.path"}
+                to={"/admin"}
+                className={({ isActive }) =>
+                  isActive ? "activeS" : "defaultS"
+                }
+                end
+              >
+                <Text fontSize="20px" color="whiteAlpha.900" p="10px 10px">
+                  {"Admin"}
+                </Text>
+              </NavLink>
+            )}
+          </HStack>
+        </Box>
+      </HStack>
 
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
-          spacing={6}>
-          <Button
-            as={'a'}
-            color={'white'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            href={'#'}>
-            Sign In
-          </Button>
-
-          <Button
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'messenger.500'}
-            href={'#'}
-            _hover={{
-              bg: '#4361ee',
-            }}>
-            Sign Up
-          </Button>
-        </Stack>
-      </Flex>
-
-      <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
-      </Collapse>
+      <Box display={{ base: `${OpenSearch}`, md: "none" }}>
+        <SearchBar2 OpenSearch={OpenSearch} SetOpenSearch={SetOpenSearch} />
+      </Box>
     </Box>
   );
-}
-
-const DesktopNav = () => {
-  const linkColor = useColorModeValue('white', 'white');
-  const linkHoverColor = useColorModeValue('#EDF2F4', 'white');
-  const popoverContentBgColor = useColorModeValue('white', 'white');
-
-  return (
-    <Stack direction={'row'} spacing={4}>
-      {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
-          <Popover trigger={'hover'} placement={'bottom-start'}>
-            <PopoverTrigger>
-              <Link
-                p={2}
-                to={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={"white"}
-                _hover={{
-                  textDecoration: 'none',
-                  color: linkHoverColor,
-                }}>
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
-
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow={'xl'}
-                bg={popoverContentBgColor}
-                p={4}
-                rounded={'xl'}
-                minW={'sm'}>
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      ))}
-    </Stack>
-  );
 };
-
-const DesktopSubNav = ({ label, href, subLabel }) => {
-  return (
-    <Link
-    color='white'
-    to={href}
-      role={'group'}
-      display={'block'}
-      p={2}
-      rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
-      <Stack direction={'row'} align={'center'}>
-        <Box>
-          <Text
-            transition={'all .3s ease'}
-            _groupHover={{ color: 'pink.400' }}
-            fontWeight={500}>
-            {label}
-          </Text>
-          <Text fontSize={'sm'}>{subLabel}</Text>
-        </Box>
-        <Flex
-          transition={'all .3s ease'}
-          transform={'translateX(-10px)'}
-          opacity={0}
-          _groupHover={{ opacity: '100%', transform: 'translateX(0)' }}
-          justify={'flex-end'}
-          align={'center'}
-          flex={1}>
-          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
-      </Stack>
-    </Link>
-  );
-};
-
-const MobileNav = () => {
-  return (
-    <Stack
-      bg={useColorModeValue('white', 'gray.800')}
-      p={4}
-      display={{ md: 'none' }}>
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
-    </Stack>
-  );
-};
-
-const MobileNavItem = ({ label, children, href }) => {
-  const { isOpen, onToggle } = useDisclosure();
-
-  return (
-    <Stack spacing={4} onClick={children && onToggle}>
-      <Flex
-        py={2}
-        as={Link}
-        to={href ?? '#'}
-        justify={'space-between'}
-        align={'center'}
-        _hover={{
-          textDecoration: 'none',
-        }}>
-        <Text
-          fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}>
-          {label}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={'all .25s ease-in-out'}
-            transform={isOpen ? 'rotate(180deg)' : ''}
-            w={6}
-            h={6}
-          />
-        )}
-      </Flex>
-
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
-        <Stack
-          mt={2}
-          pl={4}
-          borderLeft={1}
-          borderStyle={'solid'}
-          borderColor={useColorModeValue('white', 'gray.700')}
-          align={'start'}>
-          {children &&
-            children.map((child) => (
-              <Link key={child.label} py={2} to={child.href}>
-                {child.label}
-              </Link>
-            ))}
-        </Stack>
-      </Collapse>
-    </Stack>
-  );
-};
-
-const NAV_ITEMS = [
-  {
-    label: 'Exercises',
-    href: '/exercises',
-  },
-  {
-    label: 'Coach',
-    href: '/coach',
-  },
-  {
-    label: 'Elite',
-    href: '/elite-page',
-  },
-  {
-    label: 'Hire Designers',
-    children: [
-      {
-        label: 'Explore Design Work',
-        subLabel: 'Trending Design to inspire you',
-        href: '#',
-      },
-      {
-        label: 'New & Noteworthy',
-        subLabel: 'Up-and-coming Designers',
-        href: '#',
-      },
-    ],
-  },
-];
+// OpenSearch
+// SetOpenSearch
+export default Navbar;

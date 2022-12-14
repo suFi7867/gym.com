@@ -1,11 +1,25 @@
 import { Route, Routes } from "react-router-dom";
-import ElitePage from "../pages/monu/pages/ElitePage";
-import Coach from "../pages/nayan/pages/Coach";
-import Exercises from "../pages/Shrikrishna/pages/Exercises";
+import Cart from "../Cart";
+import LandingPage from "../pages/monu/pages/LandingPage";
+import OrderSuccessfull from "../pages/monu/pages/OrderSuccessfull";
+import PaymentForm from "../pages/monu/pages/PaymentForm";
 
-import LandingPage from "../pages/sudarshan/pages/LandingPage";
-import Login from "../pages/sufiyan/pages/Login";
-import Logout from "../pages/sufiyan/pages/Logout";
+import Coach from "../pages/nayan/pages/Coach";
+import ProductPage from "../pages/nayan/pages/Product Page";
+import SingleProductPage from "../pages/nayan/pages/SingleProductPage";
+import UserDashboard from "../pages/nayan/pages/UserDashboard";
+import Login from "../pages/Shrikrishna/pages/Login";
+import SignUp from "../pages/Shrikrishna/pages/SignUp";
+import Plans from "../pages/sudarshan/pages/Plans";
+import SinglePlanPage from "../pages/sudarshan/pages/SinglePlanPage";
+import AboutUS from "../pages/sufiyan/pages/AboutUS";
+import AdminDashbord from "../pages/sufiyan/pages/AdminDashbord";
+import AddProduct from "../pages/sufiyan/pages/nestedPages/AddProduct";
+import AllUsers from "../pages/sufiyan/pages/nestedPages/AllUsers";
+import Dashborad from "../pages/sufiyan/pages/nestedPages/Dashborad";
+import AdminPrivateAuth from "./AdminPrivateRoute";
+import PrivateRoute from "./PrivateRoute";
+
 
 const AllRoutes = () => {
     return (
@@ -14,13 +28,96 @@ const AllRoutes = () => {
           <Route path="/" element={<LandingPage />} />
 
           <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/logout" element={<SignUp />} />
 
           <Route path="/coach" element={<Coach />} />
-          <Route path="/elite-page" element={<ElitePage />} />
-          <Route path="/exercises" element={<Exercises />} />
-  
-      
+
+          <Route path="/plans" element={<Plans />} />
+          <Route path="/plans/:plan" element={<SinglePlanPage />} />
+
+          <Route path="/products" element={<ProductPage />} />
+          <Route path="/products/:id" element={<SingleProductPage />} />
+
+          <Route
+          path="/checkout/payment"
+          element={
+            <PrivateRoute>
+              <PaymentForm />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/OrderSuccessfull"
+          element={
+            <PrivateRoute>
+              <OrderSuccessfull />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cart />
+            </PrivateRoute>
+          }
+        />
+
+
+
+
+          <Route path="/user-profile" element={<UserDashboard />} />
+
+          <Route path="/about" element={<AboutUS />} />
+
+{/*////////////////////////////////////////////////////*/}
+
+
+          <Route path="/admin" element={<AdminDashbord />} >
+
+               
+                <Route
+                  index
+                  element={
+                    <AdminPrivateAuth>
+                      <Dashborad />{" "}
+                    </AdminPrivateAuth>
+                  }
+                />
+                <Route
+                  exact
+                  path="dashboard"
+                  element={
+                    <AdminPrivateAuth>
+                      <Dashborad />{" "}
+                    </AdminPrivateAuth>
+                  }
+                />
+
+                <Route
+                  exact
+                  path="add-product"
+                  element={
+                    <AdminPrivateAuth>
+                      <AddProduct />{" "}
+                    </AdminPrivateAuth>
+                  }
+                />
+                <Route
+                  exact
+                  path="all-users"
+                  element={
+                    <AdminPrivateAuth>
+                      <AllUsers />{" "}
+                    </AdminPrivateAuth>
+                  }
+                />
+
+          </Route>
+       
+        
         </Routes>
       </div>
     );
