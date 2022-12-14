@@ -55,24 +55,4 @@ reportWebVitals();
 
 //react-search-autocomplete
 
-
-  // const NAV_ITEMS = [
-  // 
-  //   {
-  //     label: 'Plans',
-  //     href: '/plans',
-  //   },
-  //   {
-  //     label: 'Products',
-  //     href: '/products',
-  //   },
-  //   {
-  //     label: 'Coach',
-  //     href: '/coach',
-  //   },
-  //   {
-  //     name: "About Us",
-  //     path: "/about",
-  //   },
-  //  
-  // ];
+// npm i framer-motion
