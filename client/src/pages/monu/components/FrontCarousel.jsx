@@ -12,6 +12,7 @@ import {
 import front1 from"../assets/front1.jpg"
 import front2 from"../assets/front2.jpg"
 import front3 from"../assets/front3.jpg"
+import front4 from"../assets/front4.jpg"
 import front5 from"../assets/front5.jpg"
 import front6 from"../assets/front6.jpg"
 // Here we have used react-icons package for the icons
@@ -44,7 +45,27 @@ export default function FrontCarousel() {
 
   // This list contains all the data for carousels
   // This can be static or loaded from a server
-  const cards = [
+  const cards = [{
+    title:"SHAPE YOUR BODY",
+    text: "TRAINING HARD",
+    be:"BE",
+    strong:"POWER",
+    image:front2,
+  },  
+   {
+    title:"SHAPE YOUR BODY",
+    text: "NO GAIN",
+    be:"NO",
+    strong:"PAIN",
+    image:front3,
+  },
+    {
+      title:"SHAPE YOUR BODY",
+      text: "TRAINING HARD",
+      be:"BE",
+      strong:"HERO",
+      image:front4,
+    },
     {
       title:"SHAPE YOUR BODY",
       text: "TRAINING HARD",
@@ -86,10 +107,11 @@ export default function FrontCarousel() {
   return (
     <Box
       position={'relative'}
-      height={'100vh'}
+      height={'130vh'}
       width={'full'}
       overflow={'hidden'}
-      mt="-100"
+      mt="-50"
+      filter={'brightness(80%)'}
       >
       {/* CSS files for react-slick */}
       

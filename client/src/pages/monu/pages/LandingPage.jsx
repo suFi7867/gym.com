@@ -1,4 +1,5 @@
 import React from 'react'
+import BigGallery from '../components/BigGallery'
 import Choose from '../components/Choose'
 import FrontCarousel from '../components/FrontCarousel'
 import Gallery from '../components/Gallery'
@@ -13,7 +14,8 @@ const LandingPage = () => {
         <Choose />
         <Girl />
         <Pricing />
-        <Gallery />
+        <BigGallery />
+        {/* <Gallery /> */}
         <Trainer />
     </div>
   )

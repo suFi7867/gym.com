@@ -153,17 +153,22 @@ position: relative;
     background-color: gray;
   }
   .lisa {
-    border:5px solid #f45f02;
-    border-radius: 29px;
+    border:2px solid #f45f02;
     width: 90%;
-    padding: 3px;
+    padding: 1.5px;
     position: relative;
+    overflow: hidden;
   }
   .lisa img{
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 23px;
+    transition: transform 1.5s, filter 2s ease-in-out;
+    transform: scale(1);
+  }
+  .lisa:hover img{
+    filter: brightness(70%);
+    transform: scale(1.2);
   }
   .lisa:hover .overlay2{
        height: 20%;
@@ -179,9 +184,36 @@ position: relative;
     overflow: hidden;
     width: 100%;
     height: 0;
-    transition: .5s ease;
-    border-bottom-left-radius: 23px;
-    border-bottom-right-radius: 23px;
+    transition: 0.5s ease;
     display: grid;
     place-items: center;
   }
+
+  .social{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: 0.5s ease;
+    display: grid;
+    place-items: center;
+  }
+
+  .lisa:hover .social{
+    height: 100%;
+    bottom: 0px;
+    cursor: pointer;
+}
+.sumo{
+  font-size: 30px;
+  color: #fff;
+  transition: transform 1s, filter 1s ease-in-out;
+  transform: scale(1);
+}
+.sumo:hover{
+  transform: scale(1.4);
+}
