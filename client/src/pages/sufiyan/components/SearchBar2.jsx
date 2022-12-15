@@ -209,7 +209,7 @@ const SearchBar2 = ( OpenSearch , SetOpenSearch ) => {
 
   const handleOnSelect = (item) => {
     // the item selected
-    navigate(`/products/${item.type}/${item.id}`)
+    navigate(`/products/${item.id}`)
     console.log(item)
   }
 
