@@ -17,6 +17,7 @@ import {   FaUsers } from "react-icons/fa"
 import { useState } from "react";
 import Item from "../../components/item";
 import { Box } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 function SideBarLeft() {
   const [open, setOpen] = useState(true);
 
@@ -123,8 +124,8 @@ function SideBarLeft() {
               >
                 ANALYTICS
               </motion.h3>
-              <Item icon={<MdDashboard />} name="Dashboard" />
-              <Item icon={<GrDocumentPerformance />} name="Performance" />
+             <Link to="/admin/dashboard"> <Item icon={<MdDashboard />} name="Dashboard" /> </Link> 
+             
             </div>
           </div>
           {/* group 2 */}
@@ -136,7 +137,7 @@ function SideBarLeft() {
             </motion.h3>
             <Item icon={<GiReceiveMoney />} name="Sales" />
 
-            <Item icon={<FaUsers />} name="Customers" />
+            <Link to="/admin/all-users">  <Item icon={<FaUsers />} name="Customers" /></Link>
           </div>
           {/* group 3 */}
           <div className="group">
@@ -145,8 +146,8 @@ function SideBarLeft() {
             >
               CUSTOMIZATION
             </motion.h3>
-            <Item icon={<AiFillEdit />} name="Segments" />
-            <Item icon={<MdColorLens />} name="Themems" />
+            <Link to="/admin/add-product">   <Item icon={<AiFillEdit />} name="Add Products" /> </Link>
+            
           </div>
         </motion.div>
       </motion.div>
