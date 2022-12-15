@@ -1,25 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { ChakraProvider } from '@chakra-ui/react'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
 
 import { Provider } from "react-redux";
-import { store } from './redux/store';
+import { store } from "./redux/store";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ChakraProvider>
-    
-  <BrowserRouter>
-  <Provider store={store}>
-
-    <App />
-  </Provider>
-  </BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </ChakraProvider>
 );
 
@@ -27,7 +24,6 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
 
 // npm i @chakra-ui/icons
 
@@ -40,7 +36,6 @@ reportWebVitals();
 
 // npm i react-custom-scrollbars-2
 
-
 // npm i redux react-redux redux-thunk
 // npm i axios
 //npm i react-multi-carousel
@@ -51,7 +46,6 @@ reportWebVitals();
 // npm i node-sass
 // npm i react-transition-group
 // npm install --save-dev sass-loader sass webpack
-
 
 //react-search-autocomplete
 
