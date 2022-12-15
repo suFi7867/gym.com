@@ -3,41 +3,19 @@ import { Box, Button, Img, Text } from "@chakra-ui/react";
 import { ArrowRightIcon, CalendarIcon } from "@chakra-ui/icons";
 import styles from "./Coach.module.css";
 const Coach = () => {
-  let images = [
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/1members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/2members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/3members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/4members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/5members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/6members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/7members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/8members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/9members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/10members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/11members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/12members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/13members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/14members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/15members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/16members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/17members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/18members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/19members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/20members-150x150.png",
-  ];
   return (
     <Box backgroundColor="#312e2e">
       <Box w="100%" textAlign="center">
         <Box p="40px" w="100%">
           <Box>
             <Box
-              fontSize="5xl"
+              fontSize="4xl"
               as="i"
               fontWeight="700"
               display={{ base: "grid", lg: "flex", sm: "grid", md: "grid" }}
               w="40%"
               m="auto"
-              gap="10px"
+              textAlign="center"
             >
               <Text color="white"> Personal </Text>{" "}
               <Text color="#f36100"> Coach Mode</Text>
@@ -66,24 +44,31 @@ const Coach = () => {
           </Button>
         </Box>
 
-        <Box mt="70px" p="40px" display="flex" w="50%" gap="10px" m="auto">
+        <Box
+          mt="70px"
+          // p="40px"
+          display={{ base: "grid", lg: "flex", sm: "grid", md: "grid" }}
+          w="50%"
+          gap="5px"
+          m="auto"
+        >
           <Text
             textAlign="center"
             fontWeight="700"
-            fontSize="5xl"
+            fontSize="4xl"
             color="white"
           >
             Jefit Community Members
           </Text>
         </Box>
         {/* SCROLL */}
-        <Box m="auto" className={styles.parentSlider}>
+        {/* <Box m="auto" className={styles.parentSlider}>
           <Box className={styles.slider}>
             {images?.map((item) => {
               return <Img src={item} alt="img" />;
             })}
           </Box>
-        </Box>
+        </Box> */}
         {/* 1st row body section */}
         <Box
           // display={{ sm: "grid", md: "grid", lg: "flex" }}
@@ -195,11 +180,11 @@ const Coach = () => {
           <Box w={{ base: "100%", lg: "50%", sm: "100%", md: "100%" }}>
             <Box
               // display={{ base: "grid", lg: "flex", sm: "grid", md: "flex" }}
-              display="flex"
-              fontSize="6xl"
+              display={{ base: "grid", lg: "flex", sm: "grid", md: "grid" }}
+              fontSize="5xl"
               fontWeight="700"
               gap="10px"
-              pl={{ base: "20px", sm: "20px", lg: "0px", md: "20px" }}
+              // pl={{ base: "20px", sm: "20px", lg: "0px", md: "20px" }}
             >
               <Text color="white">Client</Text>
               <Text color="#f36100">Management</Text>
@@ -345,7 +330,7 @@ const Coach = () => {
                 sm: "center",
                 lg: "left",
               }}
-              display="flex"
+              display={{ base: "grid", lg: "flex", sm: "grid", md: "grid" }}
               gap="20px"
               pl={{ base: "10px", sm: "10px", lg: "0px", md: "10px" }}
             >
@@ -358,7 +343,7 @@ const Coach = () => {
               fontWeight="450"
               textAlign="left"
               as="i"
-              display="flex"
+              display={{ base: "grid", lg: "flex", sm: "grid", md: "grid" }}
               gap="10px"
             >
               <Text color="#f36100">Easily personalize</Text>
@@ -392,11 +377,22 @@ const Coach = () => {
           mt="30px"
         >
           <Box w={{ base: "100%", lg: "50%", sm: "100%", md: "100%" }}>
-            <Box fontSize="7xl" fontWeight="700" display="flex" gap="10px">
+            <Box
+              fontSize="7xl"
+              fontWeight="700"
+              display={{ base: "grid", lg: "flex", sm: "grid", md: "grid" }}
+              gap="10px"
+            >
               <Text color="white">Coach</Text>
               <Text color="#f36100">Branding</Text>
             </Box>
-            <Box fontSize="5xl" fontWeight="400" textAlign="left" mt="20px">
+            <Box
+              fontSize="5xl"
+              fontWeight="400"
+              textAlign="left"
+              mt="20px"
+              display={{ base: "grid", lg: "grid", sm: "grid", md: "grid" }}
+            >
               <Text color="white">Build a reputation & let new </Text>
               <Text color="#f36100">clients come to you.</Text>
             </Box>
@@ -464,17 +460,17 @@ const Coach = () => {
             <Box
               fontSize={{ base: "5xl", lg: "7xl", md: "6xl", sm: "4xl" }}
               fontWeight="600"
-              display="flex"
+              display={{ base: "grid", lg: "grid", sm: "grid", md: "grid" }}
               gap="15px"
             >
               <Text color="white">Start Your</Text>
-              <Text color="#f36100">Free Trial</Text>
+              <Text color="#f36100">Free Trial.</Text>
             </Box>
             <Box
               fontSize="4xl"
               fontWeight="700"
               as="i"
-              display="flex"
+              display={{ base: "grid", lg: "flex", sm: "grid", md: "grid" }}
               gap="10px"
             >
               <Text color="white">After the</Text>
@@ -538,7 +534,7 @@ const Coach = () => {
             <Box
               fontSize="5xl"
               fontWeight="700"
-              display="flex"
+              display={{ base: "grid", lg: "flex", sm: "grid", md: "grid" }}
               m="auto"
               w="67%"
               mb="20px"
@@ -564,3 +560,14 @@ const Coach = () => {
 };
 
 export default Coach;
+
+/*
+<Box mt="50px" w="30%" textAlign="left" color="#f36100">
+          <Text fontSize="13px">
+            Interested? Request a demo or give us some feedback
+          </Text>
+          <Text fontSize="13px" textAlign="left">
+            Marketing@jefit.com
+          </Text>
+        </Box>
+*/
