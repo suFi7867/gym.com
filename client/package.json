@@ -21,6 +21,7 @@
     "react-scripts": "5.0.1",
     "react-search-autocomplete": "^8.2.1",
     "react-slick": "^0.29.0",
+    "react-vis": "^1.11.7",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2",
     "slick-carousel": "^1.8.1",

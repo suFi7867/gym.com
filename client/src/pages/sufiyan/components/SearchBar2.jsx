@@ -8,80 +8,176 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 
 
 
-let dataTobeMatch= [
+let dataTobeMatch = [
   {
-    "name": "Winner Whey Gold",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2015/06/shop-product-1-600x600.jpg",
-    "price": "$16.74",
-    "button": "ADD TO CART"
+    id:0,
+    name: "Winner Whey",
+    image: "https://i.ibb.co/94BnTpt/product-2.png",
+    price: "$16.74",
+    button: "ADD TO CART",
   },
   {
-    "name": "100% WHEY PRO",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-4-600x600.jpg",
-    "price": "$16.74",
-    "button": "ADD TO CART"
+    id:1,
+    name: "100% WHEY",
+    image: "https://i.ibb.co/pQFBWGb/product-3.png",
+    price: "$16.74",
+    button: "ADD TO CART",
   },
   {
-    "name": "BCAA pro",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-6-600x600.jpg",
-    "price": "$32.56",
-    "button": "ADD TO CART"
+    id:2,
+    name: "BCAA pro",
+    image: "https://i.ibb.co/rxzqPWN/product-4.png",
+    price: "$32.56",
+    button: "ADD TO CART",
   },
   {
-    "name": "DYNAMIC BCAA",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-6-600x600.jpg",
-    "price": "$32.56",
-    "button": "ADD TO CART"
+    id:3,
+    name: "DYNAMIC BCAA",
+    image: "https://i.ibb.co/rxzqPWN/product-4.png",
+    price: "$32.56",
+    button: "ADD TO CART",
   },
   {
-    "name": "ESSENTIAL WORKOUT BENCH",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-11-600x600.jpg",
-    "price": "$8.37",
-    "button": "ADD TO CART"
+    id:4,
+    name: "ESSENTIALS",
+    image: "https://i.ibb.co/1bqh7Yx/product-5.png",
+    price: "$8.37",
+    button: "ADD TO CART",
   },
   {
-    "name": "FLYING NINJA ",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-24-600x600.jpg",
-    "price": "$11.16",
-    "button": "ADD TO CART"
+    id:5,
+    name: "FLYING NINJA ",
+    image: "https://i.ibb.co/BfPJ2HF/product-6.png",
+    price: "$11.16",
+    button: "ADD TO CART",
   },
   {
-    "name": "HIGH POWER FUSION",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-23-600x600.jpg",
-    "price": "$18.60",
-    "button": "ADD TO CART"
+    id:6,
+    name: "HIGH POWER",
+    image: "https://i.ibb.co/RQfmgyQ/product-7.png",
+    price: "$18.60",
+    button: "ADD TO CART",
   },
   {
-    "name": "HYDRA FUSION",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-22-600x600.jpg",
-    "price": "$16.74",
-    "button": "ADD TO CART"
+    id:7,
+    name: "HYDRA FUSION",
+    image: "https://i.ibb.co/mT0N794/product-8.png",
+    price: "$16.74",
+    button: "ADD TO CART",
   },
   {
-    "name": "INVICTA DUMBBELL SET",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-13-600x600.jpg",
-    "price": "$1.74",
-    "button": "ADD TO CART"
+    id:8,
+    name: "INVICTA DUMBBELL",
+    image: "https://i.ibb.co/xqGSNGC/product-10.png",
+    price: "$1.74",
+    button: "ADD TO CART",
   },
   {
-    "name": "JUMPING ROPE",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-20-600x600.jpg",
-    "price": "$13.35",
-    "button": "ADD TO CART"
+    id:9,
+    name: "JUMPING ROPE",
+    image: "https://i.ibb.co/xqGSNGC/product-10.png",
+    price: "$13.35",
+    button: "ADD TO CART",
   },
   {
-    "name": "Leather Lyca Gloves",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-19-600x600.jpg",
-    "price": "$11.16",
-    "button": "ADD TO CART"
+    id:10,
+    name: "Leather Lyca",
+    image: "https://i.ibb.co/123fSm3/product-11.png",
+    price: "$11.16",
+    button: "ADD TO CART",
   },
   {
-    "name": "Mass Gainer",
-    "image": "https://themes.oitentaecinco.com/winner/wp-content/uploads/2013/06/shop-product-6-600x600.jpg",
-    "price": "$18.60",
-    "button": "ADD TO CART"
-  }
-]
+    id:11,
+    name: "Mass Gainer",
+    image: "https://i.ibb.co/hMf5TJq/product-12.png",
+    price: "$18.60",
+    button: "ADD TO CART",
+  },
+  {
+    id:12,
+    name: "Winner Whey",
+    image: "https://i.ibb.co/94BnTpt/product-2.png",
+    price: "$16.74",
+    button: "ADD TO CART",
+  },
+  {
+    id:13,
+    name: "100% WHEY",
+    image: "https://i.ibb.co/pQFBWGb/product-3.png",
+    price: "$16.74",
+    button: "ADD TO CART",
+  },
+  {
+    id:14,
+    name: "BCAA pro",
+    image: "https://i.ibb.co/rxzqPWN/product-4.png",
+    price: "$32.56",
+    button: "ADD TO CART",
+  },
+  {
+    id:15,
+    name: "DYNAMIC BCAA",
+    image: "https://i.ibb.co/rxzqPWN/product-4.png",
+    price: "$32.56",
+    button: "ADD TO CART",
+  },
+  {
+    id:16,
+    name: "ESSENTIALS",
+    image: "https://i.ibb.co/1bqh7Yx/product-5.png",
+    price: "$8.37",
+    button: "ADD TO CART",
+  },
+  {
+    id:17,
+    name: "FLYING NINJA ",
+    image: "https://i.ibb.co/BfPJ2HF/product-6.png",
+    price: "$11.16",
+    button: "ADD TO CART",
+  },
+  {
+    id:18,
+    name: "HIGH POWER",
+    image: "https://i.ibb.co/RQfmgyQ/product-7.png",
+    price: "$18.60",
+    button: "ADD TO CART",
+  },
+  {
+    id:19,
+    name: "HYDRA FUSION",
+    image: "https://i.ibb.co/mT0N794/product-8.png",
+    price: "$16.74",
+    button: "ADD TO CART",
+  },
+  {
+    id:20,
+    name: "INVICTA DUMBBELL",
+    image: "https://i.ibb.co/xqGSNGC/product-10.png",
+    price: "$1.74",
+    button: "ADD TO CART",
+  },
+  {
+    id:21,
+    name: "JUMPING ROPE",
+    image: "https://i.ibb.co/xqGSNGC/product-10.png",
+    price: "$13.35",
+    button: "ADD TO CART",
+  },
+  {
+    id:22,
+    name: "Leather Lyca",
+    image: "https://i.ibb.co/123fSm3/product-11.png",
+    price: "$11.16",
+    button: "ADD TO CART",
+  },
+  {
+    id:23,
+    name: "Mass Gainer",
+    image: "https://i.ibb.co/hMf5TJq/product-12.png",
+    price: "$18.60",
+    button: "ADD TO CART",
+  },
+];
   
 const SearchBar2 = ( OpenSearch , SetOpenSearch ) => {
 

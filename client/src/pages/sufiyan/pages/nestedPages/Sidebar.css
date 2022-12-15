@@ -3,7 +3,7 @@
     font-family: "IBM Plex Sana Thai Looped", sans-serif;
     color: white;
    
-    text-shadow: 1px 0px 2px #8dc4f0;
+    text-shadow: 1px 0px 2px #cc9d56;
   }
   .body_container {
     flex: 1;
@@ -19,15 +19,15 @@
   }
   .sidebar {
     display: flex;
-    width: 14rem;
-    height: 90%;
+    width: 20rem;
+    height: 100%;
     justify-content: start;
     align-items: start;
     flex-direction: column;
     padding: 15px;
     margin: 10px;
     background: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-shadow: 0 8px 32px 0 rgba(135, 90, 31, 0.37);
     backdrop-filter: blur(5.5px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -45,7 +45,7 @@
     margin-bottom: 1rem;
   }
   
-  .profile > img {
+  .profile  img {
     width: 100%;
     border-radius: 50%;
   }
