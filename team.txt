@@ -11,3 +11,33 @@ IA Manager -  Srikanth Chiramana
 = Project https://www.jefit.com/
 
 Team Lead fw19_0218 - Shaikh Sufiyan
+
+
+tasks 
+1.jwt [token,refresh]
+3.password HASh
+3.role based 
+4. Oauth 
+4. wenbsocket 
+5. email Gmail
+6. redis
+7. OTP
+
+TASKS for ROUTE
+*user 
+
+# SIGNUP
+->acording to model check if email exists and respond acordingly
+->passwod (HASH)
+
+
+# LOGIN 
+email,password ->res(token)
+
+
+
+
+
+
+
+
