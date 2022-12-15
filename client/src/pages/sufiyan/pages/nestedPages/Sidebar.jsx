@@ -16,6 +16,7 @@ import {   FaUsers } from "react-icons/fa"
 
 import { useState } from "react";
 import Item from "../../components/item";
+import { Box } from "@chakra-ui/react";
 function SideBarLeft() {
   const [open, setOpen] = useState(true);
 
@@ -26,7 +27,7 @@ function SideBarLeft() {
 
   const sideContainerVariants = {
     true: {
-      width: "15rem"
+      width: "20rem"
     },
     false: {
       transition: {
@@ -57,7 +58,7 @@ function SideBarLeft() {
     }
   };
   return (
-    <div className="Apps">
+    <Box zIndex={999} className="Apps">
       <motion.div
         data-Open={open}
         variants={sideContainerVariants}
@@ -149,7 +150,7 @@ function SideBarLeft() {
           </div>
         </motion.div>
       </motion.div>
-    </div>
+    </Box>
   );
 }
 

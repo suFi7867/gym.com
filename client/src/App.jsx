@@ -23,8 +23,12 @@ function App() {
 
   if(Starting){
 
-    return <VStack bg="black"  bgImage={women}   bgRepeat={"no-repeat"}  minH="100vh"     bgSize={"80%"} justify="center" align="center" > 
-           <Image width="400px" className="slide-in-blurred-top" src={logo} />
+    return <VStack
+    overflow={"hidden"}
+     bg="black" position={"relative"} // bgImage={women}     bgSize={"80%"} 
+      minH="100vh"  justify="center" align="center" > 
+           <Image zIndex={999} width={{base:"200px", md:"400px"}} className="slide-in-blurred-top" src={logo} />
+           <Image position={"absolute"} minW={{base:"800px", md:"none"}} h="100%" src={women} />
     </VStack>
   }
 
