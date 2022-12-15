@@ -3,28 +3,6 @@ import { Box, Button, Img, Text } from "@chakra-ui/react";
 import { ArrowRightIcon, CalendarIcon } from "@chakra-ui/icons";
 import styles from "./Coach.module.css";
 const Coach = () => {
-  let images = [
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/1members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/2members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/3members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/4members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/5members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/6members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/7members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/8members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/9members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/10members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/11members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/12members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/13members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/14members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/15members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/16members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/17members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/18members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/19members-150x150.png",
-    "https://www.jefit.com/wp/wp-content/uploads/2021/11/20members-150x150.png",
-  ];
   return (
     <Box backgroundColor="#312e2e">
       <Box w="100%" textAlign="center">
