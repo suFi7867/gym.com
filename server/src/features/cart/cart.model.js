@@ -1,10 +1,27 @@
 const mongoose = require("mongoose");
-const file = {
-  productName: { type: String, require: true },
-  image: { type: String, require: true },
-  price: { type: String, require: true },
-  email: { type: String, require: true },
-};
-const cartSchema = new mongoose.Schema(file, { versionKey: false });
-const cartModel = mongoose.model("cart", cartSchema);
-module.exports = cartModel;
+
+const cartSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+      require: true,
+    },
+    cart: [
+      {
+        productName: { type: String, require: true },
+        image: { type: String, require: true },
+        price: { type: String, require: true },
+        qty: { type: Number },
+      },
+    ],
+    purchase: {
+      type: Array,
+      require: true,
+    },
+  },
+  { versionKey: false }
+);
+
+const CartModel = mongoose.model("cart", cartSchema);
+
+module.exports = CartModel;

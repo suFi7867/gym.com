@@ -1,0 +1,45 @@
+[
+  {
+    "email": "nayanph1@gmail.com",
+    "cart": [
+      {
+        "productName": "Winner Whey",
+        "image": "https://i.ibb.co/94BnTpt/product-2.png",
+        "price": "16.74",
+        "qty": 1
+      },
+      {
+        "productName": "100% WHEY",
+        "image": "https://i.ibb.co/pQFBWGb/product-3.png",
+        "price": "16.74",
+        "qty": 1
+      }
+    ],
+    "purchase": []
+  },
+  {
+    "email": "monumarquis@gmail.com",
+    "cart": [
+      {
+        "image": "https://i.ibb.co/94BnTpt/product-2.png",
+        "price": "16.54",
+        "qty": 1,
+        "productName": "Winner Whey"
+      },
+      {
+        "image": "https://i.ibb.co/pQFBWGb/product-3.png",
+        "price": "16.54",
+        "qty": 1,
+        "productName": "100% WHEY"
+      }
+    ],
+    "purchase": [
+      {
+        "image": "https://i.ibb.co/94BnTpt/product-2.png",
+        "price": "16.54",
+        "qty": 1,
+        "productName": "purchase"
+      }
+    ]
+  }
+]
