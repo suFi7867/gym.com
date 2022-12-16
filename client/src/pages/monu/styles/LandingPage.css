@@ -209,10 +209,13 @@ position: relative;
     cursor: pointer;
 }
 .sumo{
-  font-size: 30px;
-  color: #fff;
+  font-size: 20px;
+  color: #151515;
+  background-color:#fff ;
   transition: transform 1s, filter 1s ease-in-out;
   transform: scale(1);
+  padding: 8px;
+  border-radius: 50%;
 }
 .sumo:hover{
   transform: scale(1.4);

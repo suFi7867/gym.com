@@ -142,3 +142,24 @@
   text-decoration: none;
  
 }
+
+::-webkit-scrollbar{
+  width: 12px;
+  
+}
+
+
+::-webkit-scrollbar-track{
+  background:linear-gradient(90deg, rgb(46, 44, 44) 0%, rgba(255,255,255,0) 60%, rgba(0,0,0,1) 100%);
+  margin-left: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #282c34;
+  height: 100px;
+  border-radius: 25px;
+  transition:  2s ease-in-out;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: #f45f02;
+}
