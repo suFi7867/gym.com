@@ -24,6 +24,7 @@ export const ACTION_GET_PRODUCTS = (id) => async (dispatch) => {
 
       return dispatch({ type: GET_SINGLE_PRODUCTS, payload: res.data });
     }
+    
     let res = await axios.get("http://localhost:8080/products");
 
     console.log(res, "from redux actions");

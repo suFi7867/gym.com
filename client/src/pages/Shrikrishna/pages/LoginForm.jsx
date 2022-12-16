@@ -11,15 +11,77 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
+import { getUserData, login } from "../../../redux/auth/auth.actions";
+import Loading from "../../Loading";
 
 export default function LoginForm({ handleForgot }) {
+
+  const { token, isAuth, loading, error, errorMessage } = useSelector(
+    (store) => store.auth)
+
   const [user, setUser] = useState({ email: "", password: "" });
+
+  const dispatch = useDispatch();
+  const toast = useToast();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
+
+  const handleClick = () => {
+    if (!user.email || !user.password) {
+      toast({
+        title: "All fields are mandatory",
+        description: "Please fill all the details",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    } else {
+      dispatch(login(user));
+      
+    }
+  };
+
+
+  if(loading ){
+    return <Loading/>
+  }else if (error) {
+    toast({
+      title: "Wrong Credentials",
+      description: "Incorrect Email or Password",
+      status: "error",
+      duration: 4000,
+      isClosable: true,
+    });
+    return <Navigate to="/login" />;
+  }
+
+  if (isAuth) {
+    toast({
+      title: "Logged in successfully",
+      description: "Go and get exciting offers...",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+    });
+  
+    dispatch(getUserData(token.email))
+ //console.log(token.email)
+    return <Navigate to="/" />;
+  }
+  
+ 
+
+
+
+
   return (
     // position={"relative"}
     <Box bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)">
@@ -62,6 +124,7 @@ export default function LoginForm({ handleForgot }) {
               <FormControl id="email">
                 <FormLabel color={"#f45f02"}>Email address</FormLabel>
                 <Input
+                  value={user.user}
                   color={"white"}
                   onChange={handleChange}
                   type="email"
@@ -71,6 +134,7 @@ export default function LoginForm({ handleForgot }) {
               <FormControl id="password">
                 <FormLabel color={"#f45f02"}>Password</FormLabel>
                 <Input
+                  value={user.setUser}
                   color={"white"}
                   onChange={handleChange}
                   type="password"
@@ -94,6 +158,7 @@ export default function LoginForm({ handleForgot }) {
                   </Button>
                 </Stack>
                 <Button
+                onClick={handleClick}
                   bg={"#f45f02"}
                   color={"white"}
                   _hover={{

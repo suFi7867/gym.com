@@ -10,6 +10,7 @@ const productInitalState = {
   loading: false,
   error: false,
   data: [],
+  SingleData : {}
 };
 
 export const productReducer = (

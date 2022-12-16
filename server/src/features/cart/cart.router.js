@@ -12,12 +12,25 @@ app.get("/", async (req, res) => {
       res.status(401).send(e.massage);
     }
   }
+
   try {
     let data = await CartModel.findOne({ email: req.body.email });
     res.status(201).send(data);
   } catch (e) {
     res.status(404).send(e.massage);
   }
+});
+
+app.get("/:email", async (req, res) => {
+
+  console.log(req.params.email)
+
+  if(req.params.email ){
+    let data = await cartModel.findOne({email:req.params.email});
+    return res.status(200).send(data);
+  }
+
+  return res.send(404)
 });
 
 app.post("/", async (req, res) => {

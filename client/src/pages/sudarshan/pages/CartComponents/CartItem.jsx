@@ -34,10 +34,10 @@ export const CartItem = (props) => {
   console.log(1)
   const {
     isGiftWrapping,
-    name,
+    productName,
     description,
     quantity,
-    defaultImage: imageUrl,
+    image,
     currency,
     price,
     onChangeQuantity,
@@ -61,9 +61,9 @@ export const CartItem = (props) => {
       align="center"
     >
       <CartProductMeta
-        name={name}
+        name={productName}
         description={description}
-        image={imageUrl}
+        image={image}
         isGiftWrapping={isGiftWrapping}
       />
 
@@ -84,7 +84,7 @@ export const CartItem = (props) => {
         />
         <PriceTag price={price} currency={currency} />
         <CloseButton color="#f45f02" _hover={{color:"white"}}
-          aria-label={`Delete ${name} from cart`}
+          aria-label={`Delete ${productName} from cart`}
           onClick={itemDelete}
         />
       </Flex>

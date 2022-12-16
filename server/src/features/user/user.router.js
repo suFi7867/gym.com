@@ -20,19 +20,48 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+app.get("/", async (req, res) => {
+
+  try {
+    let data = await UserModel.find();
+    return res.status(200).send(data);
+  } catch (er) {
+    return res.status(404).send(er.message);
+  }
+});
+
+app.get("/:email", async (req, res) => {
+
+  console.log(req.params.email)
+
+  if(req.params.email ){
+    let data = await UserModel.findOne({email:req.params.email});
+    return res.status(200).send(data);
+  }
+
+  return res.send(404)
+
+});
+
+
+
 // Login Route
 app.post("/login", async (req, res) => {
+
   const { email, password } = req.body;
+
+ console.log(email,password)
+
   if (!email || !password) {
     return res.status(403).send("Enter Credianteials");
   }
   const User = await UserModel.findOne({ email });
-
-  if (!User) return res.status(404).send("User Not Found");
+ // console.log(User)
+ // if (!User) return res.status(404).send("User Not Found");
 
   try {
-    const match = await bcrypt.compare(password, User.password);
-
+    const match = bcrypt.compareSync(password, User.password);
+   console.log(match)
     if (match) {
       //login
       const token = jwt.sign(
@@ -78,7 +107,7 @@ app.post("/login", async (req, res) => {
       });
       return res
         .status(200)
-        .send({ message: "Login success", token, refresh_token });
+        .send({ message: "Login success", token, refresh_token, email });
     } else {
       return res.status(401).send({ message: "Authentication Failed" });
     }
@@ -91,7 +120,7 @@ app.post("/login", async (req, res) => {
 app.post("/signup", async (req, res) => {
   const {
     email,
-    username,
+    firstName, lastName,
     password,
     weight,
     height,
@@ -100,6 +129,11 @@ app.post("/signup", async (req, res) => {
     gender,
     bodyType,
   } = req.body;
+
+  console.log(req.body)
+  
+  let username = firstName + " "+ lastName
+
   if (!email || !password || !username) {
     return res.status(403).send("Enter Credentails");
   }
@@ -126,7 +160,8 @@ app.post("/signup", async (req, res) => {
         bodyType,
       });
       await user.save();
-
+     
+      
       const mailOptions = {
         from: process.env.EMAIL,
         to: email,
@@ -153,7 +188,7 @@ let flag = false;
 
 app.post("/reset-password/getOtp", async (req, res) => {
   const { email } = req.body;
-
+ console.log(req.body)
   if (!email) {
     return res.status(403).send("Enter Valid Email");
   }
@@ -194,7 +229,8 @@ app.post("/reset-password/verifyOtp", async (req, res) => {
   }
 
   try {
-    if (MYOTP == otp) {
+    console.log(MYOTP, otp)
+    if (+MYOTP == +otp) {
       flag = true;
       return res.status(201).send("Otp Verified");
     }

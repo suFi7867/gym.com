@@ -1,4 +1,4 @@
-import { Center, Heading } from "@chakra-ui/react";
+import { Center, Heading, useToast } from "@chakra-ui/react";
 import {
   Button,
   FormControl,
@@ -9,18 +9,50 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { PinInput, PinInputField } from "@chakra-ui/react";
+import axios from "axios";
 import { useState } from "react";
 
 export default function VerifyEmailForm({ handleVerify }) {
-  const [pin, setPin] = useState({ p1: "", p2: "", p3: "", P4: "" });
+  const [pin, setPin] = useState({ p1: "", p2: "", p3: "", p4: "", p5: "", p6:"" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setPin({ ...pin, [name]: value });
+    
   };
+
+
+
+  const toast = useToast()
+
+
   const handleSubmit = () => {
-    const { p1, p2, p3, p4 } = pin;
-    console.log(p1 + p2 + p3 + p4);
+    const { p1, p2, p3, p4  ,p5  ,p6   } = pin;
+    axios.post(`http://localhost:8080/user/reset-password/verifyOtp`, {otp: p1 + p2 + p3 + p4 + p5 + p6})
+    .then((res)=>  { 
+      toast({
+        title: "OTP Verified Successfull",
+        
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+      handleVerify()
+      
+    } )
+    .catch((err)=>{
+      console.log(err)
+      toast({
+        title: "OTP is Wrong",
+        
+        status: "warning",
+        duration: 4000,
+        isClosable: true,
+      });
+    })
+
+    
+    console.log(p1 + p2 + p3 + p4 + p5 + p6  );
   };
   return (
     <Flex
@@ -70,6 +102,8 @@ export default function VerifyEmailForm({ handleVerify }) {
                 <PinInputField name="p2" onChange={handleChange} />
                 <PinInputField name="p3" onChange={handleChange} />
                 <PinInputField name="p4" onChange={handleChange} />
+                <PinInputField name="p5" onChange={handleChange} />
+                <PinInputField name="p6" onChange={handleChange} />
               </PinInput>
             </HStack>
           </Center>
@@ -78,7 +112,7 @@ export default function VerifyEmailForm({ handleVerify }) {
           <Button
             onClick={(e) => {
               handleSubmit(e);
-              handleVerify();
+             
             }}
             bg={"#f45f02"}
             color={"white"}
