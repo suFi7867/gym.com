@@ -12,8 +12,8 @@ import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 const SingleProductPage = () => {
   const [quant, setQuant] = useState(1);
   const dispatch = useDispatch();
-  const { SingleData } = useSelector((store) => store.product);
-  console.log(SingleData, "frontend single route");
+  const  {SingleData}  = useSelector((store) => store.product);
+ // console.log(SingleData, "frontend single route");
 
   // let data = [
   //   {

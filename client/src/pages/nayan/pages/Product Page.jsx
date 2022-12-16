@@ -212,9 +212,7 @@ const ProductPage = () => {
       <Box maxW="1500px" m="auto">
         {/* Products  Tag*/}
         <Stack
-          bgGradient={
-            "linear-gradient(0deg, rgba(0,0,0,1) 14%, rgba(64,64,64,1) 100%)"
-          }
+         
           position={"relative"}
           overflow={"hidden"}
           justify={"center"}
@@ -358,7 +356,7 @@ const ProductPage = () => {
                     roundedBottom="lg"
                   >
                     <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
-                      {item.price}
+                      ${item.price}
                     </chakra.h1>
                     <chakra.button
                       px={4}
