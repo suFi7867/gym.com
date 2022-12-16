@@ -2,13 +2,12 @@ import "./Sidebar.css";
 import { motion } from "framer-motion";
 import {AiOutlineBars} from "react-icons/ai";
 
-import { MdDashboard ,
-    MdColorLens 
+import { MdDashboard 
 } from "react-icons/md"
 
 
 import { AiFillEdit} from "react-icons/ai"
-import {   GrDocumentPerformance } from "react-icons/gr"
+
 import {   GiReceiveMoney } from "react-icons/gi"
 import {   FaUsers } from "react-icons/fa"
 
@@ -31,6 +30,7 @@ function SideBarLeft() {
       width: "20rem"
     },
     false: {
+      
       transition: {
         delay: 0.6
       }
@@ -59,7 +59,7 @@ function SideBarLeft() {
     }
   };
   return (
-    <Box zIndex={999} className="Apps">
+    <Box zIndex={500} className="Apps">
       <motion.div
         data-Open={open}
         variants={sideContainerVariants}

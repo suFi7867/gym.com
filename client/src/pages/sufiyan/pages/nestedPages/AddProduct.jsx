@@ -33,14 +33,7 @@ const AddProduct = () => {
 
   return (
     <Flex gap="10rem" justifyContent="center" alignItems="center">
-      <Flex direction="column" justifyContent="center" alignItems="center">
-        <Box>
-          <Image
-            minWidth="400px"
-            src="https://thumbs.gfycat.com/CompleteShallowFlyingsquirrel-size_restricted.gif"
-          />
-        </Box>
-      </Flex>
+     
 
       <Flex
         p={50}
@@ -55,7 +48,7 @@ const AddProduct = () => {
           alignItems="flex-start"
           gap="1.2rem"
         >
-          <Text fontSize="1.5rem" fontWeight="bold" color="#0D6DD7">
+          <Text fontSize="1.5rem" fontWeight="bold" color="#f45f02">
             Choose Category
           </Text>
         </Flex>
@@ -72,7 +65,7 @@ const AddProduct = () => {
             />
 
           </VStack>
-          <RadioGroup value={value} onChange={setvalue}>
+          <RadioGroup colorScheme='orange'  value={value} onChange={setvalue}>
             <VStack spacing="24px" align="left">
               <Radio value="mens">Men</Radio>
               <Radio value="womens">Women</Radio>
@@ -86,7 +79,7 @@ const AddProduct = () => {
               width="200px"
               fontSize="1.3rem"
               color="white"
-              bg="#0D6DD7"
+              bg="#f45f02"
               marginTop="1rem"
               onClick={() => AddToDatabase()}
             >
