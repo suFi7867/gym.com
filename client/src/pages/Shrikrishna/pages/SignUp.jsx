@@ -14,28 +14,74 @@ import {
   useColorModeValue,
   Select,
   option,
+  useToast,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { useDispatch } from "react-redux";
+import { login } from "../../../redux/auth/auth.actions";
+import { registerUser } from "../../../redux/register/register.actions";
 
 export default function Signup() {
+
   const [showPassword, setShowPassword] = useState(false);
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    age: 0,
-    height: 0,
-    weight: 0,
-    gender: "",
-    password: "",
-  });
-  console.log(user);
+  const toast = useToast()
+  const dispatch  = useDispatch()
+
+  const defaultValues = {
+    "firstName": "",
+    "lastName": "",
+    "email": "",
+    "age": 0,
+    "height": 0,
+    "weight": 0,
+    "gender": "",
+    "password": "",
+  }
+
+  const [user, setUser] = useState(defaultValues);
+
+ // console.log(user);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
+
+ 
+  const handleClick = () => {
+    if (
+      !user.firstName ||
+      !user.lastName ||
+      !user.email ||
+      !user.password || !user.age || !user.height ||  !user.weight || !user.gender           
+    ) {
+      toast({
+        title: "All fields are mandatory",
+        description: "Please fill all the details",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    } else {
+
+      dispatch(registerUser(user));
+      setUser(defaultValues)
+      toast({
+        title: "Your account is created",
+        description: "We've created your account for you.",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+   
+     
+    }
+  };
+
+
+
 
   return (
     <Flex
@@ -63,13 +109,13 @@ export default function Signup() {
               <Box>
                 <FormControl id="firstName" isRequired>
                   <FormLabel>First Name</FormLabel>
-                  <Input onChange={handleChange} type="text" name="firstName" />
+                  <Input value={user.firstName} onChange={handleChange} type="text" name="firstName" />
                 </FormControl>
               </Box>
               <Box>
                 <FormControl id="lastName">
                   <FormLabel>Last Name</FormLabel>
-                  <Input onChange={handleChange} type="text" name="lastName" />
+                  <Input value={user.lastName} onChange={handleChange} type="text" name="lastName" />
                 </FormControl>
               </Box>
             </HStack>
@@ -77,16 +123,17 @@ export default function Signup() {
               <Box>
                 <FormControl id="age" isRequired>
                   <FormLabel>Age</FormLabel>
-                  <Input onChange={handleChange} type="number" name="age" />
+                  <Input value={user.age} onChange={handleChange} type="number" name="age" />
                 </FormControl>
               </Box>
               <Box>
-                <FormControl id="gender">
+                <FormControl id="gender" bg="none">
                   <FormLabel>Gender</FormLabel>
-                  <Select type="text" name="gender" onChange={handleChange}>
-                    <option value="">select gender</option>
-                    <option value="male">male</option>
-                    <option value="female">female</option>
+                  <Select value={user.gender} _hover={{color:"black"}}  type="text" name="gender" onChange={handleChange}>
+                    <option  value="">select gender</option>
+                    <option  value="Male">male</option>
+                    <option  value="Female">female</option>
+                    <option  value="Others">Custom</option>
                   </Select>
                 </FormControl>
               </Box>
@@ -95,28 +142,29 @@ export default function Signup() {
               <Box>
                 <FormControl id="weight">
                   <FormLabel>Weight</FormLabel>
-                  <Input onChange={handleChange} type="number" name="weight" />
+                  <Input value={user.weight} onChange={handleChange} type="number" name="weight" />
                 </FormControl>
               </Box>
               <Box>
                 <FormControl id="height">
                   <FormLabel>Height</FormLabel>
-                  <Input onChange={handleChange} type="number" name="height" />
+                  <Input value={user.height} onChange={handleChange} type="number" name="height" />
                 </FormControl>
               </Box>
             </HStack>
             <FormControl id="email" isRequired>
               <FormLabel>Email address</FormLabel>
-              <Input onChange={handleChange} type="email" name="email" />
+              <Input value={user.email} onChange={handleChange} type="email" name="email" />
             </FormControl>
 
             <FormControl id="password" isRequired>
               <FormLabel>Password</FormLabel>
               <InputGroup>
-                <Input
+                <Input 
                   onChange={handleChange}
                   type={showPassword ? "text" : "password"}
                   name="password"
+                  value={user.password}
                 />
                 <InputRightElement h={"full"}>
                   <Button
@@ -139,6 +187,8 @@ export default function Signup() {
                 _hover={{
                   bg: "blue.500",
                 }}
+
+                onClick={handleClick}
               >
                 Sign up
               </Button>

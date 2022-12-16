@@ -47,6 +47,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { ActionLogout } from "../../redux/auth/auth.actions";
 
 import logo from "../assets/logo.png"
+import { getUserData } from "../../../redux/auth/auth.actions";
 
  const Links = [
  
@@ -75,26 +76,26 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const { data, loading, error } = useSelector((store) => store.product);
- // const { token, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
+ const { token, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
   const { data: cartData } = useSelector((store) => store.cart);
 
-  const isAuth = false
-  const AdminIsAuth = false
-  const token= "admin@gmail.com#admin"
 
-  let userName;
+  //const isAuth = false
+  //const AdminIsAuth = false
+ // const token= "admin@gmail.com#admin"
+
+  let userName = "SDASD";
   
-  if (isAuth) {
-    userName = token.split("#");
-    userName = userName[0];
-  }
+
   useEffect(() => {
    // dispatch(ACTION_GET_PRODUCTS());
    // dispatch(ACTION_GET_ADMIN());
-
-    if (isAuth) {
-   //   dispatch(ACTION_GET_CART(token.token));
-    }
+console.log(token)
+   setTimeout(() => {
+     if (isAuth) {
+       dispatch(getUserData(token.email))
+     }
+   }, 3000);
   }, [isAuth]);
 
   //console.log(cartData.length);

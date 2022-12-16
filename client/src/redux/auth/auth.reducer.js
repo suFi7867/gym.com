@@ -2,26 +2,30 @@ import {
   LOGIN_ERROR,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGOUT,
+  LOGOUT,  FORGET_REQUEST_,FORGET_SUCCESS_, FORGET_ERROR_,
+  GET_USER_REQUEST_,
+  GET_USER_SUCCESS_,
+  GET_USER_ERROR_
 } from "./auth.types";
 
-let LocalToken = localStorage.getItem("token");
+let LocalToken = JSON.parse(localStorage.getItem("token"));
 const check = (LocalToken!=undefined)
 const checkAdminAuth = LocalToken ==="admin@gmail.com#admin"
 
 console.log(typeof LocalToken)
 // const AdminToken = "admin@gmail.com#admin";
 const initialState = {
-  token: {token: LocalToken},
+  token:  LocalToken,
   isAuth: check ,
   loading: false,
   error: false,
   AdminIsAuth: checkAdminAuth,
+  userData : {  details : {} , cart: [], purchase: [] }
 };
-// console.log(token);
+
 export const authReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case LOGIN_REQUEST: {
+    case LOGIN_REQUEST || FORGET_REQUEST_ || GET_USER_REQUEST_: {
       //localStorage.setItem("token", payload);
       return {
         ...state,
@@ -30,7 +34,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
       };
     }
     case LOGIN_SUCCESS: {
-      localStorage.setItem("token", payload.token);
+      localStorage.setItem("token", JSON.stringify(payload));
       return {
         ...state,
         isAuth: true,
@@ -40,7 +44,19 @@ export const authReducer = (state = initialState, { type, payload }) => {
         AdminIsAuth: payload.token == "admin@gmail.com#admin",
       };
     }
-    case LOGIN_ERROR: {
+
+
+    case GET_USER_SUCCESS_: {
+     
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        userData : payload
+        
+      };
+    }
+    case LOGIN_ERROR || FORGET_ERROR_ || GET_USER_ERROR_: {
      // localStorage.setItem("token", payload);
       return {
         ...state,
@@ -49,6 +65,14 @@ export const authReducer = (state = initialState, { type, payload }) => {
         errorMessage: payload,
       };
     }
+    case FORGET_SUCCESS_: {
+      return {
+        ...state,
+        loading: false,
+        error: false
+      };
+    }
+
     case LOGOUT: {
       localStorage.removeItem("token");
       return {

@@ -7,9 +7,44 @@ import {
   Input,
   Stack,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
+import axios from "axios";
+import { useState } from "react";
 
 export default function ResetPasswordForm({ handleReset }) {
+
+  const [password, setpassword] = useState("")
+
+  const toast = useToast()
+
+  let email = localStorage.getItem("tempEmail")
+  const resetPass=( )=>{
+
+    axios.post(`http://localhost:8080/user/reset-password/reset`, {email: email, password: password})
+    .then((res)=>  { 
+      toast({
+        title: "Password Changed Successfull",
+  
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+      handleReset()
+      
+    } )
+    .catch((err)=>{
+      console.log(err)
+      toast({
+        title: "Both Password not matching",
+        
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+      });
+    })
+  }
+
   return (
     <Flex
       minH={"100vh"}
@@ -45,13 +80,17 @@ export default function ResetPasswordForm({ handleReset }) {
         </Heading>
         <FormControl id="password" isRequired>
           <FormLabel>Password</FormLabel>
-          <Input type="password" />
+          <Input value={password} onChange={(e)=>setpassword(e.target.value)} type="password" />
         </FormControl>
         <Stack spacing={6}>
           <Button
-            onClick={handleReset}
+            onClick={()=>{
+              
+              resetPass()
+            }}
             bg={"#f45f02"}
             color={"white"}
+
             _hover={{
               border: "1px solid #f45f02",
               bg: "white",

@@ -18,17 +18,26 @@ import ForgotPasswordForm from './forgotPassword';
 import LoginForm from './LoginForm';
 import ResetPasswordForm from './ResetPassword';
 import VerifyEmailForm from './EmailCard';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { ForegetPassword } from '../../../redux/auth/auth.actions';
 
 const Login = () => {
   const [forgot,setForget]=useState(false);
   const [verify,setVerify]=useState(false);
   const [otp,setOtp] =useState(false);
   const [login,setLogin]=useState(true);
+
+
+  const dispatch = useDispatch()
+
 const handleForgot=()=>{
   setForget(true)
   setLogin(false)
 }
-const handleOtp=()=>{
+const handleOtp= async()=>{
+
+
   setVerify(true)
   setForget(false)
 }

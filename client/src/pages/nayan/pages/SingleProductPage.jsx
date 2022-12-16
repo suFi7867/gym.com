@@ -10,10 +10,14 @@ import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 //bg="#f36100"
 
 const SingleProductPage = () => {
+  
   const [quant, setQuant] = useState(1);
+
   const dispatch = useDispatch();
-  const  {SingleData}  = useSelector((store) => store.product);
- // console.log(SingleData, "frontend single route");
+  const  {data}  = useSelector((store) => store.product);
+ console.log(data, "frontend single route");
+
+ const [SingleData, setSingle] = useState({});
 
   // let data = [
   //   {
@@ -162,14 +166,22 @@ const SingleProductPage = () => {
   //   },
   // ];
 
+
   const { id } = useParams();
   useEffect(() => {
-    dispatch(ACTION_GET_PRODUCTS(id));
-  }, [dispatch]);
+    //dispatch(ACTION_GET_PRODUCTS(id));
+    let X =  data.find((el)=> el._id == id)
+    setSingle(X)
+  console.log(X)
+  }, [id]);
+
+
   const handleCart = (data) => {
     dispatch(ACTION_ADD_ITEM_TO_CART({ ...data, quant }));
   };
   const handleBuy = (data) => {};
+
+
 
   return (
     <Box backgroundColor="#312e2e" minH="100vh">
