@@ -35,7 +35,7 @@ const Plans = () => {
       type:"Transform",
       gender: "Female, Male",
       duration:"4 weeks",
-      button: "VIEW DETAILS",
+     
     },
     {
       name: "3 WEEKS 2 SIZE",
@@ -44,7 +44,7 @@ const Plans = () => {
       type:"Build Muscle",
       gender: "Female, Male",
       duration:"3 weeks",
-      button: "VIEW DETAILS",
+      
     },
     {
       name: "SHORTCUT TO SHRED",
@@ -53,7 +53,7 @@ const Plans = () => {
       type:"Transform",
       gender: "Female, Male",
       duration:"3 weeks",
-      button: "VIEW DETAILS",
+     
     },
     {
       name: "ULTIMATE 30-DAY FITNESS",
@@ -62,7 +62,7 @@ const Plans = () => {
       type:"Build Muscle",
       gender: "Female, Male",
       duration:"3 weeks",
-      button: "VIEW DETAILS",
+    
     },
     {
       name: "IRON EVERY DAY",
@@ -71,7 +71,7 @@ const Plans = () => {
       type:"Build Muscle",
       gender: "Male",
       duration:"4 weeks",
-      button: "VIEW DETAILS",
+     
     },
     {
       name: "STRONGER THAN YESTERDAY",
@@ -80,7 +80,7 @@ const Plans = () => {
       type:"Lose Fat ",
       gender: "Male",
       duration:"5 weeks",
-      button: "VIEW DETAILS",
+    
     },
     {
       name: "POWER BODYBUILDING",
@@ -89,7 +89,7 @@ const Plans = () => {
       type:"Build Muscle",
       gender: "Female, Male",
       duration:"3 weeks",
-      button: "VIEW DETAILS",
+   
     },
     {
       name: "START HERE YOUR NEW YEAR",
@@ -98,7 +98,7 @@ const Plans = () => {
       type:"Lose Fat",
       gender: "Female",
       duration:"1 weeks",
-      button: "VIEW DETAILS",
+      
     },
     {
       name: "LEAN BODY",
@@ -107,7 +107,7 @@ const Plans = () => {
       type:"Lose Fat",
       gender: "Female",
       duration:"4 weeks",
-      button: "VIEW DETAILS",
+     
     },
     {
       name: "IRON EVERY DAY",
@@ -116,7 +116,7 @@ const Plans = () => {
       type:"Build Muscle",
       gender: "Male",
       duration:"4 weeks",
-      button: "VIEW DETAILS",
+     
     },
     
   ];
@@ -343,7 +343,7 @@ const Plans = () => {
                       bg="#cb1313"
                       alignSelf={"center"}
                     >
-                      {item.button}
+                      {"VIEW DETAILS"}
                     </chakra.button></Link>
                   
                   </Box>

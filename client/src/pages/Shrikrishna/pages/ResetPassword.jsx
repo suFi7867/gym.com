@@ -29,14 +29,17 @@ import {
           <Heading lineHeight={1.1} fontSize={{ base: '2xl', md: '3xl' }}>
             Enter new password
           </Heading>
-          <FormControl id="email" isRequired>
-            <FormLabel>Email address</FormLabel>
+          <FormControl id="password" isRequired>
+            <FormLabel>password</FormLabel>
             <Input
               placeholder="your-email@example.com"
               _placeholder={{ color: 'gray.500' }}
               type="email"
             />
           </FormControl>
+          <Heading lineHeight={1.1} fontSize={{ base: '2xl', md: '3xl' }}>
+           Confirm password
+          </Heading>
           <FormControl id="password" isRequired>
             <FormLabel>Password</FormLabel>
             <Input type="password" />
