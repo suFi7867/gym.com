@@ -5,6 +5,7 @@ import {
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_LOADING,
   GET_PRODUCTS_SUCCESS,
+  GET_SINGLE_PRODUCTS,
 } from "./product.types";
 
 // redux doesnt handle asynchronous REQUEST
@@ -13,13 +14,19 @@ import {
 
 /// asynchronous Function
 
-export const ACTION_GET_PRODUCTS = () => async (dispatch) => {
+export const ACTION_GET_PRODUCTS = (id) => async (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
   // console.log("data")
   try {
-    let res = await axios.get("http://localhost:8080/prducts");
+    if (id) {
+      let res = await axios.get("http://localhost:8080/products/" + id);
+      console.log(res.data, "from single");
 
-    //console.log(data)
+      return dispatch({ type: GET_SINGLE_PRODUCTS, payload: res.data });
+    }
+    let res = await axios.get("http://localhost:8080/products");
+
+    console.log(res, "from redux actions");
 
     return dispatch({ type: GET_PRODUCTS_SUCCESS, payload: res.data });
   } catch (err) {
