@@ -17,7 +17,7 @@ import { Scrollbars } from 'react-custom-scrollbars-2';
 
 const AllUsers = () => {
   //const { data } = useSelector((store) => store.admin);
-
+ //const { data } = useSelector((store) => store.admin);
   const data = {
     users: [ 
     { name: "SUFI" , email:"SDASD"}
