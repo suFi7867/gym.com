@@ -5,6 +5,8 @@ import SideBarLeft from './nestedPages/Sidebar'
 
 import cloud from "../assets/cloud.png"
 import cloud2 from "../assets/cloud2.png"
+import img1 from "../assets/img1.png"
+
 
 const AdminDashbord = () => {
   return (
@@ -23,6 +25,8 @@ const AdminDashbord = () => {
 
 <Image position="absolute" bottom="200" left="0" //transform={"scaleX(-1)"}
     src={cloud}/>
+
+<Image zIndex={2}  bottom="30" transform={"scaleX(-1)"} position={"absolute"} opacity="50%" left="-20" src={img1} />
   </HStack>
   )
 }

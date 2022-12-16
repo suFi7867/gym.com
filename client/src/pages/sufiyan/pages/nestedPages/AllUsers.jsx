@@ -13,6 +13,8 @@ import { useSelector } from "react-redux";
 import { IoTrashBinSharp } from "react-icons/io5";
 import { Scrollbars } from 'react-custom-scrollbars-2';
 
+import img1 from "../../assets/img1.png"
+
 //import {ImageD} from "../../../public/preview";
 
 const AllUsers = () => {
@@ -23,7 +25,7 @@ const AllUsers = () => {
     { name: "SUFI" , email:"SDASD"}
   ]}
   return (
-    <VStack p={5}  w="full">
+    <VStack p={5}  maxW="1200px">
 
       <Stack alignSelf={"flex-start"} p={5} >
         <Text fontWeight={"semibold"}  fontSize="xl" >All Users List</Text>
@@ -37,9 +39,7 @@ const AllUsers = () => {
         alignContent={"flex-start"}
         alignItems={"flex-start"}
       >
-        <Stack p={5}>
-          <Image maxW="500px" src={"https://i.ibb.co/tsThdpL/preview-1.gif"} />
-        </Stack>
+      
 
         <VStack p={5} position="relative" top="-100px" >
           <HStack
@@ -85,6 +85,9 @@ const AllUsers = () => {
           ))}</VStack> </Scrollbars> 
         </VStack>
       </HStack>
+
+    
+
     </VStack>
   );
 };

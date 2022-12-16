@@ -1,7 +1,7 @@
 import "../../styles/Main.css";
 import hello from "../../assets/hello.svg";
 import Chart from "../../components/Chart";
-import { Box, HStack, VStack } from "@chakra-ui/react";
+import { Box, HStack, Text, VStack } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
@@ -22,15 +22,15 @@ const Dashborad = () => {
    // Number(data.electronics.length);
   // console.log(allProducts);
   return (
-    <HStack zIndex={1} w="1200px">
+    <HStack zIndex={50} maxW="1200px" >
       <Box alignSelf={"center"} className="main__container">
         {/* <!-- MAIN TITLE STARTS HERE --> */}
 
-        <HStack className="main__title" p={5}>
+        <HStack className="main__title" >
           <img src={hello} alt="hello" />
           <div style={{ textAlign: "start" }} className="main__greeting">
-            <h1>Hello Chief</h1>
-            <p>Welcome to your admin dashboard</p>
+            <h1 >Hello Chief</h1>
+            <p >Welcome to your admin dashboard</p>
           </div>
         </HStack>
 
@@ -39,10 +39,7 @@ const Dashborad = () => {
         {/* <!-- MAIN CARDS STARTS HERE --> */}
         <div className="main__cards">
           <div className="card">
-            <i
-              className="fa fa-user-o fa-2x text-lightblue"
-              aria-hidden="true"
-            ></i>
+           
             <div className="card_inner">
               <p className="text-primary-p">Number of Users</p>
               <span className="font-bold text-title">
@@ -52,7 +49,7 @@ const Dashborad = () => {
           </div>
 
           <div className="card">
-            <i className="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
+           
             <div className="card_inner">
               <p className="text-primary-p">Number of Products</p>
               <span className="font-bold text-title">{allProducts}</span>
@@ -60,10 +57,7 @@ const Dashborad = () => {
           </div>
 
           <div className="card">
-            <i
-              className="fa fa-video-camera fa-2x text-yellow"
-              aria-hidden="true"
-            ></i>
+           
             <div className="card_inner">
               <p className="text-primary-p">Number of Purchases</p>
               <span className="font-bold text-title">
@@ -73,10 +67,7 @@ const Dashborad = () => {
           </div>
 
           <div className="card">
-            <i
-              className="fa fa-thumbs-up fa-2x text-green"
-              aria-hidden="true"
-            ></i>
+           
             <div className="card_inner">
               <p className="text-primary-p"> Number of employees </p>
               <span className="font-bold text-title">5</span>

@@ -112,7 +112,8 @@ const Navbar = () => {
 
   
   return (
-    <Box borderBottom={"4px solid #f45f02"}
+    <Box zIndex={999}
+     borderBottom={"4px solid #f45f02"}
     bgGradient={"linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"}
     style={{ position: "sticky", top: 0, zIndex: "999" }}>
       <HStack
