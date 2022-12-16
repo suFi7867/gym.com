@@ -80,6 +80,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
         isAuth: false,
         token: "",
         AdminIsAuth: false,
+        userData : {  details : {} , cart: [], purchase: [] }
       };
     }
     default: {

@@ -18,6 +18,7 @@ import {
   Text,
   useColorMode,
   useDisclosure,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import React, { useContext, useEffect, useState } from "react";
@@ -47,7 +48,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { ActionLogout } from "../../redux/auth/auth.actions";
 
 import logo from "../assets/logo.png"
-import { getUserData } from "../../../redux/auth/auth.actions";
+import { ActionLogout, getUserData } from "../../../redux/auth/auth.actions";
 
  const Links = [
  
@@ -75,17 +76,19 @@ const Navbar = () => {
 
   const dispatch = useDispatch();
 
-  const { data, loading, error } = useSelector((store) => store.product);
- const { token, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
+  const {  loading, error } = useSelector((store) => store.product);
+ const { userData, token, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
   const { data: cartData } = useSelector((store) => store.cart);
+
 
 
   //const isAuth = false
   //const AdminIsAuth = false
  // const token= "admin@gmail.com#admin"
 
-  let userName = "SDASD";
-  
+  let userName =  userData && userData?.details?.username 
+
+  console.log(userData)
 
   useEffect(() => {
    // dispatch(ACTION_GET_PRODUCTS());
@@ -105,8 +108,17 @@ console.log(token)
 
   const [OpenSearch, SetOpenSearch] = useState("none");
 
+  const toast = useToast()
+
   const LogOutUser = () => {
-    //dispatch(ActionLogout());
+    dispatch(ActionLogout());
+    toast({
+      title: "Logout Successfull",
+     
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+    });
   };
 
   // borderBottom="1px solid #eeee"
@@ -242,9 +254,9 @@ console.log(token)
                       icon={<IoBagOutline />}
                     />
                     <Text marginLeft={"-50px"}>
-                      {cartData.length !== 0 ? (
+                      {userData.cart.length !== 0 ? (
                         <Circle minWidth={30} bg="white">
-                          {cartData.length}
+                          {userData.cart.length}
                         </Circle>
                       ) : (
                         ""
@@ -450,8 +462,23 @@ console.log(token)
                 }
                 end
               >
-                <Text fontSize="20px" color="whiteAlpha.900" p="10px 10px">
+                <Text fontSize="20px" fontFamily={"exo"} color="whiteAlpha.900" p="10px 10px">
                   {"Admin"}
+                </Text>
+              </NavLink>
+            )}
+
+        {isAuth && AdminIsAuth==false && (
+              <NavLink
+                key={"el.path"}
+                to={"/user-profile"}
+                className={({ isActive }) =>
+                  isActive ? "activeS" : "defaultS"
+                }
+                end
+              >
+                <Text fontSize="20px" fontFamily={"exo"} color="whiteAlpha.900" p="10px 10px">
+                  {"Profile"}
                 </Text>
               </NavLink>
             )}

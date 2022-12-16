@@ -25,8 +25,8 @@ const OrderSummaryItem = (props) => {
 };
 
 export const CartOrderSummary = () => {
-  const { data } = useSelector((store) => store.cart);
-  const total = data.reduce((a, b) => a + +b.price, 0);
+  const {userData, token, isAuth } = useSelector((store) => store.auth);
+  const total = userData.cart.reduce((a, b) => a + +b.price, 0);
 
  
 
@@ -36,7 +36,7 @@ export const CartOrderSummary = () => {
       <Heading size="md" color={"white"}>Order Summary</Heading>
 
       <Stack spacing="6">
-        <OrderSummaryItem label="Subtotal" value={formatPrice(597)} />
+        <OrderSummaryItem label="Subtotal" value={formatPrice(total*2)} />
         <OrderSummaryItem label="Shipping + Tax">
           <Link href="#" color={"#f45f02"} _hover={{color:"white"}} textDecor="underline">
             Calculate shipping

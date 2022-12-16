@@ -31,12 +31,12 @@ import {
   };
   
   
-    const { token, isAuth } = useSelector((store) => store.auth);
-    const { data } = useSelector((store) => store.cart);
+    const {userData, token, isAuth } = useSelector((store) => store.auth);
+   // const { data } = useSelector((store) => store.cart);
   
   
      
-   if(data.length===0){
+   if(userData.cart.length===0){
   
     return (  
   
@@ -112,11 +112,11 @@ import {
             flex="2"
           >
             <Heading color={"white"} fontSize="2xl" >
-              Total Product in {data.length}
+              Total Product in {userData.cart.length}
             </Heading>
   
             <Stack spacing="6">
-              {cartData?.map((item) => (
+              {userData.cart?.map((item) => (
                 <CartItem key={item.id} {...item} />
               ))}
             </Stack>
