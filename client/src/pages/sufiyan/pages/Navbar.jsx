@@ -42,13 +42,12 @@ import SearchBar2 from "../components/SearchBar2";
 import { VscHeart } from "react-icons/vsc";
 import { IoBagOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-// import { ACTION_GET_PRODUCTS } from "../../redux/products/product.actions";
-// import { ACTION_GET_CART } from "../../redux/cart/cart.actions";
-// import { ACTION_GET_ADMIN } from "../../redux/admin/admin.actions";
-// import { ActionLogout } from "../../redux/auth/auth.actions";
+
 
 import logo from "../assets/logo.png"
 import { ActionLogout, getUserData } from "../../../redux/auth/auth.actions";
+import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
+import { ACTION_GET_ADMIN } from "../../../redux/admin/admin.actions";
 
  const Links = [
  
@@ -77,10 +76,11 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const {  loading, error } = useSelector((store) => store.product);
- const { userData, token, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
+ const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
   const { data: cartData } = useSelector((store) => store.cart);
 
 
+  
 
   //const isAuth = false
   //const AdminIsAuth = false
@@ -91,15 +91,29 @@ const Navbar = () => {
   console.log(userData)
 
   useEffect(() => {
-   // dispatch(ACTION_GET_PRODUCTS());
-   // dispatch(ACTION_GET_ADMIN());
-console.log(token)
+   dispatch(ACTION_GET_PRODUCTS());
+   
+//console.log(token)
    setTimeout(() => {
      if (isAuth) {
+
+      let token = JSON.parse(localStorage.getItem("token"))
+
        dispatch(getUserData(token.email))
      }
    }, 3000);
   }, [isAuth]);
+
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (AdminIsAuth) {
+        dispatch(ACTION_GET_ADMIN());
+      }
+    }, 3000);
+   }, [AdminIsAuth]);
+
+
 
   //console.log(cartData.length);
 

@@ -12,15 +12,19 @@ const Dashborad = () => {
 
   let Income = 0
 
-  adminData.carts.map((el) => el.cartData.map((x) => Income += +x.price));
+  //adminData.carts.map((el) => el.cartData.map((x) => Income += +x.price));
 
-  console.log(Income)
+  const allProducts = data?.length
 
-  const allProducts = 50 ;
-   // Number(data.mens.length) +
-   // Number(data.womens.length) +
-   // Number(data.electronics.length);
-  // console.log(allProducts);
+
+  let PendingPurchase = 0;
+  adminData.carts.map((el)=> PendingPurchase += +el.cart.length )
+
+  let TotalNumberOfSales = 0;
+  adminData.carts.map((el)=> TotalNumberOfSales += +el.purchase.length )
+  
+  console.log(PendingPurchase, TotalNumberOfSales );
+
   return (
     <HStack zIndex={50} maxW="1200px" >
       <Box alignSelf={"center"} className="main__container">
@@ -59,9 +63,9 @@ const Dashborad = () => {
           <div className="card">
            
             <div className="card_inner">
-              <p className="text-primary-p">Number of Purchases</p>
+              <p className="text-primary-p">Pending Purchase</p>
               <span className="font-bold text-title">
-                {adminData.carts.length}
+                {PendingPurchase}
               </span>
             </div>
           </div>

@@ -9,6 +9,7 @@ const SECRET_TOKEN = process.env.SECRET_TOKEN;
 const SECRET_REFRESH_TOKEN = process.env.SECRET_REFRESH_TOKEN;
 
 const nodemailer = require("nodemailer");
+const CartModel = require("../cart/cart.model");
 
 const blackList = [];
 
@@ -148,6 +149,7 @@ app.post("/signup", async (req, res) => {
       if (err) {
         return res.status(403).send({ message: "Connection has failed" });
       }
+
       const user = await UserModel({
         email,
         username,
@@ -159,9 +161,13 @@ app.post("/signup", async (req, res) => {
         gender,
         bodyType,
       });
+
+      const X = await CartModel.create(
+        { email: email, cart: [], purchase:[] }
+      )
       await user.save();
-     
       
+    
       const mailOptions = {
         from: process.env.EMAIL,
         to: email,

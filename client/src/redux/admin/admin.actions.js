@@ -24,8 +24,8 @@ export const ACTION_GET_ADMIN = () => async (dispatch) => {
   dispatch({ type: GET_ADMIN_LOADING });
   // console.log("data")
   try {
-    let res1 = await axios.get("http://localhost:8080/carts");
-    let res2 = await axios.get("http://localhost:8080/users");
+    let res1 = await axios.get("http://localhost:8080/cart");
+    let res2 = await axios.get("http://localhost:8080/user");
 
     let data = { carts: res1.data, users: res2.data };
 

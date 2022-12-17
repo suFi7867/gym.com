@@ -26,7 +26,7 @@ import {
    const navigate = useNavigate();
   
    const BackToPRoductPage = () => {
-    navigate("/men-clothing")
+    navigate("/product")
    
   };
   
@@ -69,7 +69,9 @@ import {
   
   
     return (
-    <Box bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+    <Box 
+    minH={"80vh"}
+    bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
     w="100%">
          <Box
       bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"

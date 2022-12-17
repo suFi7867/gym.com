@@ -1,9 +1,12 @@
-import { Box, Button, HStack, Img, Tag, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, HStack, Img, Tag, Text, useToast, VStack } from "@chakra-ui/react";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { ACTION_ADD_ITEM_TO_CART } from "../../../redux/cart/cart.actions";
+import { getUserData } from "../../../redux/auth/auth.actions";
+import { ACTION_ADD_ITEM_TO_CART, ACTION_GET_CART } from "../../../redux/cart/cart.actions";
 import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
+import Loading from "../../Loading";
 
 //bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
 // backgroundColor="#312e2e"
@@ -12,178 +15,99 @@ import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 const SingleProductPage = () => {
   
   const [quant, setQuant] = useState(1);
+  const toast = useToast()
+
 
   const dispatch = useDispatch();
   const  {data}  = useSelector((store) => store.product);
- console.log(data, "frontend single route");
+  const {userData } = useSelector((store) => store.auth);
+ //console.log(data, "frontend single route");
+
+ //const { token } = useSelector((store) => store.auth);
+
+ const [LoadingT,setLoading] = useState(true);
 
  const [SingleData, setSingle] = useState({});
-
-  // let data = [
-  //   {
-  //     name: "Winner Whey",
-  //     image: "https://i.ibb.co/94BnTpt/product-2.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "100% WHEY",
-  //     image: "https://i.ibb.co/pQFBWGb/product-3.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "BCAA pro",
-  //     image: "https://i.ibb.co/rxzqPWN/product-4.png",
-  //     price: "$32.56",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "DYNAMIC BCAA",
-  //     image: "https://i.ibb.co/rxzqPWN/product-4.png",
-  //     price: "$32.56",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "ESSENTIALS",
-  //     image: "https://i.ibb.co/1bqh7Yx/product-5.png",
-  //     price: "$8.37",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "FLYING NINJA ",
-  //     image: "https://i.ibb.co/BfPJ2HF/product-6.png",
-  //     price: "$11.16",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "HIGH POWER",
-  //     image: "https://i.ibb.co/RQfmgyQ/product-7.png",
-  //     price: "$18.60",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "HYDRA FUSION",
-  //     image: "https://i.ibb.co/mT0N794/product-8.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "INVICTA DUMBBELL",
-  //     image: "https://i.ibb.co/xqGSNGC/product-10.png",
-  //     price: "$1.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "JUMPING ROPE",
-  //     image: "https://i.ibb.co/xqGSNGC/product-10.png",
-  //     price: "$13.35",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "Leather Lyca",
-  //     image: "https://i.ibb.co/123fSm3/product-11.png",
-  //     price: "$11.16",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "Mass Gainer",
-  //     image: "https://i.ibb.co/hMf5TJq/product-12.png",
-  //     price: "$18.60",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "Winner Whey",
-  //     image: "https://i.ibb.co/94BnTpt/product-2.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "100% WHEY",
-  //     image: "https://i.ibb.co/pQFBWGb/product-3.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "BCAA pro",
-  //     image: "https://i.ibb.co/rxzqPWN/product-4.png",
-  //     price: "$32.56",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "DYNAMIC BCAA",
-  //     image: "https://i.ibb.co/rxzqPWN/product-4.png",
-  //     price: "$32.56",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "ESSENTIALS",
-  //     image: "https://i.ibb.co/1bqh7Yx/product-5.png",
-  //     price: "$8.37",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "FLYING NINJA ",
-  //     image: "https://i.ibb.co/BfPJ2HF/product-6.png",
-  //     price: "$11.16",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "HIGH POWER",
-  //     image: "https://i.ibb.co/RQfmgyQ/product-7.png",
-  //     price: "$18.60",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "HYDRA FUSION",
-  //     image: "https://i.ibb.co/mT0N794/product-8.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "INVICTA DUMBBELL",
-  //     image: "https://i.ibb.co/xqGSNGC/product-10.png",
-  //     price: "$1.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "JUMPING ROPE",
-  //     image: "https://i.ibb.co/xqGSNGC/product-10.png",
-  //     price: "$13.35",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "Leather Lyca",
-  //     image: "https://i.ibb.co/123fSm3/product-11.png",
-  //     price: "$11.16",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     name: "Mass Gainer",
-  //     image: "https://i.ibb.co/hMf5TJq/product-12.png",
-  //     price: "$18.60",
-  //     button: "ADD TO CART",
-  //   },
-  // ];
-
+ 
 
   const { id } = useParams();
-  useEffect(() => {
-    //dispatch(ACTION_GET_PRODUCTS(id));
-    let X =  data.find((el)=> el._id == id)
-    setSingle(X)
-  console.log(X)
+//console.log(id)
+
+  useEffect( () => {
+   
+    try{
+    fetch("http://localhost:8080/products/" + id)
+     .then((res)=>res.json())
+     .then((res)=>{
+      setSingle(res)
+      setLoading(false)
+     })
+    
+    //  setSingle(X.data)
+    //  console.log(X.data)
+    //  setLoading(false)
+    }catch(e){
+      setLoading(true)
+    }
+   
   }, [id]);
 
+  const handleCart = () => {
 
-  const handleCart = (data) => {
-    dispatch(ACTION_ADD_ITEM_TO_CART({ ...data, quant }));
+let check = true 
+
+    userData.cart.map((el)=> {
+      if(el.productName == SingleData.productName){
+        check = false
+
+        return  toast({
+          title: "Product Already in Cart",
+          status: "warning",
+          duration: 4000,
+          isClosable: true,
+        });
+
+      }
+    } )
+
+    if(check){
+
+      let token = JSON.parse(localStorage.getItem("token"))
+
+      let Product = {
+        email : token.email,
+        data : { ...SingleData, qty : quant}
+      }
+  
+     
+     
+        dispatch(ACTION_ADD_ITEM_TO_CART(Product))
+        .then((res)=> dispatch(getUserData(token.email)))
+        toast({
+          title: "Product Added to cart",
+          
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+        });
+  
+        
+     
+  
+     
+    }
+
+
   };
-  const handleBuy = (data) => {};
+
+
+  if(LoadingT){
+    return<Loading/>
+  }
 
 
 
-  return (
+ return (
     <Box   bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)" minH="100vh">
       <Box
         display={{ base: "grid", md: "grid", sm: "grid", lg: "flex" }}
@@ -248,18 +172,14 @@ const SingleProductPage = () => {
             <Text>✔️ Brand Authorized</Text>
             <Text>✔️ Free and Fast Delivery</Text>
           </Box>
-          <Box
-            m={{ base: "0px", sm: "10px", lg: "20px", md: "10px" }}
-            display="flex"
-            w={{ base: "100%", sm: "60%", md: "70%", lg: "40%" }}
-            justifyContent="space-between"
+         
+          <HStack
+            m={{ base: "0px", sm: "0px", lg: "20px", md: "10px" }}
+            mt="20px"
             // border="1px solid white"
+            w={{ base: "100%", sm: "60%", md: "70%", lg: "50%" }}
           >
-            <Box
-              //   border="1px solid white"
-              w={{ base: "50%", sm: "50%", md: "100%", lg: "60%" }}
-            >
-              <HStack
+             <HStack
               maxW={"120px"}
                 alignItems="center"
                 display="flex"
@@ -279,23 +199,11 @@ const SingleProductPage = () => {
                 >
                   +
                 </Button>
-              </HStack>
-            </Box>
-
-          </Box>
-          <HStack
-            m={{ base: "0px", sm: "0px", lg: "20px", md: "10px" }}
-            mt="20px"
-            // border="1px solid white"
-            w={{ base: "100%", sm: "60%", md: "70%", lg: "50%" }}
-          >
-            <Button bg="#f36100"  onClick={() => handleBuy(SingleData)}>
-              Buy Now
-            </Button>
+              </HStack>          
             <Button
                 bg="#f36100"
                 
-                onClick={() => handleCart(SingleData)}
+                onClick={handleCart}
               >
                 Add to Cart
               </Button>

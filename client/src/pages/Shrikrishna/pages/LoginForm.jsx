@@ -21,7 +21,7 @@ import Loading from "../../Loading";
 
 export default function LoginForm({ handleForgot }) {
 
-  const { token, isAuth, loading, error, errorMessage } = useSelector(
+  const { isAuth, loading, error, errorMessage } = useSelector(
     (store) => store.auth)
 
   const [user, setUser] = useState({ email: "", password: "" });
@@ -35,6 +35,7 @@ export default function LoginForm({ handleForgot }) {
   };
 
   const handleClick = () => {
+    
     if (!user.email || !user.password) {
       toast({
         title: "All fields are mandatory",
@@ -72,6 +73,8 @@ export default function LoginForm({ handleForgot }) {
       isClosable: true,
     });
   
+    let token = JSON.parse(localStorage.getItem("token"))
+
     dispatch(getUserData(token.email))
  //console.log(token.email)
     return <Navigate to="/" />;

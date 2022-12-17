@@ -7,7 +7,7 @@ import img from "../assets/Loader.gif"
 const Loading = () => {
   return (
      
-     <Stack  justify={"center"} align="center" >
+     <Stack h="90vh"  justify={"center"} align="center" >
          <div  >
            <Image
              maxW="300px"

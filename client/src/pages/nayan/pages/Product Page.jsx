@@ -149,7 +149,7 @@ const ProductPage = () => {
                       fontSize="3xl"
                       textTransform="uppercase"
                     >
-                      {item.name}
+                      {item.productName}
                     </chakra.h1>
                     <chakra.p
                       mt={1}
