@@ -1,58 +1,28 @@
 import React from "react";
-import { chakra, Box, Flex, Link, Image } from "@chakra-ui/react";
-const Card = ({ title, desc, image }) => {
-  return (
-    <div>
-      <Flex
-        bg="#ffff"
-        _dark={{
-          bg: "#3e3e3e",
-        }}
-        p={30}
-        w="full"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Box
-          w="s"
-          bg="white"
-          _dark={{
-            bg: "gray.800",
-          }}
-          shadow="lg"
-          rounded="lg"
-          overflow="hidden"
-          mx="auto"
-          p={5}
-        >
-          <Image w="full" h={80} fit="cover" src={image} alt="avatar" />
+import {  Box, Image, Heading } from "@chakra-ui/react";
+import {BsTwitter , BsGithub} from"react-icons/bs"
+import {FaFacebookF , FaLinkedinIn} from"react-icons/fa"
+import "../styles/Card.css"
 
-          <Box py={5} textAlign="center">
-            <Link
-              display="block"
-              fontSize="2xl"
-              color="gray.800"
-              _dark={{
-                color: "white",
-              }}
-              fontWeight="bold"
-            >
-              {title}
-            </Link>
-            <chakra.span
-              fontSize="sm"
-              color="gray.500"
-              _dark={{
-                color: "gray.200",
-              }}
-            >
-              {desc}
-            </chakra.span>
+const Card = ({image,title,facebook,twitter,linkedin,github}) => {
+  return (<Box className="papa">
+   <Box className="our_profile_card">
+      <Box className="imgbx">
+        <Image src={image} alt="Monu" pos={"absolute"} top="0" left="0" width={"100%"} height="100%" objectFit={"cover"} />
+      </Box>
+      <Box className="Our_content">
+          <Box className="Our_details">
+               <Heading fontSize={"1.5em"} color='#fff' fontWeight='500'>{title}<br/><span>Full Stack Web Developer</span></Heading>
+               <ul className="our_social_icons">
+               <li><a href={facebook}><FaFacebookF /></a></li>
+               <li><a href={twitter}><BsTwitter /></a></li>
+               <li><a href={linkedin}><FaLinkedinIn /></a></li>
+               <li><a href={github}><BsGithub /></a></li>
+               </ul>
           </Box>
-        </Box>
-      </Flex>
-    </div>
-  );
+      </Box>
+   </Box></Box>
+  )
 };
 
 export default Card;

@@ -1,0 +1,130 @@
+.our_profile_card{
+    position: relative;
+    width: 320px;
+    height: 400px;
+    background: linear-gradient(#f45f02,#f45f02 30%,#151515 30%,#151515);
+    border-radius: 20px;
+    overflow: hidden;
+    transform-origin: top;
+    box-shadow:  16px 14px 12px rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    z-index: 4;
+}
+.papa{
+    position: relative;
+    width: 330px;
+    height: 410px;
+    box-shadow:  16px 14px 12px rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+    border-radius: 20px;
+}
+.papa::before{
+    position: absolute;
+    content: "";
+    background-image: conic-gradient(
+        #ffc400 20deg,
+        transparent 120deg
+    );
+    width: 150%;
+    height: 150%;
+    animation: rotate 2s linear infinite;
+}
+.papa::after{
+    position: absolute;
+    content: "";
+    background-image: conic-gradient(
+        #ffc400 20deg,
+        transparent 120deg
+    );
+    width: 190px;
+    height: 190px;
+    background: #101010;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes rotate{
+    0%{
+        transform:rotate(0deg)
+    }
+    100%{
+        transform:rotate(-360deg)
+    }
+}
+.our_profile_card:hover .imgbx{
+    transform: translateY(-80px) scale(0.5);
+}
+.our_profile_card .imgbx{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+transition: 0.5s;
+z-index: 10;
+border-radius: 20px;
+overflow: hidden;
+}
+.our_profile_card  .Our_content{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: flex-end;
+padding-bottom: 30px; 
+transform: translateY(100%);
+transition: 0.5s;
+}
+.our_profile_card:hover  .Our_content{
+    transform: translateY(0);
+    }
+.our_profile_card  .Our_content .Our_details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 30px; 
+ }
+    .our_profile_card  .Our_content .Our_details span{
+        font-size: 0.8em;
+        font-weight: 400;
+        color: #f45f02;
+}
+.our_social_icons{
+    position: relative;
+    display: flex;
+    margin-top: 5px;
+}
+.our_social_icons li{
+   
+    list-style: none;
+    margin: 4px;
+}
+.our_social_icons li a{
+   width: 45px;
+   height: 45px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: rgb(63, 62, 62);
+   border-radius: 50%;
+   font-size: 1.5em;
+   color:#fff ;
+   transition: 0.5s;
+   text-decoration: none;
+   
+}
+.our_social_icons li a:hover{
+    transform: rotate(360deg);
+    background: #f45f02;
+ }
