@@ -58,11 +58,4 @@ export const getUserData = (email) => async (dispatch) => {
 };
 
 
-
-
-
-
-
-
-
 export const ActionLogout = () => ({ type: LOGOUT });

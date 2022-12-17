@@ -84,7 +84,7 @@ export default function LoginForm({ handleForgot }) {
 
   return (
     // position={"relative"}
-    <Box bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)">
+    <Box zIndex={500} >
       {/* <video
           style={{ "object-fit": "cover", position: "fixed", "z-index": -1 }}
           width={"100%"}
@@ -116,7 +116,7 @@ export default function LoginForm({ handleForgot }) {
             zIndex={100}
             // bg="white"
             // bg={useColorModeValue('white', 'gray.700')}
-            bg="whiteAlpha.200"
+            bg="whiteAlpha.300"
             boxShadow={"lg"}
             p={8}
           >

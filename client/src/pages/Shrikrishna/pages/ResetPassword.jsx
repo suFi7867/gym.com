@@ -47,17 +47,19 @@ export default function ResetPasswordForm({ handleReset }) {
 
   return (
     <Flex
-      minH={"100vh"}
+    zIndex={500}
+    
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-      bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      //bg={useColorModeValue("gray.50", "gray.800")}
+      //bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
     >
       <Stack
         spacing={4}
         w={"full"}
+        maxH="60vh"
         maxW={"md"}
-        bg={useColorModeValue("whiteAlpha.200", "gray.700")}
+        bg={useColorModeValue("whiteAlpha.300", "gray.700")}
         rounded={"xl"}
         boxShadow={"lg"}
         p={6}

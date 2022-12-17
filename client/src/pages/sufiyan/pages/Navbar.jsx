@@ -33,7 +33,7 @@ import { BsLightbulb } from "react-icons/bs";
 import { AiOutlineMenu } from "react-icons/ai";
 //AiOutlineMenu
 import { BiSearch } from "react-icons/bi";
-import { Link, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink, useNavigate } from "react-router-dom";
 
 
 import { ImAndroid } from "react-icons/im";
@@ -109,6 +109,8 @@ console.log(token)
   const [OpenSearch, SetOpenSearch] = useState("none");
 
   const toast = useToast()
+  
+  const naviGate = useNavigate()
 
   const LogOutUser = () => {
     dispatch(ActionLogout());
@@ -119,6 +121,8 @@ console.log(token)
       duration: 4000,
       isClosable: true,
     });
+    naviGate("/")
+   
   };
 
   // borderBottom="1px solid #eeee"
@@ -254,9 +258,9 @@ console.log(token)
                       icon={<IoBagOutline />}
                     />
                     <Text marginLeft={"-50px"}>
-                      {userData.cart.length !== 0 ? (
+                      {userData.cart?.length !== 0 ? (
                         <Circle minWidth={30} bg="white">
-                          {userData.cart.length}
+                          {userData.cart?.length}
                         </Circle>
                       ) : (
                         ""
@@ -453,7 +457,7 @@ console.log(token)
               </NavLink>
             ))}
 
-            {AdminIsAuth && (
+            {AdminIsAuth && isAuth && (
               <NavLink
                 key={"el.path"}
                 to={"/admin"}

@@ -10,9 +10,13 @@ import {
 
 let LocalToken = JSON.parse(localStorage.getItem("token"));
 const check = (LocalToken!=undefined)
-const checkAdminAuth = LocalToken ==="admin@gmail.com#admin"
 
-console.log(typeof LocalToken)
+
+  let checkAdminAuth = LocalToken?.email ==="admin@gmail.com"
+
+ 
+
+console.log(LocalToken?.email == "admin@gmail.com" , check)
 // const AdminToken = "admin@gmail.com#admin";
 const initialState = {
   token:  LocalToken,
@@ -41,7 +45,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
         token: payload,
         loading: false,
         error: false,
-        AdminIsAuth: payload.token == "admin@gmail.com#admin",
+        AdminIsAuth: payload?.email ==="admin@gmail.com"
       };
     }
 

@@ -1,4 +1,4 @@
-import { Box, Button, Img, Tag, Text } from "@chakra-ui/react";
+import { Box, Button, HStack, Img, Tag, Text, VStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -184,65 +184,67 @@ const SingleProductPage = () => {
 
 
   return (
-    <Box backgroundColor="#312e2e" minH="100vh">
+    <Box   bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)" minH="100vh">
       <Box
-        display={{ base: "grid", md: "flex", sm: "grid", lg: "flex" }}
+        display={{ base: "grid", md: "grid", sm: "grid", lg: "flex" }}
         w={{ base: "100%", md: "100%", sm: "100%", lg: "90%" }}
         m="auto"
         maxW="1400px"
         alignContent="center"
         color={"white"}
-        bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      
       >
-        <Box w="100%">
+        <VStack mt="50px" h="100%" p={5} align={"center"} justify="center" 
+        w={"100%"}>
           <Img
+          bg={"whiteAlpha.200"}
+          borderRadius={10}
+          maxW={{md:"400px", lg:"400px", xl:"500px"}}
             // src="https://i.ibb.co/xqGSNGC/product-10.png"
-            alignItems="center"
+            alignItems="center" 
             // src="https://i.ibb.co/RQfmgyQ/product-7.png"
             src={SingleData.image}
             alt="singleProduct"
           />
-        </Box>
-        <Box>
+        </VStack>
+        <VStack  p={5} bg={"whiteAlpha.200"} mt="50px" spacing={3} align={"flex-start"}>
           <Tag
             bg="#f36100"
-            m="20px"
+          
             _hover={{ bg: "white", color: "#f36100" }}
             color="white"
-            pl="10px"
-            pr="10px"
+           
           >
             New In
           </Tag>
-          <Box m="20px">
-            <Text fontSize="4xl" fontWeight="500">
+          <VStack  align={"flex-start"}>
+            <Text fontSize="3xl" fontWeight="500">
               {/* $16.45 */}
-              {SingleData.name}
+              Name : {SingleData.productName}
             </Text>
             <Text fontSize="2xl" fontWeight="500">
               {/* $16.45 */}
-              {SingleData.price}
+             Price : ${SingleData.price}
             </Text>
-          </Box>
-          <Box
-            m="20px"
+          </VStack>
+          <VStack
+           spacing={5}
             w="80%"
             textAlign={{
-              base: "center",
-              md: "center",
-              sm: "center",
+              base: "left",
+              md: "left",
+              sm: "left",
               lg: "left",
             }}
           >
-            <Text fontSize="xl">
+            <Text fontSize="md" fontWeight={"medium"}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
               mollitia, molestiae quas vel sint commodi repudiandae consequuntur
               voluptatum laborum numquam blanditiis harum quisquam eius sed odit
-              fugiat iusto fuga praesentium optio, eaque rerum! Provident
-              similique accusantium nemo autem
+           
             </Text>
-          </Box>
-          <Box m="20px" p="20px">
+          </VStack>
+          <Box>
             <Text>✔️ Brand Authorized</Text>
             <Text>✔️ Free and Fast Delivery</Text>
           </Box>
@@ -257,8 +259,8 @@ const SingleProductPage = () => {
               //   border="1px solid white"
               w={{ base: "50%", sm: "50%", md: "100%", lg: "60%" }}
             >
-              <Box
-                m={{ base: "10px", sm: "0px", lg: "20px", md: "10px" }}
+              <HStack
+              maxW={"120px"}
                 alignItems="center"
                 display="flex"
                 justifyContent="space-between"
@@ -277,34 +279,33 @@ const SingleProductPage = () => {
                 >
                   +
                 </Button>
-              </Box>
+              </HStack>
             </Box>
-            <Box>
-              <Button
-                bg="#f36100"
-                m={{ base: "10px", sm: "auto", lg: "20px", md: "10px" }}
-                onClick={() => handleCart(SingleData)}
-              >
-                Add to Cart
-              </Button>
-            </Box>
+
           </Box>
-          <Box
+          <HStack
             m={{ base: "0px", sm: "0px", lg: "20px", md: "10px" }}
             mt="20px"
             // border="1px solid white"
             w={{ base: "100%", sm: "60%", md: "70%", lg: "50%" }}
           >
-            <Button bg="#f36100" w="100%" onClick={() => handleBuy(SingleData)}>
+            <Button bg="#f36100"  onClick={() => handleBuy(SingleData)}>
               Buy Now
             </Button>
-          </Box>
-          <Box m="20px" p="20px">
+            <Button
+                bg="#f36100"
+                
+                onClick={() => handleCart(SingleData)}
+              >
+                Add to Cart
+              </Button>
+          </HStack>
+          <VStack align={"flex-start"} >
             <Text>📦 Free Shipping + returns</Text>
             <Text>⏱️ we are here for you 24/7</Text>
             <Text>🧾 Prime check before you buy</Text>
-          </Box>
-        </Box>
+          </VStack>
+        </VStack>
       </Box>
     </Box>
   );
