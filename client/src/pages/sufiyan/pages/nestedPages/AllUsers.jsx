@@ -18,12 +18,9 @@ import img1 from "../../assets/img1.png"
 //import {ImageD} from "../../../public/preview";
 
 const AllUsers = () => {
-  //const { data } = useSelector((store) => store.admin);
+  const { data } = useSelector((store) => store.admin);
  //const { data } = useSelector((store) => store.admin);
-  const data = {
-    users: [ 
-    { name: "SUFI" , email:"SDASD"}
-  ]}
+ 
   return (
     <VStack p={5}  maxW="1200px">
 
@@ -34,7 +31,7 @@ const AllUsers = () => {
       <HStack
         p={5}
      
-        w="full"
+        w="100%"
         justifyContent={"space-around"}
         alignContent={"flex-start"}
         alignItems={"flex-start"}
@@ -45,7 +42,7 @@ const AllUsers = () => {
           <HStack
             p={5}
            
-            w="full"
+            w="100%"
             bg="#f45f02"
             color="whiteAlpha.900"
             borderRadius={5}
@@ -53,10 +50,11 @@ const AllUsers = () => {
           >
             <Text>Username</Text>
             <Text>Email</Text>
-          
+            <Text>Hashed</Text>
             <Text>Remove</Text>
+            
           </HStack>
-          <Scrollbars style={{ width: 500, height: "65vh" }}>
+          <Scrollbars style={{ width: 1000, height: "65vh" }}>
           <VStack spacing={5}>
          
           {data.users?.map((el) => (
@@ -68,12 +66,13 @@ const AllUsers = () => {
               borderRadius={5}
               justifyContent={"space-between"}
             >
-              <Text>
-                {el.name}
-                {el.surname}
+              <Text >
+                {el.username}
+               
               </Text>
               <Text>{el.email}</Text>
-          
+              <Text>{el.password.substring(0,20)}....</Text>
+             
               <IconButton
                 fontSize="25px"
                 borderRadius={50}

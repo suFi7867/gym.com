@@ -18,6 +18,8 @@ import Item from "../../components/item";
 import { Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 function SideBarLeft() {
+
+  
   const [open, setOpen] = useState(true);
 
   // for collpsing sidebar
@@ -50,7 +52,7 @@ function SideBarLeft() {
   const profileVariants = {
     true: {
       alignSelf: "center",
-      width: "4rem"
+      width: "10rem"
     },
     false: {
       alignSelf: "flex-start",
@@ -111,7 +113,7 @@ function SideBarLeft() {
             }}
           >
             <img
-              src="https://ae01.alicdn.com/kf/H5be6a0fa5f584a8a8420da2a7d4bc809r/RBRARE-Polaroid-Men-s-Goggle-Driving-Sunglasses-Men-Classic-Low-Profile-Sun-Glasses-For-Men-High.jpg"
+              src="https://i.im.ge/2022/07/29/FwZXw1.jpg"
               alt="profile_img"
             />
           </motion.div>

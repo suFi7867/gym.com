@@ -37,18 +37,19 @@ export default function ForgotPasswordForm( {handleOtp} ) {
 
   return (
     <Flex
-      minH={"80vh"}
+    zIndex={500}
+      minH={"60vh"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-      bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      bg={useColorModeValue("none", "gray.800")}
+    //  bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
     >
       <Stack
         spacing={4}
         w={"full"}
         maxW={"md"}
         // bg={useColorModeValue('white', 'gray.700')}
-        bg="whiteAlpha.200"
+        bg="whiteAlpha.300"
         rounded={"xl"}
         boxShadow={"lg"}
         p={6}

@@ -43,7 +43,7 @@ main {
     flex-direction: column;
     justify-content: space-around;
     height: 70px;
-    padding: 25px;
+    padding: 20px;
     border-radius: 5px;
     color: white;
     background: #6b67678a;
@@ -51,8 +51,9 @@ main {
   }
   
   .card_inner {
-    display: flex;
-    align-items: center;
+
+    display: grid;
+    align-items: left;
     justify-content: space-between;
   }
   

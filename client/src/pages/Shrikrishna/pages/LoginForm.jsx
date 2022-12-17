@@ -21,7 +21,7 @@ import Loading from "../../Loading";
 
 export default function LoginForm({ handleForgot }) {
 
-  const { token, isAuth, loading, error, errorMessage } = useSelector(
+  const { isAuth, loading, error, errorMessage } = useSelector(
     (store) => store.auth)
 
   const [user, setUser] = useState({ email: "", password: "" });
@@ -35,6 +35,7 @@ export default function LoginForm({ handleForgot }) {
   };
 
   const handleClick = () => {
+    
     if (!user.email || !user.password) {
       toast({
         title: "All fields are mandatory",
@@ -44,23 +45,18 @@ export default function LoginForm({ handleForgot }) {
         isClosable: true,
       });
     } else {
-      dispatch(login(user));
+      dispatch(login(user))
+      
       
     }
+
+   
   };
+
 
 
   if(loading ){
     return <Loading/>
-  }else if (error) {
-    toast({
-      title: "Wrong Credentials",
-      description: "Incorrect Email or Password",
-      status: "error",
-      duration: 4000,
-      isClosable: true,
-    });
-    return <Navigate to="/login" />;
   }
 
   if (isAuth) {
@@ -72,11 +68,12 @@ export default function LoginForm({ handleForgot }) {
       isClosable: true,
     });
   
+    let token = JSON.parse(localStorage.getItem("token"))
+    
     dispatch(getUserData(token.email))
  //console.log(token.email)
     return <Navigate to="/" />;
   }
-  
  
 
 
@@ -84,7 +81,7 @@ export default function LoginForm({ handleForgot }) {
 
   return (
     // position={"relative"}
-    <Box bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)">
+    <Box zIndex={500} >
       {/* <video
           style={{ "object-fit": "cover", position: "fixed", "z-index": -1 }}
           width={"100%"}
@@ -116,7 +113,7 @@ export default function LoginForm({ handleForgot }) {
             zIndex={100}
             // bg="white"
             // bg={useColorModeValue('white', 'gray.700')}
-            bg="whiteAlpha.200"
+            bg="whiteAlpha.300"
             boxShadow={"lg"}
             p={8}
           >

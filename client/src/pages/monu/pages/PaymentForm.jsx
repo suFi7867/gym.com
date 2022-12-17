@@ -1,6 +1,9 @@
 import { Button, Divider, FormControl, FormHelperText, FormLabel, HStack, Image, Input, PinInput, PinInputField, Stack, Text, useToast, VStack, Wrap } from '@chakra-ui/react'
 import React, { useContext } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { getUserData } from '../../../redux/auth/auth.actions'
+import { ACTION_PURCHASE } from '../../../redux/cart/cart.actions'
 import pay from "../styles/pay.png"
 
 const PaymentForm = () => {
@@ -9,17 +12,33 @@ const PaymentForm = () => {
     const navigate = useNavigate()
     const toast = useToast()
 
+    const {userData, token, isAuth } = useSelector((store) => store.auth);
+    const total = userData.cart.reduce((a, b) => a + +b.price, 0);
+  
+    const dispatch = useDispatch()
+
     const PaymentDone = () => {
         // prompt()
-        toast({
-            title: 'Payment Successfull.',
 
-            description: "Thank You For Shopping.",
-            status: 'success',
-            duration: 3000,
-            isClosable: true,
+        dispatch(ACTION_PURCHASE(token.email))
+        .then((res)=> {
+            dispatch(getUserData(token.email))
+            
+              toast({
+                title: 'Payment Successfull.',
+                description: "Thank You For Shopping.",
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+            })
+
+            navigate("/OrderSuccessfull")
         })
-        navigate("/OrderSuccessfull")
+        
+
+
+
+     
 
 
     }
@@ -28,10 +47,10 @@ const PaymentForm = () => {
     return (
 
         <>
-            <VStack position={"relative"}  overflow="hidden"
-             bgGradient=" radial-gradient(circle, rgba(0,0,0,1) 7%, rgba(64,64,64,1) 100%)" spacing={10} w={{ base: "full", md: "1200px" }}  margin="auto" style={{ width:"100%", height:"100vh"}} >
+            <VStack  position={"relative"} justify="center" align="center"  overflow="hidden"
+             bgGradient=" radial-gradient(circle, rgba(0,0,0,1) 7%, rgba(64,64,64,1) 100%)" spacing={10} w={{ base: "full", md: "1200px" }} 
+              margin="auto" style={{ width:"100%", height:"90vh"}} >
 
-                <Text zIndex={"1"} fontWeight="bold" fontSize="2rem" color="white" >Billing Address</Text>
 
                 <Stack zIndex={"1"} direction={{ base: "column", md: "row" }} spacing={5}  >
 
@@ -39,7 +58,7 @@ const PaymentForm = () => {
                     >
 
                         <HStack  >
-                            <Image w={25} src="https://images.bewakoof.com/web/bank-card-fill-1645697857.svg" />
+                            <Image w={25} h="100%" src="https://images.bewakoof.com/web/bank-card-fill-1645697857.svg" />
                             <Text>Debit/Credit Card</Text>
                         </HStack>
 
@@ -136,7 +155,7 @@ const PaymentForm = () => {
                                 </FormControl>
                             </HStack>
 
-                            <Button style={{ marginTop: "20px" }} height="40px" onClick={PaymentDone} fontSize="16px" padding={3} w="full" colorScheme='orange'> Pay Now </Button>
+                            <Button style={{ marginTop: "20px" }} height="40px" onClick={PaymentDone} fontSize="xl" padding={3} w="full" colorScheme='orange'> ${total} {"  "} Pay Now </Button>
 
                         </VStack>
 
@@ -144,7 +163,7 @@ const PaymentForm = () => {
 
                 </Stack>
 
-                <Image w="80%" position={"absolute"}  top="0" src={pay} />
+                <Image h="120%"  position={"absolute"}  src={pay} />
 
             </VStack>
 

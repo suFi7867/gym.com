@@ -14,9 +14,15 @@ import {
   Box,
   Flex,
   Image,
+  IconButton,
+  useToast,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
+
+import { RiDeleteBinLine } from "react-icons/ri"
+
 import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
+import { ACTION_ADD_PRODUCT, ACTION_DELETE_PRODUCT } from "../../../redux/admin/admin.actions";
 // import axios from "axios";
 // const getData = async () => {
 //   let { data } = await axios.get("http://localhost:8080/products");
@@ -27,182 +33,30 @@ import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 const ProductPage = () => {
   const dispatch = useDispatch();
   const product = useSelector((store) => store.product);
-  console.log(product.data, "from selector");
-  // const [data, setData] = useState([]);
-  // let data = [
-  //   {
-  //     id: 0,
-  //     name: "Winner Whey",
-  //     image: "https://i.ibb.co/94BnTpt/product-2.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 1,
-  //     name: "100% WHEY",
-  //     image: "https://i.ibb.co/pQFBWGb/product-3.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "BCAA pro",
-  //     image: "https://i.ibb.co/rxzqPWN/product-4.png",
-  //     price: "$32.56",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "DYNAMIC BCAA",
-  //     image: "https://i.ibb.co/rxzqPWN/product-4.png",
-  //     price: "$32.56",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "ESSENTIALS",
-  //     image: "https://i.ibb.co/1bqh7Yx/product-5.png",
-  //     price: "$8.37",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "FLYING NINJA ",
-  //     image: "https://i.ibb.co/BfPJ2HF/product-6.png",
-  //     price: "$11.16",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "HIGH POWER",
-  //     image: "https://i.ibb.co/RQfmgyQ/product-7.png",
-  //     price: "$18.60",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 7,
-  //     name: "HYDRA FUSION",
-  //     image: "https://i.ibb.co/mT0N794/product-8.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 8,
-  //     name: "INVICTA DUMBBELL",
-  //     image: "https://i.ibb.co/xqGSNGC/product-10.png",
-  //     price: "$1.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 9,
-  //     name: "JUMPING ROPE",
-  //     image: "https://i.ibb.co/xqGSNGC/product-10.png",
-  //     price: "$13.35",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 10,
-  //     name: "Leather Lyca",
-  //     image: "https://i.ibb.co/123fSm3/product-11.png",
-  //     price: "$11.16",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 11,
-  //     name: "Mass Gainer",
-  //     image: "https://i.ibb.co/hMf5TJq/product-12.png",
-  //     price: "$18.60",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 12,
-  //     name: "Winner Whey",
-  //     image: "https://i.ibb.co/94BnTpt/product-2.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 13,
-  //     name: "100% WHEY",
-  //     image: "https://i.ibb.co/pQFBWGb/product-3.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 14,
-  //     name: "BCAA pro",
-  //     image: "https://i.ibb.co/rxzqPWN/product-4.png",
-  //     price: "$32.56",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 15,
-  //     name: "DYNAMIC BCAA",
-  //     image: "https://i.ibb.co/rxzqPWN/product-4.png",
-  //     price: "$32.56",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 16,
-  //     name: "ESSENTIALS",
-  //     image: "https://i.ibb.co/1bqh7Yx/product-5.png",
-  //     price: "$8.37",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 17,
-  //     name: "FLYING NINJA ",
-  //     image: "https://i.ibb.co/BfPJ2HF/product-6.png",
-  //     price: "$11.16",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 18,
-  //     name: "HIGH POWER",
-  //     image: "https://i.ibb.co/RQfmgyQ/product-7.png",
-  //     price: "$18.60",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 19,
-  //     name: "HYDRA FUSION",
-  //     image: "https://i.ibb.co/mT0N794/product-8.png",
-  //     price: "$16.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 20,
-  //     name: "INVICTA DUMBBELL",
-  //     image: "https://i.ibb.co/xqGSNGC/product-10.png",
-  //     price: "$1.74",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 21,
-  //     name: "JUMPING ROPE",
-  //     image: "https://i.ibb.co/xqGSNGC/product-10.png",
-  //     price: "$13.35",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 22,
-  //     name: "Leather Lyca",
-  //     image: "https://i.ibb.co/123fSm3/product-11.png",
-  //     price: "$11.16",
-  //     button: "ADD TO CART",
-  //   },
-  //   {
-  //     id: 23,
-  //     name: "Mass Gainer",
-  //     image: "https://i.ibb.co/hMf5TJq/product-12.png",
-  //     price: "$18.60",
-  //     button: "ADD TO CART",
-  //   },
-  // ];
 
-  useEffect(() => {
-    dispatch(ACTION_GET_PRODUCTS());
-  }, [dispatch]);
+  const toast = useToast()
+
+  const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
+  //console.log(product.data, "from selector");
+
+  //useEffect(() => {
+  // 
+  //}, [dispatch]);
+
+
+  const DeleteProduct = (id)=>{
+    dispatch(ACTION_DELETE_PRODUCT(id))
+    .then((res)=> {
+      dispatch(ACTION_ADD_PRODUCT)
+      toast({
+        title: "Product Deleted Successfull",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      })
+    })
+
+  }
 
   return (
     <Box
@@ -293,7 +147,7 @@ const ProductPage = () => {
               p={5}
               w="100%"
               spacing={10}
-              columns={{ base: 1, sm: 1, md: 2, lg: 3 }}
+              columns={{ base: 1, sm: 1, md: 2, lg: 4 }}
             >
               {product.data?.map((item, index) => (
                 <Box
@@ -320,7 +174,7 @@ const ProductPage = () => {
                       fontSize="3xl"
                       textTransform="uppercase"
                     >
-                      {item.name}
+                      {item.productName}
                     </chakra.h1>
                     <chakra.p
                       mt={1}
@@ -358,7 +212,31 @@ const ProductPage = () => {
                     <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
                       ${item.price}
                     </chakra.h1>
+
+                    {
+                      AdminIsAuth ?  <IconButton
+                      
+                     p="0px 20px"
+                      // bg="white"
+                      fontSize="3xl"
+                      onClick={()=>DeleteProduct(item._id)} 
+                     color="white"
+                      fontWeight="bold"
+                      rounded="lg"
+                      textTransform="uppercase"
+                      _hover={{
+                        bg: "white",
+                        color: "#f45f02;",
+                      }}
+                      // _focus={{
+                      //   bg: "gray.400",
+                      // }}
+                      bg="#f45f02;"
+                      icon={<RiDeleteBinLine/>}
+                    />
+                      : <Link to={`/products/${item._id}`}>
                     <chakra.button
+                     
                       px={4}
                       py={3}
                       // bg="white"
@@ -376,8 +254,10 @@ const ProductPage = () => {
                       // }}
                       bg="#f45f02;"
                     >
-                      Add to cart
-                    </chakra.button>
+                      View
+                    </chakra.button>  </Link> 
+                    }
+                   
                   </Flex>
                 </Box>
               ))}

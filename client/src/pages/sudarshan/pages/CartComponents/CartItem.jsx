@@ -5,12 +5,14 @@ import {
   Select,
   useColorModeValue,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { PriceTag } from "./PriceTag";
 import { CartProductMeta } from "./CartProductMeta";
 import { useDispatch, useSelector } from "react-redux";
 import { ACTION_GET_CART, ACTION_REMOVE_ITEM_CART } from "../../../../redux/cart/cart.actions"
+import { getUserData } from "../../../../redux/auth/auth.actions";
 const QuantitySelect = (props) => {
   return (
     <Select
@@ -31,7 +33,7 @@ const QuantitySelect = (props) => {
 };
 
 export const CartItem = (props) => { 
-  console.log(1)
+  //console.log(1)
   const {
     isGiftWrapping,
     productName,
@@ -42,14 +44,35 @@ export const CartItem = (props) => {
     price,
     onChangeQuantity,
     onClickDelete,
-    id
+    _id
   } = props;
   const { isAuth, token } = useSelector((store) => store.auth);
   const dispatch = useDispatch();
+  const toast = useToast()
+
   const itemDelete = () => {
-    console.log({id:id,token:token.token})
-    dispatch(ACTION_REMOVE_ITEM_CART({id:id,token:token.token}))
-    dispatch(ACTION_GET_CART(token.token))
+
+    let data = { 
+      email : token.email,
+      data : {
+        _id : _id
+      }
+    }
+    console.log(data)
+
+   dispatch(ACTION_REMOVE_ITEM_CART(data))
+   .then((res)=>  {
+  
+    dispatch(getUserData(token.email)) 
+    toast({
+      title: "Product Deleted Successfully",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+    });
+  })
+
+   
   };
   return (
     <Flex

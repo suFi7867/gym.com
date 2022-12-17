@@ -5,8 +5,9 @@ const jwt = require("jsonwebtoken");
 
 app.post("/", async (req, res) => {
   //check if admin is adding to products [ROLE BASED ACEESS]
-  const token = req.headers["authorization"];
-  let s = req.body.data.split(",");
+ // const token = req.headers["authorization"];
+  let s = req.body.data.data.split(",");
+  console.log(s)
 
   if (!s) {
     return res.status(403).send("Missing Entities");
@@ -16,6 +17,7 @@ app.post("/", async (req, res) => {
       productName: s[0],
       image: s[1],
       price: s[2],
+      qty: 1
     });
 
     return res.status(200).send({ message: "ADDED", singleProduct });
@@ -33,13 +35,14 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.delete("/", async (req, res) => {
+app.delete("/:id", async (req, res) => {
+  console.log(req)
   try {
     let exists = await productModel.findOneAndDelete({
-      _id: req.body.id,
+      _id: req.params.id,
     });
 
-    console.log(exists, req.body.id);
+    console.log(exists, req.params.id);
 
     res.status(200).send("Product deleted successfully");
   } catch (e) {

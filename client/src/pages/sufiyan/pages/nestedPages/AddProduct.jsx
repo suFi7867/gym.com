@@ -12,22 +12,34 @@ import {
   Flex,
   Button,
   Input,
+  useToast,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
+import { ACTION_ADD_PRODUCT } from "../../../../redux/admin/admin.actions";
 //import { ACTION_ADD_PRODUCT } from "../../redux/admin/admin.actions";
 
 const AddProduct = () => {
   const [resize, setResize] = React.useState("horizontal");
 
-  const [value, setvalue] = useState("mens");
-
+  const [value, setvalue] = useState("products");
   let [area, setarea] = useState("");
 
   const dispatch = useDispatch();
 
+  const toast = useToast()
+
   const AddToDatabase = () => {
-   // dispatch(ACTION_ADD_PRODUCT({ value: value, area: area }));
-    setvalue("mens");
+
+    dispatch(ACTION_ADD_PRODUCT( area ))
+    .then((res)=>{
+      toast({
+        title: "Product Added Successfull",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      })
+    })
+    
     //setarea("");
   };
 
@@ -53,24 +65,26 @@ const AddProduct = () => {
           </Text>
         </Flex>
 
-        <HStack alignItems="flex-start" spacing="1rem">
+        <VStack alignItems="flex-start" spacing="1rem">
           <VStack>
             <Textarea
               placeholder="Here is a sample placeholder"
-              height="360px"
-              width="350px"
+             height={"200px"}
+              width="650px"
               value={area}
+              color="white"
               onChange={(e) => setarea(e.target.value)}
               resize={resize}
             />
 
           </VStack>
-          <RadioGroup colorScheme='orange'  value={value} onChange={setvalue}>
-            <VStack spacing="24px" align="left">
-              <Radio value="mens">Men</Radio>
-              <Radio value="womens">Women</Radio>
-              <Radio value="electronics">Electronics</Radio>
-            </VStack>
+          <RadioGroup color="white" colorScheme='orange'  value={value} onChange={setvalue}>
+            <HStack spacing="24px" align="left">
+            <Radio value="products">Products</Radio>
+            
+              <Radio value="plans">Plans</Radio>
+           
+            </HStack>
 
             <Spacer />
 
@@ -86,7 +100,7 @@ const AddProduct = () => {
               ADD PRODUCTS
             </Button>
           </RadioGroup>
-        </HStack>
+        </VStack>
       </Flex>
     </Flex>
   );

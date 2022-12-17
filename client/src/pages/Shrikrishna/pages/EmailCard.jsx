@@ -56,17 +56,21 @@ export default function VerifyEmailForm({ handleVerify }) {
   };
   return (
     <Flex
-      minH={"100vh"}
+    zIndex={500}
+    border="1px solid white"
+
+      minH={"60vh"}
       align={"center"}
       justify={"center"}
       // bg={useColorModeValue("whiteAlpha.100", "whiteAlpha.100")}
-      bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
+      //bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
     >
       <Stack
         spacing={4}
         w={"full"}
         maxW={"sm"}
-        bg={useColorModeValue("whiteAlpha.200", "whiteAlpha.200")}
+        
+        bg={useColorModeValue("whiteAlpha.300", "whiteAlpha.200")}
         rounded={"xl"}
         boxShadow={"lg"}
         p={6}

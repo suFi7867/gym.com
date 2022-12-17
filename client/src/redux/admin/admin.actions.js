@@ -24,12 +24,14 @@ export const ACTION_GET_ADMIN = () => async (dispatch) => {
   dispatch({ type: GET_ADMIN_LOADING });
   // console.log("data")
   try {
-    let res1 = await axios.get("http://localhost:8080/carts");
-    let res2 = await axios.get("http://localhost:8080/users");
+    let res1 = await axios.get("http://localhost:8080/cart");
+    let res2 = await axios.get("http://localhost:8080/user");
 
     let data = { carts: res1.data, users: res2.data };
 
-    console.log(data);
+   // console.log(data);
+  
+    
 
     return dispatch({ type: GET_ADMIN_SUCCESS, payload: data });
   } catch (err) {
@@ -41,17 +43,13 @@ export const ACTION_DELETE_PRODUCT =
   (payload = {}) =>
   async (dispatch) => {
     dispatch({ type: DELETE_PRODUCT_LOADING });
-
+console.log(payload)
     try {
-      await axios.delete(`http://localhost:8080/${payload.value}`, {
+      await axios.delete(`http://localhost:8080/products/${payload}`, {
         headers: {
           "Content-Type": "application/json",
-        },
-        data: {
-          id: payload.id,
-          value: payload.value,
-          name: payload.name,
-        },
+        }
+       
       });
       dispatch({ type: DELETE_PRODUCT_SUCCESS });
       console.log("i am here");
@@ -67,12 +65,12 @@ export const ACTION_ADD_PRODUCT =
     dispatch({ type: ADD_PRODUCT_LOADING });
     console.log(payload.area);
     try {
-      await axios.post(`http://localhost:8080/${payload.value}`, {
+      await axios.post(`http://localhost:8080/products`, {
         headers: {
           "Content-Type": "application/json",
         },
         data: {
-          area: payload.area,
+          data: payload,
         },
       });
 
