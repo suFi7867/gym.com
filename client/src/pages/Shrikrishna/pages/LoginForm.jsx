@@ -45,23 +45,18 @@ export default function LoginForm({ handleForgot }) {
         isClosable: true,
       });
     } else {
-      dispatch(login(user));
+      dispatch(login(user))
+      
       
     }
+
+   
   };
+
 
 
   if(loading ){
     return <Loading/>
-  }else if (error) {
-    toast({
-      title: "Wrong Credentials",
-      description: "Incorrect Email or Password",
-      status: "error",
-      duration: 4000,
-      isClosable: true,
-    });
-    return <Navigate to="/login" />;
   }
 
   if (isAuth) {
@@ -74,12 +69,11 @@ export default function LoginForm({ handleForgot }) {
     });
   
     let token = JSON.parse(localStorage.getItem("token"))
-
+    
     dispatch(getUserData(token.email))
  //console.log(token.email)
     return <Navigate to="/" />;
   }
-  
  
 
 

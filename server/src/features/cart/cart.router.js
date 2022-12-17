@@ -103,6 +103,27 @@ app.patch("/", async (req, res) => {
   }
 });
 
+app.patch("/purchase", async (req, res) => {
+  
+  const { email } = req.body
+  console.log(email)
+   try {
+
+    let user = await cartModel.findOne({email: email})
+   console.log(user.cart)
+ 
+     await cartModel.findOneAndUpdate(
+       {email:email},
+       {$set: {purchase: [...user.purchase,...user.cart]} , cart: [] },
+       {new :true}
+       )
+
+     return res.status(200).send("SUCCESS");
+   } catch (e) {
+     return res.status(404).send(e.massage);
+   }
+ });
+
 module.exports = app;
 
 

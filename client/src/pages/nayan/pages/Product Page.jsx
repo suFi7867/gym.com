@@ -14,9 +14,15 @@ import {
   Box,
   Flex,
   Image,
+  IconButton,
+  useToast,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
+
+import { RiDeleteBinLine } from "react-icons/ri"
+
 import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
+import { ACTION_ADD_PRODUCT, ACTION_DELETE_PRODUCT } from "../../../redux/admin/admin.actions";
 // import axios from "axios";
 // const getData = async () => {
 //   let { data } = await axios.get("http://localhost:8080/products");
@@ -27,11 +33,30 @@ import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 const ProductPage = () => {
   const dispatch = useDispatch();
   const product = useSelector((store) => store.product);
-  console.log(product.data, "from selector");
 
-  useEffect(() => {
-    dispatch(ACTION_GET_PRODUCTS());
-  }, [dispatch]);
+  const toast = useToast()
+
+  const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
+  //console.log(product.data, "from selector");
+
+  //useEffect(() => {
+  // 
+  //}, [dispatch]);
+
+
+  const DeleteProduct = (id)=>{
+    dispatch(ACTION_DELETE_PRODUCT(id))
+    .then((res)=> {
+      dispatch(ACTION_ADD_PRODUCT)
+      toast({
+        title: "Product Deleted Successfull",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      })
+    })
+
+  }
 
   return (
     <Box
@@ -122,7 +147,7 @@ const ProductPage = () => {
               p={5}
               w="100%"
               spacing={10}
-              columns={{ base: 1, sm: 1, md: 2, lg: 3 }}
+              columns={{ base: 1, sm: 1, md: 2, lg: 4 }}
             >
               {product.data?.map((item, index) => (
                 <Box
@@ -187,7 +212,31 @@ const ProductPage = () => {
                     <chakra.h1 color="white" fontWeight="bold" fontSize="lg">
                       ${item.price}
                     </chakra.h1>
+
+                    {
+                      AdminIsAuth ?  <IconButton
+                      
+                     p="0px 20px"
+                      // bg="white"
+                      fontSize="3xl"
+                      onClick={()=>DeleteProduct(item._id)} 
+                     color="white"
+                      fontWeight="bold"
+                      rounded="lg"
+                      textTransform="uppercase"
+                      _hover={{
+                        bg: "white",
+                        color: "#f45f02;",
+                      }}
+                      // _focus={{
+                      //   bg: "gray.400",
+                      // }}
+                      bg="#f45f02;"
+                      icon={<RiDeleteBinLine/>}
+                    />
+                      : <Link to={`/products/${item._id}`}>
                     <chakra.button
+                     
                       px={4}
                       py={3}
                       // bg="white"
@@ -205,8 +254,10 @@ const ProductPage = () => {
                       // }}
                       bg="#f45f02;"
                     >
-                      Add to cart
-                    </chakra.button>
+                      View
+                    </chakra.button>  </Link> 
+                    }
+                   
                   </Flex>
                 </Box>
               ))}

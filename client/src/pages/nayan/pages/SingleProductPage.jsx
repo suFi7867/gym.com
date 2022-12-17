@@ -34,7 +34,7 @@ const SingleProductPage = () => {
 //console.log(id)
 
   useEffect( () => {
-   
+
     try{
     fetch("http://localhost:8080/products/" + id)
      .then((res)=>res.json())
@@ -118,9 +118,10 @@ let check = true
         color={"white"}
       
       >
-        <VStack mt="50px" h="100%" p={5} align={"center"} justify="center" 
+        <VStack 
+        mt="50px" h="100%" p={5} align={"center"} justify="center" 
         w={"100%"}>
-          <Img
+          <Img borderLeft={"4px solid #f45f02"}
           bg={"whiteAlpha.200"}
           borderRadius={10}
           maxW={{md:"400px", lg:"400px", xl:"500px"}}
@@ -131,7 +132,9 @@ let check = true
             alt="singleProduct"
           />
         </VStack>
-        <VStack  p={5} bg={"whiteAlpha.200"} mt="50px" spacing={3} align={"flex-start"}>
+        <VStack 
+        borderRight={"4px solid #f45f02"}
+        p={5} bg={"whiteAlpha.200"} mt="50px" spacing={3} align={"flex-start"}>
           <Tag
             bg="#f36100"
           

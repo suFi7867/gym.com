@@ -10,7 +10,20 @@ const Dashborad = () => {
 
   const { data: adminData } = useSelector((store) => store.admin);
 
-  let Income = 0
+ 
+  let pending_sales = 0
+  let cart = adminData.carts.map((el)=> el.cart)
+  .flat().forEach((el)=> pending_sales+= +el.price)
+
+
+  let sales_revenue = 0
+  let purchase = adminData.carts.map((el)=> el.purchase)
+  .flat().forEach((el)=> sales_revenue+= +el.price)
+
+
+
+console.log(pending_sales.toFixed(1), sales_revenue)
+ 
 
   //adminData.carts.map((el) => el.cartData.map((x) => Income += +x.price));
 
@@ -73,8 +86,8 @@ const Dashborad = () => {
           <div className="card">
            
             <div className="card_inner">
-              <p className="text-primary-p"> Number of employees </p>
-              <span className="font-bold text-title">5</span>
+              <p className="text-primary-p"> Total Sales </p>
+              <span className="font-bold text-title">{TotalNumberOfSales}</span>
             </div>
           </div>
         </div>
@@ -104,23 +117,24 @@ const Dashborad = () => {
 
             <div className="charts__right__cards">
               <div className="card1">
-                <h1>Income</h1>
-                <p>$ {Income/2}</p>
+                <h1>Revenue </h1>
+                <p>$ {(sales_revenue/1.5).toFixed(2)}</p>
               </div>
+              
 
               <div className="card2">
                 <h1>Sales</h1>
-                <p>${Income}</p>
+                <p>${sales_revenue.toFixed(2)}</p>
               </div>
 
               <div className="card3">
-                <h1>Users</h1>
-                <p> {adminData.users.length}</p>
+                <h1>Pending Purchase</h1>
+                <p> {pending_sales.toFixed(2)}</p>
               </div>
 
               <div className="card4">
                 <h1>Orders</h1>
-                <p> {adminData.carts.length}</p>
+                <p> {TotalNumberOfSales}</p>
               </div>
             </div>
           </div>

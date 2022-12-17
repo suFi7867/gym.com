@@ -73,7 +73,7 @@ import {
     minH={"80vh"}
     bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
     w="100%">
-         <Box
+         <Box borderBottom={"4px solid #f45f02"}
       bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
       w="100%"
         maxW={{

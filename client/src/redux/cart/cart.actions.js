@@ -58,6 +58,45 @@ export const ACTION_ADD_ITEM_TO_CART =
     }
   };
 
+  export const ACTION_REMOVE_ITEM_CART = (payload=1)=> async (dispatch)=>{
+    dispatch({ type: REMOVE_CART_ITEMS_LOADING})
+   
+  //  console.log(payload)
+    try{
+      await axios.patch(`http://localhost:8080/cart`, payload)
+
+      return dispatch({ type : REMOVE_CART_ITEMS_SUCCESS })
+         
+    }catch(err){
+        dispatch({ type : REMOVE_CART_ITEMS_ERROR , payload : err.message })
+    }
+
+}
+
+
+export const ACTION_PURCHASE = (payload={})=> async (dispatch)=>{
+
+    dispatch({type: PURCHASE_LOADING})
+
+  console.log(payload)
+
+    try{
+      await axios.patch(`http://localhost:8080/cart/purchase`, {email: payload})
+
+      return dispatch({ type : PURCHASE_SUCCESS })
+         
+    }catch(err){
+        dispatch({ type : PURCHASE_ERROR , payload : err.message })
+    }
+ 
+}
+
+
+
+
+
+
+
 // REMOVE_CART_ITEMS_LOADING   // REMOVE_CART_ITEMS_SUCCESS    // REMOVE_CART_ITEMS_ERROR
 
 // export const ACTION_REMOVE_ITEM_CART =
@@ -73,27 +112,6 @@ export const ACTION_ADD_ITEM_TO_CART =
 //       dispatch({ type: REMOVE_CART_ITEMS_ERROR, payload: err.message });
 //     }
 //   };
-export const ACTION_REMOVE_ITEM_CART = (payload=1)=> async (dispatch)=>{
-    dispatch({ type: REMOVE_CART_ITEMS_LOADING})
-   
-  //  console.log(payload)
-    try{
-      await axios.patch(`http://localhost:8080/cart`, payload)
-
-      return dispatch({ type : REMOVE_CART_ITEMS_SUCCESS })
-         
-    }catch(err){
-        dispatch({ type : REMOVE_CART_ITEMS_ERROR , payload : err.message })
-    }
-
-}
-
-export const ACTION_PURCHASE = ()=> async (dispatch)=>{
-dispatch({type: PURCHASE_LOADING})
-
-  dispatch({type: PURCHASE_ERROR})
-  return dispatch({type: PURCHASE_SUCCESS})
-}
 
 
 
