@@ -61,7 +61,7 @@ return (
             <div className="lisa">
               <img src={Trainer1} alt='monu'/>
               <Box className="overlay2" >
-                 <Heading color="#fff" mb="-4" fontSize={["10","15","20","25"]}>Nick Fury</Heading>
+                 <Heading color="#fff" mb="-4" fontSize={["19","19","20","20","25"]}>Nick Fury</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
              </Box>
              <Box className="social">
@@ -78,7 +78,7 @@ return (
             <div className="lisa">
               <img src={Trainer2} alt='monu'/>
               <Box className="overlay2">
-              <Heading color="#fff" mb="-4" fontSize={["10","15","20","25"]}>Athart Rachel</Heading>
+              <Heading color="#fff" mb="-4" fontSize={["19","19","20","20","25"]}>Athart Rachel</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
                 </Box>
                 <Box className="social">
@@ -95,7 +95,7 @@ return (
             <div className="lisa">
               <img src={Trainer3} alt='monu'/>
               <Box className="overlay2" >
-              <Heading color="#fff" mb="-4" fontSize={["10","15","20","25"]} >Nazmin Shaikh</Heading>
+              <Heading color="#fff" mb="-4" fontSize={["19","19","20","20","25"]} >Nazmin Shaikh</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
             </Box>
             <Box className="social">
@@ -112,7 +112,7 @@ return (
             <div className="lisa">
               <img src={Trainer4} alt='monu'/>
               <Box className="overlay2" >
-              <Heading color="#fff" mb="-4" fontSize={["10","15","20","25"]}>Stephanie MicMahon</Heading>
+              <Heading color="#fff" mb="-4" fontSize={["19","19","20","20","25"]}>Stephanie MicMahon</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
              </Box>
              <Box className="social">
@@ -129,7 +129,7 @@ return (
             <div className="lisa">
               <img src={Trainer7} alt='monu'/>
               <Box className="overlay2" >
-              <Heading color="#fff" mb="-4" fontSize={["10","15","20","25"]}>Madara Uchiho</Heading>
+              <Heading color="#fff" mb="-4" fontSize={["19","19","20","20","25"]}>Madara Uchiho</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
              </Box>
              <Box className="social">
@@ -146,7 +146,7 @@ return (
             <div className="lisa">
               <img src={Trainer5} alt='monu'/>
               <Box className="overlay2" >
-                  <Heading color="#fff" mb="-4" fontSize={["10","15","20","25"]}>Lana Rhoades</Heading>
+                  <Heading color="#fff" mb="-4" fontSize={["19","19","20","20","25"]}>Lana Rhoades</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
               </Box>
               <Box className="social">
@@ -164,7 +164,7 @@ return (
             <div className="lisa">
               <img src={Trainer6} alt='monu'/>
               <Box className="overlay2" >
-                  <Heading color="#fff" mb="-4" fontSize={["10","15","20","25"]}>Monu Marquis</Heading>
+                  <Heading color="#fff" mb="-4" fontSize={["19","19","20","20","25"]}>Monu Marquis</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
               </Box>
               <Box className="social">
@@ -182,7 +182,7 @@ return (
             <div className="lisa">
               <img src={Trainer10} alt='monu'/>
               <Box className="overlay2" >
-                  <Heading color="#fff" mb="-4"fontSize={["10","15","20","25"]} >Eva Elfie</Heading>
+                  <Heading color="#fff" mb="-4"fontSize={["19","19","20","20","25"]} >Eva Elfie</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
               </Box>
               <Box className="social">
@@ -200,7 +200,7 @@ return (
             <div className="lisa">
               <img src={Trainer9} alt='monu'/>
               <Box className="overlay2" >
-                  <Heading color="#fff" mb="-4" fontSize={["10","15","20","25"]} >Snoop Dog</Heading>
+                  <Heading color="#fff" mb="-4" fontSize={["19","19","20","20","25"]} >Snoop Dog</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
               </Box>
               <Box className="social">
@@ -218,7 +218,7 @@ return (
             <div className="lisa">
               <img src={Trainer11} alt='monu'/>
               <Box className="overlay2" >
-                  <Heading color="#fff" mb="-4" fontSize={["10","15","20","25"]} >Charlotte Flair</Heading>
+                  <Heading color="#fff" mb="-4" fontSize={["19","19","20","20","25"]} >Charlotte Flair</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
               </Box>
               <Box className="social">
@@ -236,7 +236,7 @@ return (
             <div className="lisa">
               <img src={Trainer8} alt='monu'/>
               <Box className="overlay2" >
-                  <Heading color="#fff" mb="-4" fontSize={["10","15","20","25"]} >Wakanda Forever</Heading>
+                  <Heading color="#fff" mb="-4" fontSize={["19","19","20","20","25"]} >Wakanda Forever</Heading>
                  <Text color="#666" fontWeight={"500"}>GYM TRAINER</Text>
               </Box>
               <Box className="social">

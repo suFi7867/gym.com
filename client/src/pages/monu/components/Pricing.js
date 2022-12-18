@@ -28,7 +28,7 @@ const Pricing = () => {
     <Flex
       bg="#151515"
       _dark={{ bg: "#151515" }}
-      p={20}
+      p={{ base: 5, md:20, lg: 10 }}
       pt="20"
       w="full"
       justifyContent="center"

@@ -73,20 +73,6 @@ export default function FrontCarousel() {
       strong:"MIGHTY",
       image:front1,
     },
-    // {
-    //     title:"SHAPE YOUR BODY",
-    //     text: "TRAINING HARD",
-    //     be:"BE",
-    //     strong:"POWER",
-    //     image:front2,
-    //   },  
-    //    {
-    //     title:"SHAPE YOUR BODY",
-    //     text: "NO GAIN",
-    //     be:"NO",
-    //     strong:"PAIN",
-    //     image:front3,
-    //   },
       {
         title:"SHAPE YOUR BODY",
         text: "TRAINING HARD",
@@ -107,7 +93,7 @@ export default function FrontCarousel() {
   return (
     <Box
       position={'relative'}
-      height={'130vh'}
+      height={'150vh'}
       width={'full'}
       overflow={'hidden'}
       mt="-50"
@@ -177,7 +163,7 @@ export default function FrontCarousel() {
                 maxW={'lg'}
                 position="absolute"
                 top="50%"
-                transform={["translate(10%,0%)","translate(5%,0%)","translate(30%,0%)","translate(50%,0%)"]}
+                transform={["translate(10%,15%)","translate(80%,50%)","translate(20%,20%)","translate(50%,-30%)"]}
                 >
                 <Heading  mt="30"  letterSpacing='10px' ml="2" fontSize={{ base: 'sm', md: 'md', lg: 'xl' }} fontWeight="500" w='100%' color="#fff">
                   {card.title}
