@@ -24,7 +24,7 @@ const initialState = {
   loading: false,
   error: false,
   AdminIsAuth: checkAdminAuth,
-  userData : {  details : {} , cart: [], purchase: [] }
+  userData : {  details : {} , cart: [], purchase: [], wishlist: [] }
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {
@@ -84,7 +84,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
         isAuth: false,
         token: "",
         AdminIsAuth: false,
-        userData : {  details : {} , cart: [], purchase: [] }
+        userData : {  details : {} , cart: [], purchase: [], wishlist:[] }
       };
     }
     default: {

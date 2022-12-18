@@ -21,3 +21,17 @@ export const REMOVE_CART_ITEMS_ERROR = "cart/items/remove/error";
 export const PURCHASE_LOADING = "purchase/laoding";
 export const PURCHASE_SUCCESS = "purchase/success";
 export const PURCHASE_ERROR = "purchase/error";
+
+
+
+// add item to wishlist
+export const ADD_ITEM_TO_WISHLIST_LOADING = "wishlist/items/add/laoding";
+export const ADD_ITEM_TO_WISHLIST_SUCCESS = "wishlist/items/add/success";
+export const ADD_ITEM_TO_WISHLIST_ERROR = "wishlist/items/add/error";
+
+
+// add item to cart from wishlist
+export const ADD_ITEM_TOCART_FROM_WISHLIST_LOADING = "wishlist/cart/items/add/laoding";
+export const ADD_ITEM_TOCART_FROM_WISHLIST_SUCCESS = "wishlist/cart/items/add/success";
+export const ADD_ITEM_TOCART_FROM_WISHLIST_ERROR = "wishlist/cart/items/add/error";
+

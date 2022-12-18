@@ -18,6 +18,10 @@ const cartSchema = new mongoose.Schema(
       type: Array,
       require: true,
     },
+    wishlist: {
+      type: Array,
+      require: true,
+    },
   },
   { versionKey: false }
 );

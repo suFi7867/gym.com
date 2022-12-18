@@ -15,6 +15,7 @@ import {
   Select,
   option,
   useToast,
+  Image,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -22,6 +23,8 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import { login } from "../../../redux/auth/auth.actions";
 import { registerUser } from "../../../redux/register/register.actions";
+
+import gymbro from "../assets/gymBro.gif"
 
 export default function Signup() {
 
@@ -85,18 +88,16 @@ export default function Signup() {
 
   return (
     <Flex
+   
+    position={"relative"}
       minH={"100vh"}
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
       bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
     >
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
-        <Stack align={"center"}>
-          <Heading color={"white"} fontSize={"4xl"} textAlign={"center"}>
-            Sign up
-          </Heading>
-        </Stack>
+      <Stack  zIndex={2} spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+        
         <Box
           rounded={"lg"}
           bg={useColorModeValue("whiteAlpha.200", "gray.700")}
@@ -204,6 +205,10 @@ export default function Signup() {
           </Stack>
         </Box>
       </Stack>
+
+   
+
+  
     </Flex>
   );
 }

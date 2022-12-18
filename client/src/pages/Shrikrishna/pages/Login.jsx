@@ -59,7 +59,7 @@ const handleReset=()=>{
     overflow={"hidden"}
     position={"relative"} bg="black"
      // bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
-      w="100%" h="65vh"
+      w="100%" h={{base:"100%"}}
       align={"center"}
       justify={"center"}
     >

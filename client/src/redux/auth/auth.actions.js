@@ -47,7 +47,7 @@ export const getUserData = (email) => async (dispatch) => {
     let res2 = await axios.get("http://localhost:8080/user/" + email);
 
     
-    let data = { details: res2.data ,cart: res1.data.cart , purchase:  res1.data.purchase  };
+    let data = { details: res2.data ,cart: res1.data.cart , purchase:  res1.data.purchase, wishlist: res1.data.wishlist   };
 
   // return console.log( data);
 

@@ -16,6 +16,8 @@ import {
   Image,
   IconButton,
   useToast,
+  Spacer,
+  HStack,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 
@@ -74,11 +76,13 @@ const ProductPage = () => {
           spacing={5}
           w="100%"
           // bg="#0078ff"
-          minH={"70vh"}
+
+         minH={{base:"200px", lg:"300px", xl:"500px"}}
         >
           <Heading
+           zIndex={2}
             color={"white"}
-            mt={50}
+          
             fontSize={{ base: "4xl", md: "5xl", lg: "6xl" }}
             lineHeight={"110%"}
           >
@@ -105,6 +109,7 @@ const ProductPage = () => {
           </Breadcrumb>
 
           <Image
+          opacity={{base:"30%", md:"100%"}}
             overflow={"hidden"}
             position={"absolute"}
             src={banner}
@@ -115,6 +120,7 @@ const ProductPage = () => {
             top="20px"
           />
           <Image
+        opacity={{base:"30%", md:"100%"}}
             overflow={"hidden"}
             position={"absolute"}
             src={banner}
@@ -146,16 +152,17 @@ const ProductPage = () => {
             <SimpleGrid
               p={5}
               w="100%"
-              spacing={10}
-              columns={{ base: 1, sm: 1, md: 2, lg: 4 }}
+              spacing={{base:"3", md:5, lg:"10"}}
+              columns={{ base: 2,  md: 3, lg: 4 }}
             >
               {product.data?.map((item, index) => (
-                <Box
+                <VStack
+                 position={"relative"}
                   key={item._id}
                   boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
                   borderRadius="10px"
                   maxW="xs"
-                  mx="auto"
+               
                   bg="whiteAlpha.300"
                   // _dark={{
                   //   bg: "gray.800",
@@ -163,21 +170,23 @@ const ProductPage = () => {
                   shadow="lg"
                   rounded="lg"
                   z-index={-1}
+                
+               
                 >
-                  <Box px={4} py={2}>
+                  <Box p={{base:"2", md:"2", lg:"3"}} >
                     <chakra.h1
                       color="white"
                       _dark={{
                         color: "white",
                       }}
                       fontWeight="bold"
-                      fontSize="3xl"
+                      fontSize={{base:"xl", md:"xl", lg:"3xl"}}
                       textTransform="uppercase"
                     >
                       {item.productName}
                     </chakra.h1>
                     <chakra.p
-                      mt={1}
+                   
                       fontSize="sm"
                       color="white"
                       _dark={{
@@ -188,20 +197,24 @@ const ProductPage = () => {
                       Lorem ipsum dolor sit amet consectetur
                     </chakra.p>
                   </Box>
-                  <Box w="100%" h="300px" m="auto">
+                  <Box w="100%"  >
                     <Link to={`/products/${item._id}`}>
                       <Image
-                        h="100%"
-                        w="100%"
+                     
+                       
                         fit="cover"
-                        mt={2}
+                   
                         // src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80"
                         src={item.image}
                         alt="NIKE AIR"
                       />
                     </Link>
                   </Box>
-                  <Flex
+                  <Spacer/>
+                  <HStack 
+                  w="100%"
+                
+                    alignSelf={"flex-end"}
                     alignItems="center"
                     justifyContent="space-between"
                     px={4}
@@ -258,8 +271,8 @@ const ProductPage = () => {
                     </chakra.button>  </Link> 
                     }
                    
-                  </Flex>
-                </Box>
+                  </HStack>
+                </VStack>
               ))}
             </SimpleGrid>
           </VStack>

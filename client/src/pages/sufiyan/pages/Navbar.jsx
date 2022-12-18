@@ -79,13 +79,6 @@ const Navbar = () => {
  const { userData, isAuth, AdminIsAuth } = useSelector((store) => store.auth);
   const { data: cartData } = useSelector((store) => store.cart);
 
-
-  
-
-  //const isAuth = false
-  //const AdminIsAuth = false
- // const token= "admin@gmail.com#admin"
-
   let userName =  userData && userData?.details?.username 
 
   console.log(userData)
@@ -191,6 +184,7 @@ const Navbar = () => {
                 <NavLink to="/login">
                   <Button
                    
+                   _hover={{backgroundColor:"white", color:"orange.500"}}
                     color="white"
                     variant="outline"
                     fontWeight="semibold"
@@ -201,6 +195,7 @@ const Navbar = () => {
 
                 <NavLink to="/register">
                   <Button
+                  _hover={{backgroundColor:"white", color:"orange.500"}}
                      bg="#f45f02"
                      color="white"
                      variant="solid"
@@ -211,6 +206,7 @@ const Navbar = () => {
                 </NavLink>
 
                 <IconButton
+                _hover={{ color:"orange.500"}}
                   fontSize="25px"
                   borderRadius={50}
                   variant="link"
@@ -220,6 +216,7 @@ const Navbar = () => {
 
                 <NavLink to="/cart">
                   <IconButton
+                  _hover={{ color:"orange.500"}}
                     fontSize="25px"
                     borderRadius={50}
                     variant="link"
@@ -253,17 +250,28 @@ const Navbar = () => {
                 >
                   LogOut
                 </Button>
-
+                <NavLink to="/cart"> 
+              <Flex>
                 <IconButton
                   fontSize="25px"
                   borderRadius={50}
                   variant="link"
                   //onClick={toggleColorMode}
                   icon={<VscHeart />}
-                />
+                  /><Text >
+                  {userData.wishlist?.length !== 0 ? (
+                    <Circle minWidth={30} bg="white">
+                      {userData.wishlist?.length}
+                    </Circle>
+                  ) : (
+                    ""
+                  )}
+                </Text>
+
+                  </Flex></NavLink>
 
                 <NavLink to="/cart">
-                  <HStack>
+                  <Flex>
                     <IconButton
                       fontSize="25px"
                       borderRadius={50}
@@ -271,7 +279,7 @@ const Navbar = () => {
                       //onClick={toggleColorMode}
                       icon={<IoBagOutline />}
                     />
-                    <Text marginLeft={"-50px"}>
+                    <Text >
                       {userData.cart?.length !== 0 ? (
                         <Circle minWidth={30} bg="white">
                           {userData.cart?.length}
@@ -280,7 +288,7 @@ const Navbar = () => {
                         ""
                       )}
                     </Text>
-                  </HStack>
+                  </Flex>
                 </NavLink>
 
                
