@@ -1,12 +1,14 @@
-import { Box, Button, HStack, Img, Tag, Text, useToast, VStack } from "@chakra-ui/react";
+import { Box, Button, HStack, IconButton, Img, Tag, Text, useToast, VStack } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { getUserData } from "../../../redux/auth/auth.actions";
-import { ACTION_ADD_ITEM_TO_CART, ACTION_GET_CART } from "../../../redux/cart/cart.actions";
+import { ACTION_ADD_ITEM_TO_CART, ACTION_ADD_ITEM_TO_WISHLIST, ACTION_GET_CART } from "../../../redux/cart/cart.actions";
 import { ACTION_GET_PRODUCTS } from "../../../redux/products/product.actions";
 import Loading from "../../Loading";
+
+import { AiOutlineHeart } from "react-icons/ai"
 
 //bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
 // backgroundColor="#312e2e"
@@ -20,7 +22,7 @@ const SingleProductPage = () => {
 
   const dispatch = useDispatch();
   const  {data}  = useSelector((store) => store.product);
-  const {userData } = useSelector((store) => store.auth);
+  const {userData , isAuth } = useSelector((store) => store.auth);
  //console.log(data, "frontend single route");
 
  //const { token } = useSelector((store) => store.auth);
@@ -30,7 +32,10 @@ const SingleProductPage = () => {
  const [SingleData, setSingle] = useState({});
  
 
+ 
   const { id } = useParams();
+  const NavigatKaro = useNavigate()
+  
 //console.log(id)
 
   useEffect( () => {
@@ -53,6 +58,17 @@ const SingleProductPage = () => {
   }, [id]);
 
   const handleCart = () => {
+
+    if(!isAuth){
+      toast({
+        title: "You Need Login first",
+        status: "warning",
+        duration: 4000,
+        isClosable: true,
+      });
+      return NavigatKaro("/login") 
+    }
+
 
 let check = true 
 
@@ -97,8 +113,64 @@ let check = true
      
     }
 
-
   };
+
+  const AddWishlist = () => {
+
+    
+    if(!isAuth){
+      toast({
+        title: "You Need Login first",
+        status: "warning",
+        duration: 4000,
+        isClosable: true,
+      });
+      return NavigatKaro("/login") 
+    }
+
+
+    let check = true 
+    
+        userData.wishlist.map((el)=> {
+          if(el.productName == SingleData.productName){
+            check = false
+    
+            return  toast({
+              title: "Product Already in Wishlist",
+              status: "warning",
+              duration: 4000,
+              isClosable: true,
+            });
+    
+          }
+        } )
+    
+        if(check){
+    
+          let token = JSON.parse(localStorage.getItem("token"))
+    
+          let Product = {
+            email : token.email,
+            data : { ...SingleData, qty : quant}
+          }
+      
+         
+         
+            dispatch(ACTION_ADD_ITEM_TO_WISHLIST(Product))
+            .then((res)=> dispatch(getUserData(token.email)))
+            toast({
+              title: "Product Added to Wishlist",
+              
+              status: "success",
+              duration: 4000,
+              isClosable: true,
+            });
+      
+        }
+    
+    
+  };
+    
 
 
   if(LoadingT){
@@ -203,13 +275,37 @@ let check = true
                   +
                 </Button>
               </HStack>          
-            <Button
+           
+          </HStack>
+
+          <HStack>
+          <Button
                 bg="#f36100"
                 
                 onClick={handleCart}
               >
                 Add to Cart
               </Button>
+              <IconButton
+                      
+                     p="0px 20px"
+                      // bg="white"
+                      fontSize="3xl"
+                      onClick={AddWishlist} 
+                     color="white"
+                      fontWeight="bold"
+                      rounded="lg"
+                      textTransform="uppercase"
+                      _hover={{
+                        bg: "white",
+                        color: "#f45f02;",
+                      }}
+                      // _focus={{
+                      //   bg: "gray.400",
+                      // }}
+                      bg="#f45f02;"
+                      icon={<AiOutlineHeart/>}
+                    />
           </HStack>
           <VStack align={"flex-start"} >
             <Text>📦 Free Shipping + returns</Text>

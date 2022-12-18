@@ -1,11 +1,12 @@
 //import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 function PrivateRoute({ children }) {
 
- const isAuth = true
 
-  //const { isAuth } = useSelector((store) => store.auth);
+  const { isAuth } = useSelector((store) => store.auth);
+  
   if (!isAuth) {
     return alert("You Need To Login First"), (<Navigate to="/login" />);
   }

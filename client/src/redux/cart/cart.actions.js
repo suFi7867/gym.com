@@ -13,7 +13,13 @@ import {
   REMOVE_CART_ITEMS_SUCCESS,
   PURCHASE_LOADING,
   PURCHASE_SUCCESS,
-PURCHASE_ERROR
+PURCHASE_ERROR,
+ADD_ITEM_TO_WISHLIST_LOADING,
+ADD_ITEM_TO_WISHLIST_SUCCESS,
+ADD_ITEM_TO_WISHLIST_ERROR,
+ADD_ITEM_TOCART_FROM_WISHLIST_LOADING,
+ADD_ITEM_TOCART_FROM_WISHLIST_SUCCESS,
+ADD_ITEM_TOCART_FROM_WISHLIST_ERROR,
 } from "./cart.types";
 
 // redux doesnt handle asynchronous REQUEST
@@ -91,6 +97,53 @@ export const ACTION_PURCHASE = (payload={})=> async (dispatch)=>{
  
 }
 
+
+
+export const ACTION_ADD_ITEM_TO_WISHLIST =
+  (payload = {}) =>
+  async (dispatch) => {
+    dispatch({ type: ADD_ITEM_TO_WISHLIST_LOADING });
+
+    try {
+      await axios.post("http://localhost:8080/cart/wishlist", payload)
+     .then((res)=> console.log(res.message))
+     .catch((err)=> console.log(err.message))
+     
+    
+
+      return dispatch({
+        type: ADD_ITEM_TO_WISHLIST_SUCCESS,
+        payload: payload.data,
+      });
+
+    } catch (err) {
+      console.log(err)
+      dispatch({ type: ADD_ITEM_TO_WISHLIST_ERROR, payload: err.message });
+    }
+  };
+
+  export const MOVE_FROM_WISHLIST_TO_CART =
+  (payload = {}) =>
+  async (dispatch) => {
+    dispatch({ type: ADD_ITEM_TOCART_FROM_WISHLIST_LOADING });
+
+    try {
+      await axios.patch("http://localhost:8080/cart/move", payload)
+     .then((res)=> console.log(res.message))
+     .catch((err)=> console.log(err.message))
+     
+    
+
+      return dispatch({
+        type: ADD_ITEM_TOCART_FROM_WISHLIST_SUCCESS,
+        payload: payload.data,
+      });
+
+    } catch (err) {
+      console.log(err)
+      dispatch({ type: ADD_ITEM_TOCART_FROM_WISHLIST_ERROR, payload: err.message });
+    }
+  };
 
 
 

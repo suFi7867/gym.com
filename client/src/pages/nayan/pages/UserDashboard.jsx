@@ -1,4 +1,4 @@
-import { Box, Img, Tag, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Img, Spacer, Tag, Text, VStack } from "@chakra-ui/react";
 import React from "react";
 import { useSelector } from "react-redux";
 import Vid from "./Vid";
@@ -9,7 +9,7 @@ const UserDashboard = () => {
   const {details} = userData
 
   return (
-    <Box minH="100vh" position="relative" maxW="1400vh">
+    <Box minH="100vh" position={"relative"}  maxW="1400vh">
       <Box
         bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)"
         minH="100vh"
@@ -30,14 +30,14 @@ const UserDashboard = () => {
         <Box
           bg="whiteAlpha.100"
           position="absolute"
-          top={5}
+          top={20}
           
           left={{ base: "50", sm: "0", md: "150", lg: "50" }}
           p="10px"
           display={{ base: "grid", sm: "grid", md: "grid", lg: "flex" }}
           gap="20px"
         //   borderRadius="20px"
-          w={{ base: "70%", sm: "100%", md: "50%", lg: "40%" }}
+         maxW="600px"
         >
           <Box w={{ base: "100%", sm: "40%", md: "50%", lg: "40%" }}>
             <Img src="https://i.im.ge/2022/07/29/FwZXw1.jpg" />
@@ -73,6 +73,25 @@ const UserDashboard = () => {
         >
           <Vid />
         </Box>
+        <VStack  left="680" top="20" position={"absolute"} w="400px">  
+         <Text fontSize={"2xl"} color="white" fontWeight={"semibold"} >PURCHASE HISTORY</Text>
+           <VStack w="100%"  spacing={5} overflowY="scroll">
+           <Flex bg="rgb(244,95,2)" position={"sticky"} w="full" p={3}> 
+                <Text color={"white"} fontWeight="medium" > {"Poduct Name"} {"   "}</Text> 
+                <Spacer/>
+                <Text color={"white"} fontWeight="medium" >{"Price"}</Text>
+        </Flex>
+           { 
+              userData.purchase.map((el)=>(
+                <Flex w="full" bg={"whiteAlpha.200"} p={3}> 
+                <Text color={"white"} fontWeight="medium" > {el.productName} {"   "}</Text> 
+                <Spacer/>
+                <Text color={"white"} fontWeight="medium" >{"   "} $ {el.price}</Text>
+                </Flex>
+              ))
+            }
+           </VStack>
+            </VStack>
       </Box>
     </Box>
   );

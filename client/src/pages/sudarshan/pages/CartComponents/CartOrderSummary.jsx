@@ -11,6 +11,7 @@ import * as React from "react"
 import { FaArrowRight } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import RazorPay from "../../../Payment";
 import { formatPrice } from "./PriceTag";
 const OrderSummaryItem = (props) => {
   const { label, value, children } = props;
@@ -29,7 +30,9 @@ export const CartOrderSummary = () => {
   const total = userData.cart.reduce((a, b) => a + +b.price, 0);
 
  
+const PaymentKaro = ()=>{
 
+}
 
   return (
     <Stack spacing="8" borderWidth="1px" rounded="lg" padding="8" width="full">
@@ -56,27 +59,10 @@ export const CartOrderSummary = () => {
           </Text>
         </Flex>
       </Stack>
-      <NavLink  to="/checkout/payment">
-      <Button
-      w={"full"}
-        colorScheme="blue"
-        size="lg"
-        bg={"#f45f02"}
-        color={"white"}
-        _hover={
-          {
-            bg: "white",
-            border:"1px solid #f45f02",
-            color: "#f45f02"
-          }
-        }
-        fontSize="md"
-        rightIcon={<FaArrowRight />}
-        >
-        Checkout
-      </Button>
+    
 
-        </NavLink>
+  <RazorPay amount={total} />
+        
     </Stack>
   );
 };

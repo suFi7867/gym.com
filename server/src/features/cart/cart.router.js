@@ -103,6 +103,76 @@ app.patch("/", async (req, res) => {
   }
 });
 
+
+///wishlist
+
+
+app.post("/wishlist", async (req, res) => {
+
+  console.log(req)
+
+  try {
+    let exists = await CartModel.findOne({ email: req.body.email });
+
+    if (exists) {
+      let flag = false;
+      exists.wishlist?.map((item) => {
+        if (item.productName === req.body.data.productName) {
+          flag = true;
+          if (flag) {
+            return res.status(201).send("Product already in Cart");
+          }
+        }
+        
+      });
+      if (flag) {
+        return res.status(201).send("Product already in Cart");
+      }
+
+      let addData = await cartModel.updateOne(
+        { email: req.body.email },
+        { $push: { wishlist: req.body.data } }
+      );
+
+      return res.status(200).send(addData);
+    } else {
+
+      let newData = { email: req.body.email, wishlist: req.body.data };
+      let data = await CartModel.create(newData);
+    //  console.log(564);
+      return res.status(200).send(data);
+    }
+  } catch (e) {
+    res.send(e.massage);
+  }
+});
+
+
+// wishlist to cart 
+app.patch("/move", async (req, res) => {
+  
+  const { email , id } = req.body
+ // console.log(req)
+   try {
+
+    let user = await cartModel.findOne({email: email})
+  
+    let product = user.wishlist.find((el)=> el._id == id)
+    console.log(product)
+     await cartModel.findOneAndUpdate(
+       {email:email},
+       {$pull: {wishlist: {_id:id}}, $push: {cart: product  }  },
+       {new :true}
+       )
+
+     return res.status(200).send("SUCCESS");
+   } catch (e) {
+     return res.status(404).send(e.massage);
+   }
+ });
+
+
+
 app.patch("/purchase", async (req, res) => {
   
   const { email } = req.body
