@@ -73,7 +73,7 @@ const UserDashboard = () => {
         >
           <Vid />
         </Box>
-        <VStack  left="680" top="15" position={"absolute"} w="400px">  
+        <VStack  left="680" top="20" position={"absolute"} w="400px">  
          <Text fontSize={"2xl"} color="white" fontWeight={"semibold"} >PURCHASE HISTORY</Text>
            <VStack w="100%"  spacing={5} overflowY="scroll">
            <Flex bg="rgb(244,95,2)" position={"sticky"} w="full" p={3}> 

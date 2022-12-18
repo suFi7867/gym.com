@@ -53,3 +53,6 @@ reportWebVitals();
 
 // npm i react-slick
 //  npm install slick-carousel --save
+
+// npm razorpay 
+// in backend 
