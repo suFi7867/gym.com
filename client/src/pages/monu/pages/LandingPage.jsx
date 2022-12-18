@@ -2,7 +2,7 @@ import React from 'react'
 import BigGallery from '../components/BigGallery'
 import Choose from '../components/Choose'
 import FrontCarousel from '../components/FrontCarousel'
-import Gallery from '../components/Gallery'
+
 import Girl from '../components/Girl'
 import Pricing from '../components/Pricing'
 import Trainer from '../components/Trainer'
@@ -15,7 +15,6 @@ const LandingPage = () => {
         <Girl />
         <Pricing />
         <BigGallery />
-        {/* <Gallery /> */}
         <Trainer />
     </div>
   )

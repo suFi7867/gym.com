@@ -1,10 +1,10 @@
 import React from "react";
 import {  Box, Image, Heading } from "@chakra-ui/react";
 import {BsTwitter , BsGithub} from"react-icons/bs"
-import {FaFacebookF , FaLinkedinIn} from"react-icons/fa"
+import {FaFacebookF , FaLinkedinIn, FaEye} from"react-icons/fa"
 import "../styles/Card.css"
 
-const Card = ({image,title,facebook,twitter,linkedin,github}) => {
+const Card = ({image,title,portfolio,linkedin,github,desc}) => {
   return (<Box className="papa">
    <Box className="our_profile_card">
       <Box className="imgbx">
@@ -12,12 +12,11 @@ const Card = ({image,title,facebook,twitter,linkedin,github}) => {
       </Box>
       <Box className="Our_content">
           <Box className="Our_details">
-               <Heading fontSize={"1.5em"} color='#fff' fontWeight='500'>{title}<br/><span>Full Stack Web Developer</span></Heading>
+               <Heading fontSize={"1.5em"} color='#fff' fontWeight='500'>{title}<br/><span>{desc}</span></Heading>
                <ul className="our_social_icons">
-               <li><a href={facebook}><FaFacebookF /></a></li>
-               <li><a href={twitter}><BsTwitter /></a></li>
-               <li><a href={linkedin}><FaLinkedinIn /></a></li>
-               <li><a href={github}><BsGithub /></a></li>
+               <li><a href={portfolio} target="_blank"><FaEye /></a></li>
+               <li><a href={linkedin} target="_blank"><FaLinkedinIn /></a></li>
+               <li><a href={github} target="_blank"><BsGithub /></a></li>
                </ul>
           </Box>
       </Box>
