@@ -17,7 +17,7 @@ export const login = (creds) => async (dispatch) => {
   try {
     let res = await axios.post("http://localhost:8080/user/login", creds);
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-    console.log(res.data)
+    //console.log(res.data)
     return res.data;
   } catch (error) {
     dispatch({ type: LOGIN_ERROR, payload: error.message });
@@ -25,7 +25,7 @@ export const login = (creds) => async (dispatch) => {
 };
 
 export const ForegetPassword = (email) => async (dispatch) => {
-  console.log(email)
+  //console.log(email)
   dispatch({ type: FORGET_REQUEST_ });
   
   try {
