@@ -417,14 +417,14 @@ const Navbar = () => {
                   <NavLink to="/login">
                     <Button
                       onClick={() => onClose()}
-                      colorScheme="messenger"
+                      colorScheme="orange"
                       variant="outline"
                     >
                       Log In
                     </Button>
                   </NavLink>
                   <NavLink onClick={() => onClose()} to="/register">
-                    <Button colorScheme="messenger" variant="solid">
+                    <Button colorScheme="orange" variant="solid">
                       Register
                     </Button>
                   </NavLink>

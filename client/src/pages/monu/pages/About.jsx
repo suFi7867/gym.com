@@ -5,25 +5,29 @@ import {
     Container,
     
     SimpleGrid,
-    Stack
+    Stack,
+    VStack
   } from '@chakra-ui/react';
 import Card from '../components/Card';
+
+
+
 import ProfileCard from '../components/ProfileCard';
 let first=[{
-  image:"https://i.ibb.co/52YF6Sg/green-Monu.png",
+  image:"https://i.ibb.co/9tT8KtB/sufi-black.png",
   desc:"Problem Solver",
-  title:"Sufiyan Shaikh",
-  portfolio:"#",
-  github:"#",
-  linkedin:"#"
+  title:"suFiyan Shaikh",
+  portfolio:"https://sufi.vercel.app/",
+  github:"https://github.com/suFi7867",
+  linkedin:"https://www.linkedin.com/in/sufiyan-shaikh-9bb808183/"
 },
 {
-  image:"https://i.ibb.co/52YF6Sg/green-Monu.png",
-  desc:"Backend",
-  title:"Nayan",
-  portfolio:"#",
-  github:"#",
-  linkedin:"#"
+  linkedin:"https://www.linkedin.com/in/nayan-kumar-/",
+  github:"https://github.com/NAYANKUMAR21",
+  title:"Nayan Kumar",
+  desc:"Backend Expert",
+  portfolio:"https://nayankumar21.github.io/",
+  image:"https://media.licdn.com/dms/image/C5603AQENqdw5YZSlow/profile-displayphoto-shrink_400_400/0/1643571736828?e=1677110400&v=beta&t=fohqo3I9hH37fttGC79_WGPsEYk-7nuBBdXpOA4crSg"   
 },
   {
     image:"https://i.ibb.co/52YF6Sg/green-Monu.png",
@@ -33,31 +37,38 @@ let first=[{
     github:"https://github.com/monumarquis",
     linkedin:"https://www.linkedin.com/in/monu-yadav-2003m/"
   },
-
   {
-    image:"https://i.ibb.co/52YF6Sg/green-Monu.png",
-    desc:"Full Stack",
-    title:"Sudharshan Pujari",
-    portfolio:"#",
-    github:"#",
-    linkedin:"#"
+    image:"https://avatars.githubusercontent.com/u/107467585?v=4",
+    desc:"Team PLayer",
+    title:"Sudarshan P",
+    portfolio:"https://sudarshan441.github.io/",
+    github:"https://github.com/sudarshan441",
+    linkedin:"https://www.linkedin.com/in/sudarshan-pujari/"
   },
- 
   {
-    image:"https://i.ibb.co/52YF6Sg/green-Monu.png",
+    image:"https://avatars.githubusercontent.com/u/105938098?v=4",
+    title:"Krishna Aluri",
     desc:"Full Stack",
-    title:"krishna Alurri",
-    portfolio:"#",
-    github:"#",
-    linkedin:"#"
+    portfolio:"https://641krishna.github.io/",
+    github:"https://github.com/641krishna",
+    linkedin:"https://www.linkedin.com/feed/"
   },
 
 ]
 
 const About = () => {
   return (
-   <Container bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)" maxW="full" h="auto">
-       <SimpleGrid columns={[1,1,2,3,5]} w={["50%","50%","80%","82%"]}  gap="40" pb="10" pt="10" ml='10'>
+   <VStack
+   justify="center"
+   p={5}
+   margin={"auto"}
+   bgGradient="linear-gradient(180deg, rgba(0,0,0,1) 20%, rgba(64,64,64,1) 93%)" maxW="full" minH={{base:"100%", md:"", lg:"70vh", xl:"70vh"}}>
+       <SimpleGrid
+       spacing={10}
+       maxW={"1400px"}
+       border="1px solid white"
+       columns={[1,1,2,3,5]}  
+        >
            {
            first.map((el)=><Card image={el.image} title={el.title} key={el.image} portfolio={el.portfolio}  desc={el.desc} github={el.github}  linkedin={el.linkedin} />)
            } 
@@ -74,7 +85,7 @@ const About = () => {
            } 
   </SimpleGrid> */}
 
-   </Container>
+   </VStack>
   )
 }
 
