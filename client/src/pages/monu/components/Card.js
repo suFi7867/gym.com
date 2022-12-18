@@ -1,7 +1,9 @@
 import React from "react";
-import {  Box, Image, Heading } from "@chakra-ui/react";
+import { Text, Box, Image, Heading, Spacer } from "@chakra-ui/react";
 import {BsTwitter , BsGithub} from"react-icons/bs"
 import {FaFacebookF , FaLinkedinIn, FaEye} from"react-icons/fa"
+import {RiUserFill} from"react-icons/ri"
+
 import "../styles/Card.css"
 
 const Card = ({image,title,portfolio,linkedin,github,desc}) => {
@@ -12,9 +14,10 @@ const Card = ({image,title,portfolio,linkedin,github,desc}) => {
       </Box>
       <Box className="Our_content">
           <Box className="Our_details">
-               <Heading fontSize={"1.5em"} color='#fff' fontWeight='500'>{title}<br/><span>{desc}</span></Heading>
+               <Text  fontSize={"1.5em"} color='#fff' fontWeight='500'>{title}<br/><span>{desc}</span></Text>
+               <Spacer/>
                <ul className="our_social_icons">
-               <li><a href={portfolio} target="_blank"><FaEye /></a></li>
+               <li><a href={portfolio} target="_blank"><RiUserFill /></a></li>
                <li><a href={linkedin} target="_blank"><FaLinkedinIn /></a></li>
                <li><a href={github} target="_blank"><BsGithub /></a></li>
                </ul>

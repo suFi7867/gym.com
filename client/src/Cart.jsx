@@ -222,7 +222,7 @@ import CartCard from "./pages/sufiyan/pages/nestedPages/Card";
         <Text 
         p={5}
         bg={"#f45f02"} color="white"
-        fontSize={"2xl"} fontWeight="semibold" > Total : {  totalPurchase } </Text> 
+        fontSize={"2xl"} fontWeight="semibold" > Total : {  totalPurchase.toFixed(2) } </Text> 
 
 
         </VStack>
