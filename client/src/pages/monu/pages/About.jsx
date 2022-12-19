@@ -27,7 +27,7 @@ let first=[{
   title:"Nayan Kumar",
   desc:"Backend Expert",
   portfolio:"https://nayankumar21.github.io/",
-  image:"https://media.licdn.com/dms/image/C5603AQENqdw5YZSlow/profile-displayphoto-shrink_400_400/0/1643571736828?e=1677110400&v=beta&t=fohqo3I9hH37fttGC79_WGPsEYk-7nuBBdXpOA4crSg"   
+  image:"https://avatars.githubusercontent.com/u/99751552?v=4"   
 },
   {
     image:"https://i.ibb.co/52YF6Sg/green-Monu.png",
@@ -66,7 +66,7 @@ const About = () => {
        <SimpleGrid
        spacing={10}
        maxW={"1400px"}
-       border="1px solid white"
+      
        columns={[1,1,2,3,5]}  
         >
            {

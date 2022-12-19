@@ -61,7 +61,7 @@ const PaymentKaro = ()=>{
       </Stack>
     
 
-  <RazorPay amount={total} />
+  <RazorPay  />
         
     </Stack>
   );

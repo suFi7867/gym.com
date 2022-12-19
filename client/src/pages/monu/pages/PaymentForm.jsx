@@ -160,7 +160,7 @@ const PaymentForm = () => {
                 </Stack>
 
                 <Image h="120%"  position={"absolute"}  src={pay} />
-                <RazorPay/>
+                <RazorPay  />
 
             </VStack>
 
