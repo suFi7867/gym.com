@@ -28,7 +28,7 @@ export default function VerifyEmailForm({ handleVerify }) {
 
   const handleSubmit = () => {
     const { p1, p2, p3, p4  ,p5  ,p6   } = pin;
-    axios.post(`http://localhost:8080/user/reset-password/verifyOtp`, {otp: p1 + p2 + p3 + p4 + p5 + p6})
+    axios.post(`https://gymbro-w171.onrender.com/user/reset-password/verifyOtp`, {otp: p1 + p2 + p3 + p4 + p5 + p6})
     .then((res)=>  { 
       toast({
         title: "OTP Verified Successfull",

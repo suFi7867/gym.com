@@ -41,7 +41,7 @@ const SingleProductPage = () => {
   useEffect( () => {
 
     try{
-    fetch("http://localhost:8080/products/" + id)
+    fetch("https://gymbro-w171.onrender.com/products/" + id)
      .then((res)=>res.json())
      .then((res)=>{
       setSingle(res)

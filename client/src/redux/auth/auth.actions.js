@@ -15,7 +15,7 @@ FORGET_SUCCESS_,
 export const login = (creds) => async (dispatch) => {
   dispatch({ type: LOGIN_REQUEST });
   try {
-    let res = await axios.post("http://localhost:8080/user/login", creds);
+    let res = await axios.post("https://gymbro-w171.onrender.com/user/login", creds);
     dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     //console.log(res.data)
     return res.data;
@@ -29,7 +29,7 @@ export const ForegetPassword = (email) => async (dispatch) => {
   dispatch({ type: FORGET_REQUEST_ });
   
   try {
-    let res = await axios.post("http://localhost:8080/user/reset-password/getOtp", {email: email});
+    let res = await axios.post("https://gymbro-w171.onrender.com/user/reset-password/getOtp", {email: email});
     dispatch({ type: FORGET_SUCCESS_, payload: res.data });
     
     return res.data;
@@ -43,8 +43,8 @@ export const getUserData = (email) => async (dispatch) => {
   dispatch({ type: GET_USER_REQUEST_, });
   
   try {
-    let res1 = await axios.get("http://localhost:8080/cart/" + email );
-    let res2 = await axios.get("http://localhost:8080/user/" + email);
+    let res1 = await axios.get("https://gymbro-w171.onrender.com/cart/" + email );
+    let res2 = await axios.get("https://gymbro-w171.onrender.com/user/" + email);
 
     
     let data = { details: res2.data ,cart: res1.data.cart , purchase:  res1.data.purchase, wishlist: res1.data.wishlist   };

@@ -23,7 +23,7 @@ function RazorPay() {
 
   const fetchOrder = async () => {
     try {
-      const data = await axios.get("http://localhost:8080/payment/list-order")
+      const data = await axios.get("https://gymbro-w171.onrender.com/payment/list-order")
       .then((res)=> {
         dispatch(ACTION_PURCHASE(token.email))
         .then((res)=> {
@@ -72,7 +72,7 @@ function RazorPay() {
      
         try {
         setLoading(true);
-        const result = await axios.post("http://localhost:8080/payment/create-order", {
+        const result = await axios.post("https://gymbro-w171.onrender.com/payment/create-order", {
           amount: total + "00"
         });
 
@@ -80,7 +80,7 @@ function RazorPay() {
         console.log(result.data, "from handle pay ");
 
         const getkey = await axios.get(
-          "http://localhost:8080/payment/get-razorpay-key"
+          "https://gymbro-w171.onrender.com/payment/get-razorpay-key"
         );
         const key = getkey.data;
         console.log(key.key, "second console inside handlepay");
@@ -92,7 +92,7 @@ function RazorPay() {
           description: "FIRST RAZOR PAY",
           order_id: orderId,
           handler: async function (response) {
-            const result = await axios.post("http://localhost:8080/payment/pay-order", {
+            const result = await axios.post("https://gymbro-w171.onrender.com/payment/pay-order", {
               amount: amount,
               razorpayPaymentId: response.razorpay_payment_id,
               razorpay0rderId: response.razorpay_order_id,

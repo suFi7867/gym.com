@@ -21,7 +21,7 @@ export default function ResetPasswordForm({ handleReset }) {
   let email = localStorage.getItem("tempEmail")
   const resetPass=( )=>{
 
-    axios.post(`http://localhost:8080/user/reset-password/reset`, {email: email, password: password})
+    axios.post(`https://gymbro-w171.onrender.com/user/reset-password/reset`, {email: email, password: password})
     .then((res)=>  { 
       toast({
         title: "Password Changed Successfull",

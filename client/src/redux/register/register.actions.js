@@ -9,7 +9,7 @@ export const registerUser = (creds) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
   try {
     let res = await axios.post(
-      "http://localhost:8080/user/signup",
+      "https://gymbro-w171.onrender.com/user/signup",
       creds
     );
     dispatch({ type: REGISTER_SUCCESS, payload: res.data });

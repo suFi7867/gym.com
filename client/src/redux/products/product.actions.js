@@ -19,13 +19,13 @@ export const ACTION_GET_PRODUCTS = (id) => async (dispatch) => {
   // console.log("data")
   try {
     if (id) {
-      let res = await axios.get("http://localhost:8080/products/" + id);
+      let res = await axios.get("https://gymbro-w171.onrender.com/products/" + id);
       console.log(res.data, "from single");
 
       return dispatch({ type: GET_SINGLE_PRODUCTS, payload: res.data });
     }
     
-    let res = await axios.get("http://localhost:8080/products");
+    let res = await axios.get("https://gymbro-w171.onrender.com/products");
 
     console.log(res, "from redux actions");
 

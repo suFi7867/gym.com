@@ -24,8 +24,8 @@ export const ACTION_GET_ADMIN = () => async (dispatch) => {
   dispatch({ type: GET_ADMIN_LOADING });
   // console.log("data")
   try {
-    let res1 = await axios.get("http://localhost:8080/cart");
-    let res2 = await axios.get("http://localhost:8080/user");
+    let res1 = await axios.get("https://gymbro-w171.onrender.com/cart");
+    let res2 = await axios.get("https://gymbro-w171.onrender.com/user");
 
     let data = { carts: res1.data, users: res2.data };
 
@@ -45,7 +45,7 @@ export const ACTION_DELETE_PRODUCT =
     dispatch({ type: DELETE_PRODUCT_LOADING });
 console.log(payload)
     try {
-      await axios.delete(`http://localhost:8080/products/${payload}`, {
+      await axios.delete(`https://gymbro-w171.onrender.com/${payload}`, {
         headers: {
           "Content-Type": "application/json",
         }
@@ -65,7 +65,7 @@ export const ACTION_ADD_PRODUCT =
     dispatch({ type: ADD_PRODUCT_LOADING });
     console.log(payload.area);
     try {
-      await axios.post(`http://localhost:8080/products`, {
+      await axios.post(`https://gymbro-w171.onrender.com/products`, {
         headers: {
           "Content-Type": "application/json",
         },
