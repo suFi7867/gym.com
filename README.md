@@ -62,7 +62,7 @@
 It’s Group project where we've used MERN stack to make the JustShop.com with our creativity along with frontend and backend integration
 its Fully Responsive e-commerce web application that allows you to buy shoes & clothes online. It has a variety of categories, just visit the product listing page and you will see all the products, apply filters as per your need and in just a few clicks you can buy any products from the website. This project is just for educational purpose.
 
-<img src="https://i.ibb.co/K7qkkS3/final-637365106051e10025683e17-519389.gif" width="800px" />
+<img src="https://i.ibb.co/V9TN80x/Gym-Slide.jpg" width="800px" />
 
 
 <br />
