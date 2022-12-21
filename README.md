@@ -28,25 +28,30 @@
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="nodejs" />
   <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="expressjs" />
   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="mongodb" />
-
+  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" alt="JsonWebToken" />
 </p>
 
 
+<h4 align="center">Payment Gateway:</h4>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Razorpay-02042B?style=for-the-badge&logo=razorpay&logoColor=3395FF" alt="razorpay" />
+</p>
 
 
 <h4 align="center">Deployed On:</h4>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="vercel" />
-  <img src="https://img.shields.io/badge/Render-430098?style=for-the-badge&logo=heroku&logoColor=white" alt="heroku" />
+  <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" alt="heroku" />
 </p>
 
 
 
-<h3 align="center"><a href="https://justshop-unit5-project.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
 
-<h3 align="center"><a href="https://www.linkedin.com/feed/update/urn:li:activity:6997582095241875457/"><strong>Demo Video »</strong></a></h3>
+<h3 align="center"><a href="https://gymbro.vercel.app/"><strong>Want to see live preview »</strong></a></h3>
+
+<h3 align="center"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7010967664357457920/"><strong>Demo Video »</strong></a></h3>
 
 
 <br />
@@ -59,10 +64,11 @@
   <a href="#Contact">Author</a> &#10023;
 </p>
 
-It’s Group project where we've used MERN stack to make the JustShop.com with our creativity along with frontend and backend integration
-its Fully Responsive e-commerce web application that allows you to buy shoes & clothes online. It has a variety of categories, just visit the product listing page and you will see all the products, apply filters as per your need and in just a few clicks you can buy any products from the website. This project is just for educational purpose.
+It’s Group project where we've used MERN stack to make the Gym.com with our creativity along with frontend , backend, payment gataway integration
+its Fully Responsive GYM web application that allows you to buy Diet Plans , Protein. just visit the product listing page and you will see all the products, apply filters as per your need and in just a few clicks you can buy any products from the website. This project is just for educational purpose.
 
 <img src="https://i.ibb.co/V9TN80x/Gym-Slide.jpg" width="800px" />
+<img src="https://sufi.vercel.app/static/media/gymproject.f3b90a5695f86c03372d.gif" width="800px" />
 
 
 <br />
