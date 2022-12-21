@@ -75,13 +75,15 @@ its Fully Responsive GYM web application that allows you to buy Diet Plans , Pro
 
 ## Screens 
 - Homepage / Landing Page
-- Product Listing Page with all categories
+- Product Page 
 - Product Description Page
 - Cart Management Page
+- Wishlist
 - Checkout with Address Management Page
 - Login / Logout Page
 - Order Summary Page
 - Single Product Page
+- User Profile
 
 
 
@@ -93,10 +95,13 @@ its Fully Responsive GYM web application that allows you to buy Diet Plans , Pro
 - All Users Data
 - Can Delete Product From DB
 - Can Add Product to DB
+- Track Users Data
+- Live Sales and Revenue
+- Pending Purchase Future Revenue
  
 ## 🚀 User Features
 - Login and Signup User Account
-- Product Sorting Based on Price, Rating and Name
+- Product Visit
 - My Orders Section for details of all ordered item
 - Wishlist Add and Remove Items
 - Cart Add and Remove Items 
